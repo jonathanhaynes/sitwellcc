@@ -21,12 +21,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('node-sass-middleware')({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  indentedSyntax: true,
-  sourceMap: true
+  src: path.join(__dirname, '/assets/stylesheets/scss'),
+  dest: path.join(__dirname, '/assets/stylesheets/css'),
+  sourceMap: true,
+  force: true,
+  prefix: '/assets'
 }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'assets')));
 
 app.use('/', routes);
 app.use('/users', users);
