@@ -1,0 +1,32 @@
+{
+  "name": "sitwellcc",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "connect-mincer": "1.1.0 ",
+    "ejs": "*",
+    "express": "~4.13.3"
+  },
+  "devDependencies": {
+    "async": "*",
+    "chai": "*",
+    "cheerio": "*",
+    "coffee-script": "1.4.x",
+    "connect": "*",
+    "csso": "*",
+    "less": "*",
+    "mincer": "^1.3.0",
+    "mocha": "1.8.x",
+    "nib": "*",
+    "should": "*",
+    "sinon": "1.6.x",
+    "stylus": "*",
+    "supertest": "*",
+    "uglify-js": "*",
+    "underscore": "*",
+    "wrench": "*"
+  }
+}
