@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "async": "*",
+    "browserify-middleware": "^7.0.0",
     "chai": "*",
     "cheerio": "*",
     "coffee-script": "1.4.x",

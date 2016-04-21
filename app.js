@@ -2,17 +2,20 @@
 
 var express = require('express'),
     env = process.env.NODE_ENV,
-    ConnectMincer = require('connect-mincer'),
-    Mincer = require('mincer')
-;
+    connectMincer = require('connect-mincer'),
+    Mincer = require('mincer'),
+    browserify = require('browserify-middleware');
 
 var app = express();
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+//provide browserified versions of all the files in a directory
+app.use('/assets/javascripts', browserify(__dirname + '/assets/javascripts/source'));
+
 // set up connect-mincer middleware
-var mincer = new ConnectMincer({
+var mincer = new connectMincer({
   // you can, optionally, pass in your own required Mincer class, so long as it is >= 0.5.0
   mincer: Mincer,
   root: __dirname,
