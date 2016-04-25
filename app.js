@@ -11,9 +11,6 @@ var app = express();
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-//provide browserified versions of all the files in a directory
-app.use('/assets/javascripts', browserify(__dirname + '/assets/javascripts/source'));
-
 // set up connect-mincer middleware
 var mincer = new connectMincer({
   // you can, optionally, pass in your own required Mincer class, so long as it is >= 0.5.0
