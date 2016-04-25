@@ -1,15 +1,9 @@
-var PowerHouse = require('powerhouse-js'),
-    picturefill = require('picturefill'),
-    CookieDisclaimer = require('cookie-disclaimer'),
-    attachFastClick = require('fastclick'),
-    lazysizes = require('lazysizes');
-
 PowerHouse.ready(function () {
 
   /**
    * Attach FastClick to the body
    */
-  attachFastClick(document.body);
+  FastClick.attach(document.body);
 
   /**
    * Initialise inlineSVG
@@ -24,6 +18,11 @@ PowerHouse.ready(function () {
   if (!Modernizr.placeholder) {
     loadJS('/javascripts/libraries/placeholders.min.js');
   }
+
+  /**
+   * Initialise LazySizes
+   */
+  loadJS('/javascripts/libraries/lazysizes.js');
 
   /**
    * Initialise Cookie Disclaimer
