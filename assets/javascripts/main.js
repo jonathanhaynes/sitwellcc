@@ -8,7 +8,7 @@ PowerHouse.ready(function () {
   /**
    * Initialise inlineSVG
    */
-  loadJS('/javascripts/libraries/inlineSVG.js', function () {
+  loadJS('/assets/libraries/inlineSVG.js', function () {
     inlineSVG.init();
   });
 
@@ -16,19 +16,19 @@ PowerHouse.ready(function () {
    * Initialise placeholders for browsers that don't support them.
    */
   if (!Modernizr.placeholder) {
-    loadJS('/javascripts/libraries/placeholders.min.js');
+    loadJS('/assets/libraries/placeholders.js');
   }
 
   /**
    * Initialise LazySizes
    */
-  loadJS('/javascripts/libraries/lazysizes.js');
+  loadJS('/assets/libraries/lazysizes.js');
 
   /**
    * Initialise Cookie Disclaimer
    */
   CookieDisclaimer.init({
-    template: '/javascripts/templates/cookie-banner.html'
+    template: '/assets/templates/cookie-banner.html'
   });
 
   /**

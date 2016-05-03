@@ -29,10 +29,9 @@
   <meta name="msapplication-TileColor" content="#000">
   <meta name="msapplication-TileImage" content="<%= asset_path('ms-tile.png') %>">
 
-  <meta name="full-css" content="<%= asset_path('main.css') %>">
-  <meta name="full-js" content="<%= asset_path('main.js') %>">
-
-  <script src="<%= asset_path('modernizer.js') %>"></script>
+  <%- css('main.css') %>
+  <%- js('modernizer.js') %>
+  <%- js('application.js') %>
 
   <!-- critical_css -->
 
@@ -290,9 +289,6 @@
   <script>
     var getContentByMetaTagName=function(e){for(var n=document.getElementsByTagName("meta"),t=0;t<n.length;t++)if(e==n[t].name||e==n[t].getAttribute("property"))return n[t].content;return!1},loadJS=function(e,n){var t=window.document.getElementsByTagName("script")[0],o=window.document.createElement("script");return o.src=e,o.async=!0,t.parentNode.insertBefore(o,t),n&&"function"==typeof n&&(o.onload=n),o};
     var loadCSS=function(e,n,o,t){"use strict";var d=window.document.createElement("link"),i=n||window.document.getElementsByTagName("script")[0],s=window.document.styleSheets;return d.rel="stylesheet",d.href=e,d.media="only x",t&&(d.onload=t),i.parentNode.insertBefore(d,i),d.onloadcssdefined=function(n){for(var o,t=0;t<s.length;t++)s[t].href&&s[t].href.indexOf(e)>-1&&(o=!0);o?n():setTimeout(function(){d.onloadcssdefined(n)})},d.onloadcssdefined(function(){d.media=o||"all"}),d},loadJS=function(e,n){var t=window.document.getElementsByTagName("script")[0],o=window.document.createElement("script");return o.src=e,o.async=!0,t.parentNode.insertBefore(o,t),n&&"function"==typeof n&&(o.onload=n),o};
-
-    loadCSS(getContentByMetaTagName("full-css"));
-    loadJS(getContentByMetaTagName("full-js"));
   </script>
 
 </body>
