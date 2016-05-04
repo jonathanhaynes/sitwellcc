@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('pages/index', { title: 'Sitwell Cycling Club, Whiston, Rotherham - Founded 2016' });
 });
 
 module.exports = router;

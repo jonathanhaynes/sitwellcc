@@ -4,7 +4,7 @@ var express = require('express'),
     env = process.env.NODE_ENV,
     connectMincer = require('connect-mincer'),
     Mincer = require('mincer'),
-    browserify = require('browserify-middleware');
+    expressLayouts = require('express-ejs-layouts');
 
 var app = express();
 
@@ -50,6 +50,11 @@ if (env === 'production' || env === 'staging') {
   app.use('/assets', mincer.createServer());
 }
 
+app.set('view engine', 'ejs');
+app.set('layout', 'layouts/master');
+
+app.use(expressLayouts);
+
 app.use('/', routes);
 app.use('/users', users);
 
@@ -85,7 +90,6 @@ app.use(function(err, req, res, next) {
 });
 
 app.set('port', process.env.PORT || 5000);
-app.set('view engine', 'ejs');
 
 app.listen(app.get('port'), function() {
   console.info('Express app started on ' + app.get('port'));
