@@ -14,7 +14,7 @@
 
   <title><%- title %></title>
   <meta name="description" content="">
-  <meta name="author" content="Powerhouse Industries">
+  <meta name="author" content="Sitwell Cycling Club">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <noscript><link rel="stylesheet" href="<%= asset_path('main.css') %>"></noscript>
@@ -31,14 +31,105 @@
   <%- css('main.css') %>
   <%- js('modernizer.js') %>
 
-  <!-- critical_css -->
-
 </head>
 <body>
 
   <a href="#content" class="skip-content">skip to main content</a>
 
+  <noscript>
+    <div class="no-js">
+      <div class="wrap">
+        <p>This site requires a JavaScript enabled browser. Please enable Javascript or upgrade your browser to access all the features.</p>
+      </div>
+    </div>
+  </noscript>
+
+  <% include ../shared/svg-sprite %>
+
   <%- body %>
+
+  <section class="block block--supporters">
+    <h2 class="block__title"><a href="/supporters">Supporters of the club</a></h2>
+    <ul>
+      <li>
+        <a href="#">One</a>
+      </li>
+      <li>
+        <a href="#">Two</a>
+      </li>
+      <li>
+        <a href="#">three</a>
+      </li>
+      <li>
+        <a href="#">Four</a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a href="#">One</a>
+      </li>
+      <li>
+        <a href="#">Two</a>
+      </li>
+      <li>
+        <a href="#">three</a>
+      </li>
+      <li>
+        <a href="#">Four</a>
+      </li>
+      <li>
+        <a href="#">Five</a>
+      </li>
+      <li>
+        <a href="#">Six</a>
+      </li>
+      <li>
+        <a href="#">Seven</a>
+      </li>
+      <li>
+        <a href="#">Eight</a>
+      </li>
+    </ul>
+  </section>
+
+  <footer class="page-footer">
+    <div class="wrap">
+      <ul class="footer-links footer-links--social">
+        <li>
+          <a href="https://facebook.com/sitwellcc">
+            <svg class="social-links__item social-links__item--facebook" role="presentation"><use xlink:href="#svg--facebook"></use></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/sitwellcc">
+            <svg class="social-links__item social-links__item--twitter" role="presentation"><use xlink:href="#svg--twitter"></use></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://instagram.com/sitwellcc">
+            <svg class="social-links__item social-links__item--instagram" role="presentation"><use xlink:href="#svg--instagram"></use></svg>
+          </a>
+        </li>
+      </ul>
+      <p>
+      <ul class="footer-links">
+        <li>
+          <a href="/contact-us">Contact us</a>
+        </li>
+        <li>
+          <a href="/about-us">About us</a>
+        </li>
+        <li>
+          <a href="/supporters">Supporters</a>
+        </li>
+        <li>
+          <a href="/constitution">Rules &amp; Constitution</a>
+        </li>
+      </ul>
+      <p>&copy; <%= new Date().getFullYear() %> Sitwell Cycling Club and it's members. Sitwell Cycling Club (Sitwell CC) is a British Cycling Affiliated Club. Affiliation number: 537309.</p>
+      <p>A <a href="http://www.colouringcode.com">Colouring Code</a> design and build.</p>
+    </div>
+  </footer>
 
   <%- js('application.js') %>
 
