@@ -28,6 +28,7 @@
   <meta name="msapplication-TileColor" content="#000">
   <meta name="msapplication-TileImage" content="<%= asset_path('ms-tile.png') %>">
 
+  <link href="https://fonts.googleapis.com/css?family=Signika+Negative:600" rel="stylesheet">
   <%- css('main.css') %>
   <%- js('modernizer.js') %>
 
@@ -46,54 +47,64 @@
 
   <% include ../shared/svg-sprite %>
 
-  <%- body %>
+  <main class="page-content">
+    <div class="wrap">
+      <%- body %>
+    </div>
+  </main>
 
   <section class="block block--supporters">
-    <h2 class="block__title"><a href="/supporters">Supporters of the club</a></h2>
-    <ul>
-      <li>
-        <a href="#">One</a>
-      </li>
-      <li>
-        <a href="#">Two</a>
-      </li>
-      <li>
-        <a href="#">three</a>
-      </li>
-      <li>
-        <a href="#">Four</a>
-      </li>
-    </ul>
-    <ul>
-      <li>
-        <a href="#">One</a>
-      </li>
-      <li>
-        <a href="#">Two</a>
-      </li>
-      <li>
-        <a href="#">three</a>
-      </li>
-      <li>
-        <a href="#">Four</a>
-      </li>
-      <li>
-        <a href="#">Five</a>
-      </li>
-      <li>
-        <a href="#">Six</a>
-      </li>
-      <li>
-        <a href="#">Seven</a>
-      </li>
-      <li>
-        <a href="#">Eight</a>
-      </li>
-    </ul>
+    <div class="wrap">
+      <h2 class="block__title"><a href="/supporters">Supporters of the club</a></h2>
+      <ul>
+        <li>
+          <a href="#">One</a>
+        </li>
+        <li>
+          <a href="#">Two</a>
+        </li>
+        <li>
+          <a href="#">three</a>
+        </li>
+        <li>
+          <a href="#">Four</a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="#">One</a>
+        </li>
+        <li>
+          <a href="#">Two</a>
+        </li>
+        <li>
+          <a href="#">three</a>
+        </li>
+        <li>
+          <a href="#">Four</a>
+        </li>
+        <li>
+          <a href="#">Five</a>
+        </li>
+        <li>
+          <a href="#">Six</a>
+        </li>
+        <li>
+          <a href="#">Seven</a>
+        </li>
+        <li>
+          <a href="#">Eight</a>
+        </li>
+      </ul>
+    </div>
   </section>
 
   <footer class="page-footer">
     <div class="wrap">
+      <section class="footer footer--about">
+        <h2 class="footer-title"><a href="/about-us">Sitwell Cycling Club</a></h2>
+        <p>Founded January 2016. Rotherham's newest cycle club serving Whiston and the surrounding areas. Come and join us for a club run on a Wednesday evening or Sunday morning. For the good times.</p>
+      </section>
       <ul class="footer-links footer-links--social">
         <li>
           <a href="https://facebook.com/sitwellcc">
@@ -126,7 +137,7 @@
           <a href="/constitution">Rules &amp; Constitution</a>
         </li>
       </ul>
-      <p>&copy; <%= new Date().getFullYear() %> Sitwell Cycling Club and it's members. Sitwell Cycling Club (Sitwell CC) is a British Cycling Affiliated Club. Affiliation number: 537309.</p>
+      <p>&copy; <%= new Date().getFullYear() %> Sitwell Cycling Club and it's members. Sitwell Cycling Club (Sitwell CC) is a <a href="https://www.britishcycling.org.uk/club/profile/7596/sitwell-cc">British Cycling Affiliated Club</a>. Affiliation number: 537309.</p>
       <p>A <a href="http://www.colouringcode.com">Colouring Code</a> design and build.</p>
     </div>
   </footer>

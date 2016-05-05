@@ -30,6 +30,6 @@ body {
   width: $wrapper-width;
 
   @if ($mq-responsive == true) {
-    max-width: 95%;
+    max-width: 90%;
   }
 }

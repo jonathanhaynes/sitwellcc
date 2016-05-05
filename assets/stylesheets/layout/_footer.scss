@@ -1,0 +1,20 @@
+/*------------------------------------*\
+  $GRID
+\*------------------------------------*/
+
+.page-footer {
+  background: #121212;
+  padding: 50px 0;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .footer-title {
+    color: #fff;
+    font: {
+      size: font-size(20);
+    }
+  }
+}
