@@ -9,7 +9,8 @@
     "connect-mincer": "1.1.0 ",
     "ejs": "*",
     "express": "~4.13.3",
-    "node-sass": "^3.4.2"
+    "node-sass": "^3.4.2",
+    "strava-v3": "^1.10.0"
   },
   "devDependencies": {
     "async": "*",
@@ -24,12 +25,15 @@
     "mincer": "^1.3.0",
     "mocha": "1.8.x",
     "nib": "*",
+    "sass-loader": "^3.2.0",
     "should": "*",
     "sinon": "1.6.x",
     "stylus": "*",
     "supertest": "*",
+    "susy": "^2.2.12",
     "uglify-js": "*",
     "underscore": "*",
+    "webpack": "^1.13.0",
     "wrench": "*"
   }
 }

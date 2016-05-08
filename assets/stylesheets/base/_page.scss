@@ -31,5 +31,9 @@ body {
 
   @if ($mq-responsive == true) {
     max-width: 90%;
+
+    @include mq(mq960) {
+      max-width: 95%;
+    }
   }
 }

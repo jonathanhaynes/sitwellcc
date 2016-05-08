@@ -5,16 +5,119 @@
 .page-footer {
   background: #121212;
   padding: 50px 0;
+  color: #9B9B9B;
 
   a {
     color: #fff;
     text-decoration: none;
+
+    @include states {
+      color: $brand;
+    }
   }
 
   .footer-title {
     color: #fff;
     font: {
       size: font-size(20);
+    }
+    margin: {
+      bottom: 20px;
+    }
+  }
+
+  p,
+  li {
+    font: {
+      size: font-size(13);
+    }
+
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  li {
+    list-style: none;
+    margin: {
+      bottom: 10px;
+    }
+  }
+
+  section {
+    margin: {
+      bottom: 40px;
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  .footer {
+    border-bottom: 1px solid #1F1F1F;
+    padding: {
+      bottom: 40px;
+    }
+
+    @include mq(mq768) {
+      &:not(.footer--links) {
+        width: 50%;
+        float: left;
+      }
+    }
+
+    @include mq(mq1200) {
+      &:not(.footer--links) {
+        width: 25%;
+      }
+    }
+
+    &--about {
+      img {
+        max-height: 50px;
+        margin: {
+          top: 20px;
+          bottom: 0;
+        }
+      }
+    }
+
+    &--partners {
+
+      li {
+
+      }
+    }
+
+    &--links {
+      clear: both;
+    }
+  }
+
+  .footer-links {
+    &--social {
+      li {
+        display: inline-block;
+        margin: {
+          right: 20px;
+          bottom: 40px;
+        }
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+        fill: #fff;
+
+        @include states {
+          fill: $brand;
+        }
+      }
     }
   }
 }

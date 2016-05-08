@@ -6,18 +6,21 @@ router.get('/', function(req, res, next) {
   res.render('pages/index', { title: 'Sitwell Cycling Club, Whiston, Rotherham - Founded 2016' });
 });
 
-router.get('/about-us', function(req, res, next) {
-  res.render('pages/show', { title: 'About us - Sitwell Cycling Club', name: 'About Sitwell Cycling Club' });
+router.get('/about', function(req, res, next) {
+  res.render('pages/show', { title: 'About - Sitwell Cycling Club', name: 'About Sitwell Cycling Club' });
 });
 
-router.get('/contact-us', function(req, res, next) {
-  res.render('pages/show', { title: 'Contact us - Sitwell Cycling Club', name: 'Contact Sitwell Cycling Club' });
-});
-
-router.get('/constitution', function(req, res, next) {
+router.get('/about/constitution', function(req, res, next) {
   res.render('pages/show', { title: 'Rules & Constitution - Sitwell Cycling Club', name: 'Rules & Constitution' });
 });
 
+router.get('/contact', function(req, res, next) {
+  res.render('pages/show', { title: 'Contact - Sitwell Cycling Club', name: 'Contact Sitwell Cycling Club' });
+});
+
+router.get('/membership', function(req, res, next) {
+  res.render('pages/show', { title: 'Membership - Sitwell Cycling Club', name: 'Join us!' });
+});
 
 router.get('/supporters', function(req, res, next) {
   res.render('pages/show', { title: 'Supporters of the club - Sitwell Cycling Club', name: 'Supporters of the club' });

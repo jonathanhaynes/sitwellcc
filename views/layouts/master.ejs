@@ -28,7 +28,7 @@
   <meta name="msapplication-TileColor" content="#000">
   <meta name="msapplication-TileImage" content="<%= asset_path('ms-tile.png') %>">
 
-  <link href="https://fonts.googleapis.com/css?family=Signika+Negative:600" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,600|Open+Sans+Condensed:700" rel="stylesheet">
   <%- css('main.css') %>
   <%- js('modernizer.js') %>
 
@@ -104,39 +104,61 @@
       <section class="footer footer--about">
         <h2 class="footer-title"><a href="/about-us">Sitwell Cycling Club</a></h2>
         <p>Founded January 2016. Rotherham's newest cycle club serving Whiston and the surrounding areas. Come and join us for a club run on a Wednesday evening or Sunday morning. For the good times.</p>
+        <img src="<%= asset_path('template/bc-affiliate.png') %>" alt="British Cycling Affiliated Club">
       </section>
-      <ul class="footer-links footer-links--social">
-        <li>
-          <a href="https://facebook.com/sitwellcc">
-            <svg class="social-links__item social-links__item--facebook" role="presentation"><use xlink:href="#svg--facebook"></use></svg>
-          </a>
-        </li>
-        <li>
-          <a href="https://twitter.com/sitwellcc">
-            <svg class="social-links__item social-links__item--twitter" role="presentation"><use xlink:href="#svg--twitter"></use></svg>
-          </a>
-        </li>
-        <li>
-          <a href="https://instagram.com/sitwellcc">
-            <svg class="social-links__item social-links__item--instagram" role="presentation"><use xlink:href="#svg--instagram"></use></svg>
-          </a>
-        </li>
-      </ul>
-      <p>
-      <ul class="footer-links">
-        <li>
-          <a href="/contact-us">Contact us</a>
-        </li>
-        <li>
-          <a href="/about-us">About us</a>
-        </li>
-        <li>
-          <a href="/supporters">Supporters</a>
-        </li>
-        <li>
-          <a href="/constitution">Rules &amp; Constitution</a>
-        </li>
-      </ul>
+      <section class="footer footer--strava">
+        <h2 class="footer-title"><a href="https://www.strava.com/clubs/sitwellcc">This week on Strava</a></h2>
+        <iframe height='160' width='100%' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/clubs/sitwellcc/latest-rides/7edcdb120ed13329453ca71e308c10a6909611d8?show_rides=false'></iframe>
+      </section>
+      <section class="footer footer--membership">
+        <h2 class="footer-title"><a href="/membership">Join us!</a></h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p><a href="/membership">Find out more</a></p>
+      </section>
+      <section class="footer footer--partners">
+        <h2 class="footer-title">Partners</h2>
+        <ul>
+          <li><a href="http://www.akumacycling.com/">Akuma Cycling</a></li>
+          <li><a href="http://www.giraffeuk.com/">Giraffe UK</a></li>
+          <li><a href="http://www.bikepure.org/">Bike Pure</a></li>
+        </ul>
+      </section>
+      <section class="footer footer--links">
+        <ul class="footer-links footer-links--social">
+          <li>
+            <a href="https://facebook.com/sitwellcc">
+              <svg class="social-links__item social-links__item--facebook" role="presentation"><use xlink:href="#svg--facebook"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/sitwellcc">
+              <svg class="social-links__item social-links__item--twitter" role="presentation"><use xlink:href="#svg--twitter"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/sitwellcc">
+              <svg class="social-links__item social-links__item--instagram" role="presentation"><use xlink:href="#svg--instagram"></use></svg>
+            </a>
+          </li>
+        </ul>
+        <ul class="footer-links">
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+          <li>
+            <a href="/membership">Membership</a>
+          </li>
+          <li>
+            <a href="/supporters">Supporters</a>
+          </li>
+          <li>
+            <a href="/about/constitution">Rules &amp; Constitution</a>
+          </li>
+        </ul>
+      </section>
       <p>&copy; <%= new Date().getFullYear() %> Sitwell Cycling Club and it's members. Sitwell Cycling Club (Sitwell CC) is a <a href="https://www.britishcycling.org.uk/club/profile/7596/sitwell-cc">British Cycling Affiliated Club</a>. Affiliation number: 537309.</p>
       <p>A <a href="http://www.colouringcode.com">Colouring Code</a> design and build.</p>
     </div>
