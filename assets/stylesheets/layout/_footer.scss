@@ -1,11 +1,19 @@
 /*------------------------------------*\
-  $GRID
+  $FOOTER
 \*------------------------------------*/
 
 .page-footer {
   background: #121212;
   padding: 50px 0;
   color: #9B9B9B;
+
+  .wrap {
+    @include mq(mq768) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
 
   a {
     color: #fff;
@@ -37,6 +45,10 @@
     }
   }
 
+  p {
+    width: 100%;
+  }
+
   ul {
     margin: 0;
   }
@@ -65,15 +77,76 @@
     }
 
     @include mq(mq768) {
+
       &:not(.footer--links) {
-        width: 50%;
-        float: left;
+        border-bottom: 0;
+        padding-bottom: 0;
       }
+
+      &--about {
+        border-bottom: 1px solid #1F1F1F !important;
+        padding: {
+          bottom: 40px !important;
+        }
+      }
+
+      &--strava {
+        @include span(8 of 15);
+      }
+
+      &--partners {
+        @include span(last 5 of 15);
+      }
+
+      &--links {
+        width: 100%;
+        border-top: 1px solid #1F1F1F;
+        padding: {
+          top: 40px;
+        }
+
+        .footer-links {
+          float: left;
+
+          li {
+            display: inline-block;
+            margin: 0 20px 0 0;
+          }
+
+          &--social {
+            float: right;
+
+            li {
+              margin: 0 0 0 20px;
+            }
+          }
+        }
+      }
+
+
     }
 
     @include mq(mq1200) {
-      &:not(.footer--links) {
-        width: 25%;
+      &--about {
+        border-bottom: 0!important;
+        padding: {
+          bottom: 0 !important;
+        }
+        @include span(6 of 16);
+        @include suffix(1 of 16);
+      }
+
+      &--strava {
+        @include span(6 of 16);
+        @include suffix(1 of 16);
+      }
+
+      &--partners {
+        @include span(last 4 of 16);
+      }
+
+      &--links {
+
       }
     }
 
