@@ -1,0 +1,15 @@
+/*------------------------------------*\
+  $blocks
+\*------------------------------------*/
+
+.block {
+  .block__title {
+    font: {
+      size: font-size(30);
+    }
+  }
+
+  &--supporters {
+    background: $light-grey;
+  }
+}
