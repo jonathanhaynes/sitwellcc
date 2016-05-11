@@ -5,7 +5,20 @@ The Node.js application for the Sitwell Cycling Club website
 ## Packages
 
 - https://www.npmjs.com/package/express
-- https://github.com/TryGhost/Ghost/wiki/Using-Ghost-as-an-npm-module
-- https://www.npmjs.com/package/strava-v3
-- https://github.com/UnbounDev/node-strava-v3
+- http://jsantell.github.io/poet/
 - https://www.npmjs.com/package/instagram-node
+
+## Site structure
+
+- Home
+  - About
+    - Committee
+    - Supporters
+    - Rules & Constitution
+  - Club Rides
+    - Wednesday Evening
+    - Sunday Morning
+  - Kit
+  - Membership
+  - News
+  - Contact
