@@ -1,1 +1,91 @@
-Sunday
+<h2>Upcoming rides</h2>
+<div id="rides"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.js"></script>
+<script type="text/javascript">
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId          : '984371968323534',
+      xfbml          : true,
+      version        : 'v2.5'
+    });
+
+    var dateNow = Math.round(new Date().getTime()/1000.0);
+
+      console.log(dateNow);
+
+    FB.api(
+      '/1076165799068349/',
+      'GET',
+      {
+        "access_token" : "CAANZCRZCVZCr84BAM1q36ZBQOvEujS0Jjq1ZBavTXtIpDjZAQyLYwCZBovmrDHWIUmkGzPJsO5sdsM48HZAvBwebAJqIBhsBeEBnG9LxVHUdvaNVwGhQfXC9WHNbBzQ7GjrmjLrjZCuYYHXxmNXpZBCuB1C0T22WOfEqNqOxHn4rb6rmXZAaWaNjs1HH1PEfnpkSIsZD",
+        "fields" : "events.limit(10).since(" + dateNow + ")"
+      },
+      function(response) {
+        var theRidesDiv = document.getElementById('rides');
+
+        response.events.data.forEach(function(item, i){
+
+          var title = item.name,
+              description = item.description,
+              link = 'https://www.facebook.com/events/' + item.id + '/',
+              location = item.place.name,
+              date = moment(item.start_time).format("dddd Do MMMM YYYY");
+
+          var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+              months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+          var theHTML = '';
+          theHTML += '<time><strong>' + date + '</strong></time>';
+          theHTML += '<h4><a href="https://www.facebook.com/events/' + item.id + '/">' + title + '</a><br /><small>' + location + '</small></h4>';
+          theHTML += '<p>' + linkify(description) + '</p>';
+
+          var el = document.createElement('article');
+
+          el.innerHTML = theHTML;
+
+          var parent = document.getElementById('rides');
+          parent.insertBefore(el, parent.firstChild);
+
+        });
+      }
+    );
+  };
+
+  function nth(d) {
+    if(d>3 && d<21) return 'th'; // thanks kennebec
+    switch (d % 10) {
+      case 1:  return "st";
+      case 2:  return "nd";
+      case 3:  return "rd";
+      default: return "th";
+    }
+  }
+
+  function linkify(text) {
+		if( !text ) return text;
+
+		text = text.replace(/((https?\:\/\/|ftp\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi,function(url){
+			nice = url;
+			if( url.match('^https?:\/\/') )
+			{
+				nice = nice.replace(/^https?:\/\//i,'')
+			}
+			else
+				url = 'http://'+url;
+
+
+			return '<a target="_blank" href="'+ url +'">'+ nice.replace(/^www./i,'') +'</a>';
+		});
+
+		return text;
+	}
+
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
