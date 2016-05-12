@@ -22,3 +22,7 @@ The Node.js application for the Sitwell Cycling Club website
   - Membership
   - News
   - Contact
+
+## Travis CLI Integration
+
+- https://kjaermaxi.me/travis/
