@@ -11,9 +11,10 @@ $white: #fff;
 $grey: #ccc;
 $light-grey: #eee;
 $dark-grey: #212121;
-$yellow: #ff0;
+$yellow: #fdc300;
+$green: #00803d;
 
-$brand: #ffce00;
+$brand: $yellow;
 
 $error-color:   #f2dede;
 $warning-color: #fcf8e3;
@@ -38,10 +39,10 @@ $base-font-size: 16;
 $base-line-height: 20;
 
 // link options
-$link-color: $brand;
-$link-underlined: true;
-$link-color-hover: $light-grey;
-$link-underlined-hover: false;
+$link-color: $green;
+$link-underlined: false;
+$link-color-hover: $green;
+$link-underlined-hover: true;
 
 // spacing
 $base-spacing-unit: 20px;

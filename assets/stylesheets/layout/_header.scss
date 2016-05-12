@@ -1,0 +1,32 @@
+/*------------------------------------*\
+  $HEADER
+\*------------------------------------*/
+
+.page-header {
+
+  padding: {
+    top: 30px;
+    bottom: 30px;
+  }
+
+  .wrap {
+    //border: {
+    //  width: 10px;
+    //  style: solid;
+    //  image: linear-gradient(to right, $green 0%,$green 20%,$yellow 20%,$yellow 40%,$green 40%,$green 60%,$yellow 60%,$yellow 80%,$green 80%,$green 100%) 30 30 stretch;
+    //}
+    //
+    //border-bottom: 0;
+    //border-left: 0;
+    //border-right: 0;
+  }
+}
+
+.primary-nav {
+  background: $light-grey;
+
+  padding: {
+    top: 30px;
+    bottom: 30px;
+  }
+}

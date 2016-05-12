@@ -3,6 +3,11 @@
 \*------------------------------------*/
 
 .block {
+  padding: {
+    top: 50px;
+    bottom: 50px;
+  }
+
   .block__title {
     font: {
       size: font-size(30);
