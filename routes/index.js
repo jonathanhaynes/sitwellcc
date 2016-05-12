@@ -18,7 +18,7 @@ router.get('/about', function(req, res, next) {
   });
 
   router.get('/about/constitution', function(req, res, next) {
-    res.render('pages/show', { title: 'Rules & Constitution - Sitwell Cycling Club', name: 'Rules & Constitution', content: 'constitution' });
+    res.render('pages/show', { title: 'Rules & Constitution - Sitwell Cycling Club', name: 'Sitwell Cycling Club (Sitwell CC) Rules and Constitution 2016', content: 'constitution' });
   });
 
 router.get('/club-rides', function(req, res, next) {
