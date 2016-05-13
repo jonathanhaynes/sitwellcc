@@ -1,5 +1,7 @@
-<h1 class="page-title"><%= name %></h1>
+<div class="wrap">
+  <h1 class="page-title"><%= name %></h1>
 
-<% if (typeof content != 'undefined') { %>
-  <%- include('styles/' + content) %>
-<% } %>
+  <% if (typeof content != 'undefined') { %>
+    <%- include('styles/' + content) %>
+  <% } %>
+</div>

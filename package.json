@@ -9,7 +9,9 @@
     "connect-mincer": "1.1.0 ",
     "ejs": "*",
     "express": "~4.13.3",
+    "instagram-node": "^0.5.8",
     "node-sass": "^3.4.2",
+    "powerhouse-js": "^1.0.1",
     "strava-v3": "^1.10.0"
   },
   "devDependencies": {

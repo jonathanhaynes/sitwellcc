@@ -1,8 +1,31 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express'),
+    router = express.Router(),
+    ig = require('instagram-node').instagram(),
+    PowerHouse = require('powerhouse-js');
+
 
 router.get('/', function(req, res, next) {
-  res.render('pages/index', { title: 'Sitwell Cycling Club, Whiston, Rotherham - Founded 2016' });
+  ig.use({
+    client_id: '25f9fc11c5474e69ae6220c1d5095f2d',
+    client_secret: '43b4227a99c545dcab7cc0b7a7eaf566',
+    access_token: '2399073333.25f9fc1.47ed772a4e2940acbfc7e2c54fc129ef'
+  });
+
+  ig.tag_media_recent('sitwellcc', function(err, medias, pagination, remaining, limit) {
+    var igMedia = [];
+
+    PowerHouse.forEach(medias, function(media, i) {
+      igMedia.push({'link': media.link, 'src': media.images.standard_resolution.url, 'caption': media.caption.text})
+    });
+
+    console.log(igMedia);
+
+    res.render('pages/index', {
+      title: 'Sitwell Cycling Club, Whiston, Rotherham - Founded 2016',
+      instagram: igMedia
+    });
+
+  });
 });
 
 router.get('/about', function(req, res, next) {

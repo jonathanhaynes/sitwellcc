@@ -6,10 +6,40 @@ var express = require('express'),
     Mincer = require('mincer'),
     expressLayouts = require('express-ejs-layouts');
 
+// var api = require('instagram-node').instagram();
+
 var app = express();
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
+// api.use({
+//   client_id: '25f9fc11c5474e69ae6220c1d5095f2d',
+//   client_secret: '43b4227a99c545dcab7cc0b7a7eaf566'
+// });
+//
+// var redirect_uri = 'http://www.sitwell.cc/handleauth';
+//
+// exports.authorize_user = function(req, res) {
+//   res.redirect(api.get_authorization_url(redirect_uri, { scope: ['likes'], state: 'a state' }));
+// };
+//
+// exports.handleauth = function(req, res) {
+//   api.authorize_user(req.query.code, redirect_uri, function(err, result) {
+//     if (err) {
+//       console.log(err.body);
+//       res.send("Didn't work");
+//     } else {
+//       console.log('Yay! Access token is ' + result.access_token);
+//       res.send('You made it!!');
+//     }
+//   });
+// };
+//
+// // This is where you would initially send users to authorize
+// app.get('/authorize_user', exports.authorize_user);
+// // This is your redirect URI
+// app.get('/handleauth', exports.handleauth);
 
 // set up connect-mincer middleware
 var mincer = new connectMincer({
