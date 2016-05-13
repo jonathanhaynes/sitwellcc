@@ -18,20 +18,21 @@
     overflow: hidden;
     padding: 0;
 
+    .wrap {
+      max-width: 100%;
+      width: 100%;
+    }
+
     a {
       float: left;
-      width: 50%;
+      width: calc(100% / 3);
 
       @include mq(mq600) {
-        width: calc(100% / 3);
-      }
-
-      @include mq(mq960) {
-        width: 25%;
+        width: 20%;
       }
 
       @include mq(mq1200) {
-        width: 20%;
+        width: 10%;
       }
     }
 

@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
     access_token: '2399073333.25f9fc1.47ed772a4e2940acbfc7e2c54fc129ef'
   });
 
-  ig.tag_media_recent('sitwellcc', function(err, medias, pagination, remaining, limit) {
+  ig.tag_media_recent('sitwellcc', {'count': 10}, function(err, medias, pagination, remaining, limit) {
     var igMedia = [];
 
     PowerHouse.forEach(medias, function(media, i) {
