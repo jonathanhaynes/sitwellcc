@@ -13,6 +13,12 @@
       flex-wrap: wrap;
       justify-content: space-between;
     }
+
+    > p {
+      margin: {
+        bottom: 10px;
+      }
+    }
   }
 
   a {
