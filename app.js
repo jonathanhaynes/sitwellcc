@@ -4,7 +4,8 @@ var express = require('express'),
     env = process.env.NODE_ENV,
     connectMincer = require('connect-mincer'),
     Mincer = require('mincer'),
-    expressLayouts = require('express-ejs-layouts');
+    expressLayouts = require('express-ejs-layouts'),
+    autoprefixer = require('autoprefixer');
 
 // var api = require('instagram-node').instagram();
 
@@ -68,6 +69,8 @@ mincer.environment.registerHelper('version', function() {
   return require(__dirname + 'package.json').version;
 });
 
+mincer.environment.enable('autoprefixer')
+
 // the main connectMincer middleware, which sets up a Mincer Environment and provides view helpers
 app.use(mincer.assets());
 
@@ -75,8 +78,12 @@ if (env === 'production' || env === 'staging') {
   // in production, use the connect static() middleware to serve resources. In a real deployment
   // you'd probably not want this, and would use nginx (or similar) instead
   app.use(express.static(__dirname + '/public'));
+
 } else {
   // in dev, just use the normal server which recompiles assets as needed
+  // app.use('/assets/stylesheets', postcssMiddleware({
+  //   plugins: [autoprefixer({ browsers: ['last 2 versions'] })]
+  // }));
   app.use('/assets', mincer.createServer());
 }
 

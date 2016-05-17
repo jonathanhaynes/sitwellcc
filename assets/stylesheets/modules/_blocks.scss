@@ -26,22 +26,30 @@
     a {
       float: left;
       width: 50%;
+      background: $dark-grey;
 
       @include mq(mq600) {
-        width: calc(100% / 3);
-      }
-
-      @include mq(mq960) {
         width: 25%;
       }
 
-      @include mq(mq1200) {
+      @include mq(mq960) {
         width: calc(100% / 6);
+        max-width: 250px;
+      }
+
+      &.is-selected {
+        img {
+          opacity: 1;
+          filter: grayscale(0);
+        }
       }
     }
 
     img {
       margin: 0;
+      filter: grayscale(1);
+      opacity: 0.5;
+      transition: all 0.3s;
     }
   }
 

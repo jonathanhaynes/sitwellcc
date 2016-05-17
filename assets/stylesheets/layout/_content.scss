@@ -16,7 +16,46 @@
 
   }
 
-  .wrap {
+  > .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    padding: {
+      top: 50px;
+      bottom: 50px;
+    }
 
+    @include mq(mq768) {
+      justify-content: space-between;
+    }
+  }
+}
+
+.page-title {
+  order: 1;
+  display: block;
+  width: 100%;
+}
+
+.primary-content {
+  order: 3;
+  clear: both;
+  display: block;
+  width: 100%;
+
+  @include mq(mq768) {
+    order: 2;
+    @include span(11 of 16);
+  }
+}
+
+.secondary-content {
+  order: 2;
+  clear: both;
+  display: block;
+  width: 100%;
+
+  @include mq(mq768) {
+    order: 3;
+    @include span(last 4 of 16);
   }
 }
