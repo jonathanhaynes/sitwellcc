@@ -21,6 +21,18 @@
   }
 }
 
+.header {
+  &__logo {
+    width: 100%;
+    max-width: 175px;
+    display: block;
+
+    img {
+      margin: 0;
+    }
+  }
+}
+
 .primary-nav {
   background: $light-grey;
 

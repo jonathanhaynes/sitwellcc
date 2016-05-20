@@ -15,7 +15,6 @@
   }
 
   &--instagram {
-    overflow: hidden;
     padding: 0;
 
     .wrap {
@@ -23,10 +22,15 @@
       width: 100%;
     }
 
+    .flickity-viewport {
+      overflow: visible;
+    }
+
     a {
       float: left;
       width: 50%;
       background: $dark-grey;
+      transition: scale 0.5s;
 
       @include mq(mq600) {
         width: 25%;
@@ -38,6 +42,9 @@
       }
 
       &.is-selected {
+        transform: scale(1.125);
+        z-index: 2;
+
         img {
           opacity: 1;
           filter: grayscale(0);
@@ -49,7 +56,7 @@
       margin: 0;
       filter: grayscale(1);
       opacity: 0.5;
-      transition: all 0.3s;
+      transition: all 0.5s;
     }
   }
 

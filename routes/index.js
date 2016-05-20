@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
     var igMedia = [];
 
     PowerHouse.forEach(medias, function(media, i) {
-      igMedia.push({'link': media.link, 'src': media.images.standard_resolution.url, 'caption': media.caption.text})
+      igMedia.push({'link': media.link, 'src': media.images.standard_resolution.url, 'caption': media.caption.text});
     });
 
     res.render('pages/index', {
@@ -103,7 +103,7 @@ router.get('/club-rides', function(req, res, next) {
         nice = url;
         if( url.match('^https?:\/\/') )
         {
-          nice = nice.replace(/^https?:\/\//i,'')
+          nice = nice.replace(/^https?:\/\//i,'');
         }
         else
           url = 'http://'+url;
