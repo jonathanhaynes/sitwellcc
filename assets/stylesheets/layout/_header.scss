@@ -9,6 +9,7 @@
   color: #9B9B9B;
 
   .wrap {
+    overflow: hidden;
     //border: {
     //  width: 10px;
     //  style: solid;
@@ -26,9 +27,39 @@
     width: 100%;
     max-width: 175px;
     display: block;
+    float: left;
 
     img {
       margin: 0;
+    }
+  }
+
+  &-links {
+    &--social {
+      display: none;
+      float: right;
+      margin: 0;
+
+      @include mq(mq960) {
+        display: block;
+      }
+
+      li {
+        display: inline-block;
+        margin: {
+          right: 20px;
+        }
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+        fill: #fff;
+
+        @include states {
+          fill: $brand;
+        }
+      }
     }
   }
 }
