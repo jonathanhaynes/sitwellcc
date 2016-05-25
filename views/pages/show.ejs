@@ -1,7 +1,7 @@
 <div class="wrap">
-  <h1 class="page-title"><%= name %></h1>
+  <h1 class="page-title"><%= meta.name %></h1>
 
-  <% if (typeof content != 'undefined') { %>
-    <%- include('styles/' + content) %>
+  <% if (typeof meta.content != 'undefined') { %>
+    <%- include('styles/' + meta.content) %>
   <% } %>
 </div>

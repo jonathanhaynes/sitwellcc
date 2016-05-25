@@ -3,17 +3,16 @@
 <head>
 
   <meta charset="UTF-8">
+  <!-- TODO: Swap for index, follow -->
   <meta name="robots" content="noindex, nofollow">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <link rel="dns-prefetch" href="//www.google-analytics.com">
-  <link rel="dns-prefetch" href="//fast.fonts.net">
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
-  <link rel="dns-prefetch" href="//use.typekit.com">
   <link rel="prefetch" href="<%= asset_path('templates/cookie-banner.html') %>">
 
-  <title><%- title %></title>
-  <meta name="description" content="">
+  <title><%= meta.title %></title>
+  <meta name="description" content="<%= meta.description %>">
   <meta name="author" content="Sitwell Cycling Club">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -40,7 +39,6 @@
 
     ga('create', 'UA-72232417-1', 'auto');
     ga('send', 'pageview');
-
   </script>
 
 </head>
@@ -105,7 +103,7 @@
     <div class="wrap">
       <section class="footer footer--about">
         <h2 class="footer-title"><a href="/about">Sitwell Cycling Club</a></h2>
-        <p>Founded January 2016. Rotherham's newest cycle club serving Whiston and the surrounding areas. Come and join us for a club ride on a Wednesday evening or Sunday morning. For the good times.</p>
+        <p>Founded January 2016. Rotherham's newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on a Wednesday evening or Sunday morning. For the good times.</p>
         <p><a href="/about">Find out more</a></p>
         <a href="https://www.britishcycling.org.uk/club/profile/7596/sitwell-cc"><img src="<%= asset_path('template/bc-affiliate.png') %>" alt="British Cycling Affiliated Club"></a>
       </section>
