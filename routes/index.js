@@ -272,4 +272,15 @@ router.get('/contact', function(req, res, next) {
   res.render('pages/show');
 });
 
+router.get('/cookies', function(req, res, next) {
+  res.locals.meta = {
+    title: 'Cookie Policy - Sitwell Cycling Club', 
+    description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on a Wednesday evening or Sunday morning. For the good times.', 
+    name: 'Cookie Policy', 
+    content: 'cookies' 
+  };
+
+  res.render('pages/show');
+});
+
 module.exports = router;

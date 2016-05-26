@@ -12,4 +12,19 @@
       <li><a href="/club-rides/sunday-morning">Sunday Morning</a></li>
     </ul>
   </nav>
+
+  <section class="widget widget--instagram">
+    <h3 class="widget__title"><a href="https://instagram.com/sitwellcc">Follow us on Instagram</a></h3>
+    <div>
+      <% for(var i = 0; i < instagram.length; i++) { %>
+        <% if (i <= 3) { %>
+          <a href='<%= instagram[i].link %>'>
+            <picture>
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" srcset="<%= instagram[i].src %>" alt="<%= instagram[i].caption %>" class="lazyload">
+            </picture>
+          </a>
+        <% } %>
+      <% } %>
+    </div>
+  </section>
 </aside>

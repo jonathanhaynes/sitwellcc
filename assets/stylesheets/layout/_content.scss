@@ -58,4 +58,12 @@
     order: 3;
     @include span(last 4 of 16);
   }
+
+  .widget {
+    display: none;
+
+    @include mq(mq768) {
+      display: block;
+    }
+  }
 }

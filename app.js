@@ -12,7 +12,6 @@ var express = require('express'),
 var app = express();
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 
 // set up connect-mincer middleware
 var mincer = new connectMincer({
@@ -66,7 +65,6 @@ app.set('layout', 'layouts/application');
 app.use(expressLayouts);
 
 app.use('/', routes);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
