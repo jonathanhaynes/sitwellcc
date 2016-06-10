@@ -250,6 +250,20 @@ router.get('/membership', function(req, res, next) {
   });
 });
 
+  router.get('/membership/discounts', igAPI);
+  router.get('/membership/discounts', function(req, res, next) {
+    res.locals.meta = {
+      title: 'Discounts - Sitwell Cycling Club', 
+      description: 'One of the benefits of joining Sitwell Cycling Club is the great discounts we have to offer.', 
+      name: 'Discounts for club members', 
+      content: 'discounts' 
+    };
+
+    res.render('pages/show', {
+       instagram: req.igMedia
+    });
+  });
+
 router.get('/news', function(req, res, next) {
   res.locals.meta = {
     title: 'Club News - Sitwell Cycling Club', 
