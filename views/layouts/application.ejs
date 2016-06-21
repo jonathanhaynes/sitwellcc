@@ -80,13 +80,13 @@
   <nav class="primary-nav">
     <div class="wrap">
       <ul>
-        <li><a href="/" <% if (meta.active == 'home') { %>class="active"<% } %>>Home</a></li>
-        <li><a href="/about" <% if (meta.active == 'about') { %>class="active"<% } %>>About</a></li>
-        <li><a href="/club-rides">Club Rides</a></li>
-        <li><a href="/kit">Kit</a></li>
-        <li><a href="/membership">Membership</a></li>
-        <li><a href="/news">News</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="/" <% if (active == 'home') { %>class="active"<% } %>>Home</a></li>
+        <li><a href="/about" <% if (active == 'about') { %>class="active"<% } %>>About</a></li>
+        <li><a href="/club-rides" <% if (active == 'club-rides') { %>class="active"<% } %>>Club Rides</a></li>
+        <li><a href="/kit" <% if (active == 'kit') { %>class="active"<% } %>>Kit</a></li>
+        <li><a href="/membership" <% if (active == 'membership') { %>class="active"<% } %>>Membership</a></li>
+        <li><a href="/news" <% if (active == 'news') { %>class="active"<% } %>>News</a></li>
+        <li><a href="/contact" <% if (active == 'contact') { %>class="active"<% } %>>Contact</a></li>
       </ul>
     </div>
   </nav>

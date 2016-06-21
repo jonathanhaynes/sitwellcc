@@ -1,3 +1,16 @@
+<section class="block block--rides">
+  <div class="wrap">
+    <h2 class="block__title"><a href="/club-rides">Upcoming club rides</a></h2>
+    <% for(var i = 0; i < facebook.length; i++) { %>
+      <% if (i <= 1) { %>
+        <article>
+          <time><strong><%= facebook[i].date %></strong></time>
+          <h4><a href="<%= facebook[i].link %>"><%= facebook[i].title %></a><br /><small><%= facebook[i].location %></small></h4>
+        </article>
+      <% } %>
+    <% } %>
+  </div>
+</section>
 <section class="block block--instagram">
   <!-- <h2 class="block__title"><a href="https://instagram.com/sitwellcc">Follow us on Instagram</a></h2> -->
   <div class="wrap" data-js="flickity">

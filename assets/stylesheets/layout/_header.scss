@@ -65,7 +65,8 @@
 }
 
 .primary-nav {
-  background: $light-grey;
+  background: #121212;
+  border-top: 1px solid lighten(#121212, 5%);
 
   .wrap {
     max-width: 100%;
@@ -89,13 +90,13 @@
     @include mq($until: mq768) {
       &:not(:first-of-type) {
         border: {
-          top: 1px solid lighten($light-grey, 5%);
+          top: 1px solid lighten(#121212, 5%);
         }
       }
 
       &:not(:last-of-type) {
         border: {
-          bottom: 1px solid darken($light-grey, 5%);
+          bottom: 1px solid darken(#121212, 5%);
         }
       }
     }
@@ -105,13 +106,13 @@
 
       &:not(:first-of-type) {
         border: {
-          left: 1px solid lighten($light-grey, 5%);
+          left: 1px solid lighten(#121212, 5%);
         }
       }
 
       &:not(:last-of-type) {
         border: {
-          right: 1px solid darken($light-grey, 5%);
+          right: 1px solid darken(#121212, 5%);
         }
       }
     }
@@ -120,6 +121,27 @@
   a {
     padding: 15px 5%;
     display: block;
+    font: {
+      family: $heading-font;
+      size: font-size(17);
+    }
+    text: {
+      transform: uppercase;
+      decoration: none;
+    }
+    color: #fff;
+
+    &.active {
+      background: {
+        color: darken(#121212, 5%);
+      }
+    }
+
+    @include states {
+      background: {
+        color: darken(#121212, 2.5%);
+      }
+    }
 
     @include mq(mq768) {
       padding: {
