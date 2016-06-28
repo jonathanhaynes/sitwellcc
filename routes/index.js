@@ -16,7 +16,7 @@ var igAPI = function(req, res, next) {
 
   var igMedia = [];
 
-  ig.tag_media_recent('sitwellcc', {'count': 20}, function(err, medias, pagination, remaining, limit) {
+  ig.tag_media_recent('sitwellcc', {'count': 10}, function(err, medias, pagination, remaining, limit) {
 
     PowerHouse.forEach(medias, function(media, i) {
       igMedia.push({
@@ -135,9 +135,9 @@ router.get('/about', igAPI);
 router.get('/about', function(req, res, next) { 
 
   res.locals.meta = {
-    title: 'About - Sitwell Cycling Club', 
+    title: 'About - Sitwell Cycling Club, Whiston, Rotherham', 
     description: 'Rotherham\'s newest cycle club serving Whiston, Rotherham and the surrounding areas. We\'re a not-for-profit, volunteer run organisation registered to British Cycling.', 
-    name: 'About Sitwell Cycling Club', 
+    name: 'About Sitwell Cycling Club, Whiston, Rotherham', 
     content: 'about'
   };
 
@@ -151,7 +151,7 @@ router.get('/about', function(req, res, next) {
 
   router.get('/about/committee', function(req, res, next) {
     res.locals.meta = {
-      title: 'The Committee - Sitwell Cycling Club',
+      title: 'The Committee - Sitwell Cycling Club, Whiston, Rotherham',
       description: 'The Sitwell Cycling Club Committee is a group of volunteer members who run the club. They generally meet on the first Monday of every month to discuss matters relating to the club and it\'s membership.',
       name: 'The Committee',
       content: 'committee' 
@@ -164,7 +164,7 @@ router.get('/about', function(req, res, next) {
 
   router.get('/about/supporters', function(req, res, next) {
     res.locals.meta = {
-      title: 'Supporters of the club - Sitwell Cycling Club',
+      title: 'Supporters of the club - Sitwell Cycling Club, Whiston, Rotherham',
       description: '',
       name: 'Supporters of the club',
       content: 'supporters' 
@@ -177,7 +177,7 @@ router.get('/about', function(req, res, next) {
 
   router.get('/about/constitution', function(req, res, next) {
     res.locals.meta = {
-      title: 'Rules & Constitution - Sitwell Cycling Club',
+      title: 'Rules & Constitution - Sitwell Cycling Club, Whiston, Rotherham',
       description: '',
       name: 'Sitwell Cycling Club (Sitwell CC) Rules and Constitution 2016',
       content: 'constitution' 
@@ -191,7 +191,7 @@ router.get('/about', function(req, res, next) {
 router.get('/club-rides', igAPI);
 router.get('/club-rides', function(req, res, next) {
   res.locals.meta = {
-    title: 'Club Rides - Sitwell Cycling Club',
+    title: 'Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
     description: 'Club rides take place on Wednesday evenings and Sunday mornings. The meeting place is on the corner of Turner Lane and High Street, Whiston.',
     name: 'Club Rides',
     content: 'rides' 
@@ -206,7 +206,7 @@ router.get('/club-rides', function(req, res, next) {
   router.get('/club-rides/wednesday-evening', igAPI);
   router.get('/club-rides/wednesday-evening', function(req, res, next) {
     res.locals.meta = {
-      title: 'Wednesday Evening - Club Rides - Sitwell Cycling Club',
+      title: 'Wednesday Evening - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
       description: 'Wednesday evening rides depart from the corner of Turner Lane and High Street, Whiston at 7:30pm prompt.',
       name: 'Club Rides - Wednesday Evening',
       content: 'wednesday' 
@@ -223,7 +223,7 @@ router.get('/club-rides', function(req, res, next) {
   router.get('/club-rides/sunday-morning', function(req, res, next) {
 
     res.locals.meta = {
-      title: 'Sunday Morning - Club Rides - Sitwell Cycling Club',
+      title: 'Sunday Morning - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
       description: 'Sunday morning rides depart from the corner of Turner Lane and High Street, Whiston at 8.00am prompt.',
       name: 'Club Rides - Sunday Morning',
       content: 'sunday'
@@ -241,7 +241,7 @@ router.get('/kit', fbAPI);
 router.get('/kit', igAPI);
 router.get('/kit', function(req, res, next) {
   res.locals.meta = {
-    title: 'Kit - Sitwell Cycling Club', 
+    title: 'Kit - Sitwell Cycling Club, Whiston, Rotherham', 
     description: 'Akuma Cycling is our manufacturer of choice. They have a great range of items including casual wear and are very competitive on price. Kit is only available to club members - join us today!', 
     name: 'Kit', 
     content: 'kit' 
@@ -258,7 +258,7 @@ router.get('/membership', fbAPI);
 router.get('/membership', igAPI);
 router.get('/membership', function(req, res, next) {
   res.locals.meta = {
-    title: 'Membership - Sitwell Cycling Club', 
+    title: 'Membership - Sitwell Cycling Club, Whiston, Rotherham', 
     description: 'We are always on the look out for new members. If you want to be part of Rotherham\'s newest club please get in touch for details.', 
     name: 'Join us!', 
     content: 'membership' 
@@ -275,7 +275,7 @@ router.get('/membership', function(req, res, next) {
   router.get('/membership/discounts', igAPI);
   router.get('/membership/discounts', function(req, res, next) {
     res.locals.meta = {
-      title: 'Discounts - Sitwell Cycling Club', 
+      title: 'Discounts - Sitwell Cycling Club, Whiston, Rotherham', 
       description: 'One of the benefits of joining Sitwell Cycling Club is the great discounts we have to offer.', 
       name: 'Discounts for club members', 
       content: 'discounts' 
@@ -291,7 +291,7 @@ router.get('/membership', function(req, res, next) {
 router.get('/news', fbAPI);
 router.get('/news', function(req, res, next) {
   res.locals.meta = {
-    title: 'Club News - Sitwell Cycling Club', 
+    title: 'Club News - Sitwell Cycling Club, Whiston, Rotherham', 
     description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on a Wednesday evening or Sunday morning. For the good times.', 
     name: 'Club News', 
     content: 'news' 
@@ -303,22 +303,24 @@ router.get('/news', function(req, res, next) {
   });
 });
 
+router.get('/contact', fbAPI);
 router.get('/contact', function(req, res, next) {
   res.locals.meta = {
-    title: 'Contact - Sitwell Cycling Club', 
+    title: 'Contact - Sitwell Cycling Club, Whiston, Rotherham', 
     description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on a Wednesday evening or Sunday morning. For the good times.', 
     name: 'Contact Sitwell Cycling Club', 
     content: 'contact' 
   };
 
   res.render('pages/show', {
-    active: 'contact'
+    active: 'contact',
+    facebook: req.fbMedia
   });
 });
 
 router.get('/cookies', function(req, res, next) {
   res.locals.meta = {
-    title: 'Cookie Policy - Sitwell Cycling Club', 
+    title: 'Cookie Policy - Sitwell Cycling Club, Whiston, Rotherham', 
     description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on a Wednesday evening or Sunday morning. For the good times.', 
     name: 'Cookie Policy', 
     content: 'cookies' 

@@ -20,10 +20,11 @@
     .wrap {
       max-width: 100%;
       width: 100%;
+      @extend %cf;
     }
 
     .flickity-viewport {
-      overflow: visible;
+      overflow: hidden;
     }
 
     a {
@@ -40,23 +41,10 @@
         width: calc(100% / 6);
         max-width: 250px;
       }
-
-      &.is-selected {
-        transform: scale(1.125);
-        z-index: 2;
-
-        img {
-          opacity: 1;
-          filter: grayscale(0);
-        }
-      }
     }
 
     img {
       margin: 0;
-      filter: grayscale(1);
-      opacity: 0.5;
-      transition: all 0.5s;
     }
   }
 
