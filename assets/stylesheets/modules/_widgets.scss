@@ -1,0 +1,62 @@
+/*------------------------------------*\
+  $widgets
+\*------------------------------------*/
+
+.widget {
+  margin: {
+    bottom: 20px;
+  }
+
+  &__title {
+    font: {
+      size: font-size(20);
+    }
+  }
+
+  &--facebook {
+    background: $light-grey;
+    padding: 20px;
+    text-align: center;
+
+    > a {
+      background: $yellow;
+      color: #fff;
+      display: block;
+      padding: 20px;
+    }
+
+    ul {
+      margin: 0;
+    }
+
+    li {
+      list-style: none;
+      text-align: left;
+    }
+  }
+
+  &--instagram {
+    div {
+      display: flex;
+      flex-wrap: wrap; 
+      justify-content: space-between;
+
+      a {
+        float: left;
+        margin: {
+          bottom: 10px;
+        }
+
+        &:not(:first-of-type) {
+          width: calc((100% - 20px) / 3);
+        }
+      }
+
+      img {
+        margin: {
+          bottom: 0;
+        }
+      }
+    }
+  }
+}

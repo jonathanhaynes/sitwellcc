@@ -44,7 +44,7 @@
 
   @include mq(mq768) {
     order: 2;
-    @include span(11 of 16);
+    @include span(10 of 16);
   }
 }
 
@@ -56,7 +56,7 @@
 
   @include mq(mq768) {
     order: 3;
-    @include span(last 4 of 16);
+    @include span(last 4.5 of 16);
   }
 
   .widget {

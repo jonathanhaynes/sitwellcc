@@ -46,11 +46,12 @@
   </nav>
 
   <section class="widget widget--facebook">
-    <h3>Our next Sunday club ride is</h3>
+    <h3 class="widget__title">Our next Sunday club ride is to</h3>
     <a href="<%= facebook[0].link %>">
+      <h4><%= facebook[0].title %></h4>
       <ul>
-        <li><strong>To:</strong> <%= facebook[0].title %></li>
-        <li><strong>On:</strong> <%= facebook[0].date %></li>
+        <li><%= facebook[0].date %></li>
+        <li><%= facebook[0].location %></li>
       </ul>
     </a>
     <p>As always, leaving from the corner of <a href="https://goo.gl/maps/ArXDRXnkWEr">Turner Lane and High Street</a> at 8am.</p>

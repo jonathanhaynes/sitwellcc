@@ -188,6 +188,7 @@ router.get('/about', function(req, res, next) {
     });
   });
 
+router.get('/club-rides', fbAPI);
 router.get('/club-rides', igAPI);
 router.get('/club-rides', function(req, res, next) {
   res.locals.meta = {
@@ -199,6 +200,7 @@ router.get('/club-rides', function(req, res, next) {
 
   res.render('pages/show', {
     active: 'club-rides',
+    facebook: req.fbMedia,
     instagram: req.igMedia
   });
 });
