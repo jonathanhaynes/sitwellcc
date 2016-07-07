@@ -162,12 +162,12 @@ router.get('/about', function(req, res, next) {
     });
   });
 
-  router.get('/about/supporters', function(req, res, next) {
+  router.get('/about/sponsors', function(req, res, next) {
     res.locals.meta = {
-      title: 'Supporters of the club - Sitwell Cycling Club, Whiston, Rotherham',
+      title: 'Sponsors of the club - Sitwell Cycling Club, Whiston, Rotherham',
       description: '',
-      name: 'Supporters of the club',
-      content: 'supporters' 
+      name: 'Sponsors of the club',
+      content: 'sponsors' 
     };
 
     res.render('pages/show', {
