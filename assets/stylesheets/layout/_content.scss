@@ -34,6 +34,13 @@
   order: 1;
   display: block;
   width: 100%;
+  margin: {
+    bottom: 50px;    
+  }
+  padding: {
+    bottom: 50px;    
+  }
+  border-bottom: 1px solid $light-grey;
 }
 
 .primary-content {
@@ -45,6 +52,17 @@
   @include mq(mq768) {
     order: 2;
     @include span(10 of 16);
+  }
+
+  p {
+    
+
+    &:first-of-type {
+      font: {
+        size: font-size(20);
+      }
+      line-height: 1.2;
+    }
   }
 }
 

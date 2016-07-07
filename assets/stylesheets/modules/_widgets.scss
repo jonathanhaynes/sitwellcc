@@ -43,12 +43,9 @@
 
       a {
         float: left;
-        margin: {
-          bottom: 10px;
-        }
 
         &:not(:first-of-type) {
-          width: calc((100% - 20px) / 3);
+          width: calc(100% / 3);
         }
       }
 

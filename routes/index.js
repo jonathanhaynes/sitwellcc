@@ -16,7 +16,7 @@ var igAPI = function(req, res, next) {
 
   var igMedia = [];
 
-  ig.tag_media_recent('sitwellcc', {'count': 10}, function(err, medias, pagination, remaining, limit) {
+  ig.tag_media_recent('sitwellcc', {'count': 7}, function(err, medias, pagination, remaining, limit) {
 
     PowerHouse.forEach(medias, function(media, i) {
       igMedia.push({
@@ -120,7 +120,7 @@ router.get('/', function(req, res, next) {
 
   res.locals.meta = {
     title: 'Sitwell Cycling Club, Whiston, Rotherham - Founded 2016',
-    description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on a Wednesday evening or Sunday morning. For the good times.'
+    description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on a Wednesday evening, Saturday morning or Sunday morning. For the good times.'
   };
 
   res.render('pages/index', {
@@ -137,7 +137,7 @@ router.get('/about', function(req, res, next) {
   res.locals.meta = {
     title: 'About - Sitwell Cycling Club, Whiston, Rotherham', 
     description: 'Rotherham\'s newest cycle club serving Whiston, Rotherham and the surrounding areas. We\'re a not-for-profit, volunteer run organisation registered to British Cycling.', 
-    name: 'About Sitwell Cycling Club, Whiston, Rotherham', 
+    name: 'Sitwell Cycling Club, Whiston, Rotherham', 
     content: 'about'
   };
 
@@ -193,7 +193,7 @@ router.get('/club-rides', igAPI);
 router.get('/club-rides', function(req, res, next) {
   res.locals.meta = {
     title: 'Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
-    description: 'Club rides take place on Wednesday evenings and Sunday mornings. The meeting place is on the corner of Turner Lane and High Street, Whiston.',
+    description: 'Club rides take place every Wednesday evening, occasional Saturday mornings and every Sunday morning. The meeting place is on the corner of Turner Lane and High Street, Whiston.',
     name: 'Club Rides',
     content: 'rides' 
   };
@@ -212,6 +212,21 @@ router.get('/club-rides', function(req, res, next) {
       description: 'Wednesday evening rides depart from the corner of Turner Lane and High Street, Whiston at 7:30pm prompt.',
       name: 'Club Rides - Wednesday Evening',
       content: 'wednesday' 
+    };
+
+    res.render('pages/show', {
+      active: 'club-rides',
+      instagram: req.igMedia
+    });
+  });
+
+  router.get('/club-rides/saturday-morning', igAPI);
+  router.get('/club-rides/saturday-morning', function(req, res, next) {
+    res.locals.meta = {
+      title: 'Saturday Morning - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
+      description: 'Saturday morning rides depart from the corner of Turner Lane and High Street, Whiston at 9:30am prompt.',
+      name: 'Club Rides - Saturday Morning',
+      content: 'saturday' 
     };
 
     res.render('pages/show', {
