@@ -45,11 +45,26 @@ textarea {
     size: font-size($input-text-size);
   }
   color: $input-text-color;
-  background-color: $white;
-  border: 1px solid $input-border-color;
+  background-color: rgba($light-grey, 0.5);
+  border: 0;
   border-radius: 0;
   -webkit-appearance: none; /* 1 */
   -moz-appearance: none; /* 1 */
+  margin: {
+    bottom: 10px;
+  }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="search"],
+input[type="number"],
+input[type="date"],
+input[type="url"],
+input[type="password"],
+select {
+  max-width: 590px;
 }
 
 meter,

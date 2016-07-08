@@ -1,12 +1,12 @@
-var express = require('express'),
+const express = require('express'),
     router = express.Router(),
     PowerHouse = require('powerhouse-js');
 
 
 
-var igAPI = function(req, res, next) {
+const igAPI = function(req, res, next) {
 
-  var ig = require('instagram-node').instagram();
+  const ig = require('instagram-node').instagram();
 
   ig.use({
     client_id: '25f9fc11c5474e69ae6220c1d5095f2d',
@@ -14,7 +14,7 @@ var igAPI = function(req, res, next) {
     access_token: '2399073333.25f9fc1.47ed772a4e2940acbfc7e2c54fc129ef'
   });
 
-  var igMedia = [];
+  const igMedia = [];
 
   ig.tag_media_recent('sitwellcc', {'count': 7}, function(err, medias, pagination, remaining, limit) {
 
@@ -31,16 +31,16 @@ var igAPI = function(req, res, next) {
   });
 };
 
-var fbAPI = function (req, res, next) {
+const fbAPI = function (req, res, next) {
 
-  var fb = require('fb');
+  const fb = require('fb');
 
   fb.options({
     appId: '984371968323534',
     version: 'v2.5'
   });
 
-  var dateNow = Math.round(new Date().getTime()/1000.0),
+  const dateNow = Math.round(new Date().getTime()/1000.0),
       moment = require('moment'),
       fbMedia = [];
 
@@ -114,13 +114,23 @@ var fbAPI = function (req, res, next) {
   }
 };
 
+const fbAPISort = function(req) {
+  for (var i = req.fbMedia.length -1; i >= 0; i--) {
+    if (!req.fbMedia[i].date.startsWith(req.weekDay)) {
+      req.fbMedia.splice(i, 1);
+    }
+  }
+
+  return req.fbMedia;
+};
+
 router.get('/', fbAPI);
 router.get('/', igAPI);
 router.get('/', function(req, res, next) {
 
   res.locals.meta = {
     title: 'Sitwell Cycling Club, Whiston, Rotherham - Founded 2016',
-    description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on a Wednesday evening, Saturday morning or Sunday morning. For the good times.'
+    description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!'
   };
 
   res.render('pages/index', {
@@ -140,6 +150,9 @@ router.get('/about', function(req, res, next) {
     name: 'Sitwell Cycling Club, Whiston, Rotherham', 
     content: 'about'
   };
+
+  req.weekDay = 'Sunday';
+  console.log(fbAPISort(req));
 
   res.render('pages/show', {
     active: 'about',
@@ -198,6 +211,9 @@ router.get('/club-rides', function(req, res, next) {
     content: 'rides' 
   };
 
+  req.weekDay = 'Sunday';
+  fbAPISort(req);
+
   res.render('pages/show', {
     active: 'club-rides',
     facebook: req.fbMedia,
@@ -205,6 +221,7 @@ router.get('/club-rides', function(req, res, next) {
   });
 });
 
+  router.get('/club-rides/wednesday-evening', fbAPI);
   router.get('/club-rides/wednesday-evening', igAPI);
   router.get('/club-rides/wednesday-evening', function(req, res, next) {
     res.locals.meta = {
@@ -214,12 +231,17 @@ router.get('/club-rides', function(req, res, next) {
       content: 'wednesday' 
     };
 
+    req.weekDay = 'Wednesday';
+    fbAPISort(req);
+
     res.render('pages/show', {
       active: 'club-rides',
+      facebook: req.fbMedia,
       instagram: req.igMedia
     });
   });
 
+  router.get('/club-rides/saturday-morning', fbAPI);
   router.get('/club-rides/saturday-morning', igAPI);
   router.get('/club-rides/saturday-morning', function(req, res, next) {
     res.locals.meta = {
@@ -229,8 +251,12 @@ router.get('/club-rides', function(req, res, next) {
       content: 'saturday' 
     };
 
+    req.weekDay = 'Saturday';
+    fbAPISort(req);
+
     res.render('pages/show', {
       active: 'club-rides',
+      facebook: req.fbMedia,
       instagram: req.igMedia
     });
   });
@@ -245,6 +271,9 @@ router.get('/club-rides', function(req, res, next) {
       name: 'Club Rides - Sunday Morning',
       content: 'sunday'
     };
+
+    req.weekDay = 'Sunday';
+    fbAPISort(req);
 
     res.render('pages/show', {
       active: 'club-rides',
@@ -264,6 +293,9 @@ router.get('/kit', function(req, res, next) {
     content: 'kit' 
   };
 
+  req.weekDay = 'Sunday';
+  fbAPISort(req);
+
   res.render('pages/show', {
     active: 'kit',
     facebook: req.fbMedia,
@@ -280,6 +312,9 @@ router.get('/membership', function(req, res, next) {
     name: 'Join us!', 
     content: 'membership' 
   };
+
+  req.weekDay = 'Sunday';
+  fbAPISort(req);
 
   res.render('pages/show', {
     active: 'membership',
@@ -298,6 +333,9 @@ router.get('/membership', function(req, res, next) {
       content: 'discounts' 
     };
 
+    req.weekDay = 'Sunday';
+    fbAPISort(req);
+
     res.render('pages/show', {
       active: 'membership',
       facebook: req.fbMedia,
@@ -309,10 +347,13 @@ router.get('/news', fbAPI);
 router.get('/news', function(req, res, next) {
   res.locals.meta = {
     title: 'Club News - Sitwell Cycling Club, Whiston, Rotherham', 
-    description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on a Wednesday evening or Sunday morning. For the good times.', 
+    description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!', 
     name: 'Club News', 
     content: 'news' 
   };
+
+  req.weekDay = 'Sunday';
+  fbAPISort(req);
 
   res.render('pages/show', {
     active: 'news',
@@ -324,10 +365,13 @@ router.get('/contact', fbAPI);
 router.get('/contact', function(req, res, next) {
   res.locals.meta = {
     title: 'Contact - Sitwell Cycling Club, Whiston, Rotherham', 
-    description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on a Wednesday evening or Sunday morning. For the good times.', 
+    description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!', 
     name: 'Contact Sitwell Cycling Club', 
     content: 'contact' 
   };
+
+  req.weekDay = 'Sunday';
+  fbAPISort(req);
 
   res.render('pages/show', {
     active: 'contact',
@@ -338,9 +382,22 @@ router.get('/contact', function(req, res, next) {
 router.get('/cookies', function(req, res, next) {
   res.locals.meta = {
     title: 'Cookie Policy - Sitwell Cycling Club, Whiston, Rotherham', 
-    description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on a Wednesday evening or Sunday morning. For the good times.', 
+    description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!', 
     name: 'Cookie Policy', 
     content: 'cookies' 
+  };
+
+  res.render('pages/show', {
+    active: ''
+  });
+});
+
+router.get('/thankyou', function(req, res, next) {
+  res.locals.meta = {
+    title: 'Thankyou - Sitwell Cycling Club, Whiston, Rotherham', 
+    description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!', 
+    name: 'Thankyou', 
+    content: 'thankyou' 
   };
 
   res.render('pages/show', {

@@ -3,6 +3,22 @@
   <p>Wednesday club rides are much shorter than a Sunday ride, we will be on the road for around 1 and a half hours riding at about 13-14mph.</p>
   <p>When the weather is better in the Summer months we may nip to the pub afterwards for cheeky half.</p>
   <p>Please take time to read our <strong><a href="<%= asset_path('SitwellCyclingClubSitwellCCGenericRiskAssessment–RoadRides2016.pdf') %>">Risk Assessment</a> on Road Riding</strong>.</p>
+  <h2 id="upcoming-rides">Upcoming ride</h2>
+  <div id="rides">
+    <% if (facebook.length > 0) { %>
+      <% for(var i = 0; i < facebook.length; i++) { %>
+        <% if (i <= 0) { %>
+          <article>
+            <time><strong><%= facebook[i].date %></strong></time>
+            <h4><a href="<%= facebook[i].link %>"><%= facebook[i].title %></a><br /><small><%= facebook[i].location %></small></h4>
+            <p><%- facebook[i].description %></p>
+          </article>
+        <% } %>
+      <% } %>
+    <% } else { %>
+      <p>Sorry, we have no planned rides at present. Please check out our <a href="/club-rides/saturday-morning">Saturday morning</a> or <a href="/club-rides/sunday-morning">Sunday morning</a> rides.</p>
+    <% } %>
+  </div>
 </section>
 
 <aside class="secondary-content">
