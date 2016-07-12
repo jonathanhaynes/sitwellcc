@@ -1,30 +1,48 @@
 <section class="block block--rides">
   <div class="wrap">
     <h2 class="block__title"><a href="/club-rides">Upcoming club rides</a></h2>
-    <section class="rides rides--wednesday">
-      <h3 class="rides__title">Wednesdays</h3>
-      <article>
-        <time><strong>Every Wednesday</strong></time>
-        <h4>Wednesday evening ride<br/ ><small>Whiston</small></h4>
+    <section class="summary">
+      <article class="summary__item">
+        <% for(var i = 0; i < facebook.length; i++) { %>
+          <% if (i <= 0) { %>
+              <h3 class="summary__title"><a href="<%= facebook[i].link %>"><%= facebook[i].title %></a><br /><small><%= facebook[i].location %></small></h3>
+              <time class="summary__desc"><%= facebook[i].date %></time>
+          <% } %>
+        <% } %>
       </article>
-    </section>
-    <section class="rides rides--saturday">
-      <h3 class="rides__title">Saturdays</h3>
-      <article>
-        <time><strong>Every Saturday</strong></time>
-        <h4>Saturday morning ride<br/ ><small>Whiston</small></h4>
+      <article class="summary__item">
+        <a href="/club-rides/wednesday-evening">
+          <picture>
+            <img src="<%= asset_path('template/wednesday.jpg') %>" alt="">
+          </picture>
+          <div>
+            <h3 class="summary__title">Wednesday evening</h3>
+            <p class="summary__desc">Around 1.5 hours at 13-14mph</p>
+          </div>
+        </a>
       </article>
-    </section>
-    <section class="rides rides--sunday">
-      <h3 class="rides__title">Sundays</h3>
-      <% for(var i = 0; i < facebook.length; i++) { %>
-      <% if (i <= 0) { %>
-        <article>
-          <time><strong><%= facebook[i].date %></strong></time>
-          <h4><a href="<%= facebook[i].link %>"><%= facebook[i].title %></a><br /><small><%= facebook[i].location %></small></h4>
-        </article>
-      <% } %>
-    <% } %>
+      <article class="summary__item">
+        <a href="/club-rides/saturday-morning">
+          <picture>
+            <img src="<%= asset_path('template/saturday.jpg') %>" alt="">
+          </picture>
+          <div>
+            <h3 class="summary__title">Saturday morning</h3>
+            <p class="summary__desc">Around 2.5 hours at 11-12mph</p>
+          </div>
+        </a>
+      </article>
+      <article class="summary__item">
+        <a href="/club-rides/sunday-morning">
+          <picture>
+            <img src="<%= asset_path('template/sunday.jpg') %>" alt="">
+          </picture>
+          <div>
+            <h3 class="summary__title">Sunday morning</h3>
+            <p class="summary__desc">Around 4 hours plus café stop at 13-14mph</p>
+          </div>
+        </a>
+      </article>
     </section>
     
   </div>
