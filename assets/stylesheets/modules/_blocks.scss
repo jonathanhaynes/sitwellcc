@@ -4,7 +4,7 @@
 
 .block {
   padding: {
-    top: 50px;
+    top: 0;
     bottom: 50px;
   }
 
@@ -12,9 +12,41 @@
     font: {
       size: font-size(30);
     }
+    padding: {
+      top: 40px;
+    }
+    margin: {
+      bottom: 40px;
+    }
+    border-top: 1px solid $light-grey;
+
+    &,
+    a {
+      color: $base-font-color;
+    }
   }
 
-  &--instagram {
+  &--intro {
+    .wrap {
+      overflow: hidden;
+    }
+
+    .intro {
+      @include mq(mq768) {
+        width: calc((100% - 20px) / 2);
+
+        &--about {
+          float: left;
+        }
+
+        &--news {
+          float: right;
+        }
+      }
+    }
+  }
+
+  &--social {
 
     .wrap {
       @extend %cf;

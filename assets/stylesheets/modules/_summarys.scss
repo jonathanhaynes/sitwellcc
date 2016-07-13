@@ -48,16 +48,14 @@
       margin: 0;
       font-size: font-size(16) !important;
     }
+
+    @include states {
+      background: $brand;
+    }
   }
 
   a {
     color: $base-font-color;
     text-decoration: none;
-
-    @include states {
-      img {
-        transform: scale(1.0625);
-      }
-    }
   }
 }
