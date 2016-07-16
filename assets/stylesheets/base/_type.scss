@@ -53,6 +53,10 @@ h6 {
  */
 p {
   margin-bottom: $base-spacing-unit;
+}
+
+li,
+p {
   line-height: 1.4;
 }
 
@@ -166,6 +170,11 @@ blockquote {
   margin-bottom: 15px;
 
   p {
+    font: {
+      size: font-size(16) !important;
+      style: italic;
+    }
+
     &::before {
       content: '\201C';
     }
