@@ -4,7 +4,7 @@
 
 .summary {
   margin: {
-    bottom: 10px;
+    bottom: 0;
   }
   
   @include mq(mq768) {
@@ -12,17 +12,50 @@
   }
 
   &__item {
-    @include mq(mq768) {
-      width: calc((100% - 40px) / 3);
-      margin: {
-        right: 20px;
-      }
+    background: mix($light-grey, #fff, 50%);
 
-      &:nth-of-type(3n) {
-        margin: {
-          right: 0;
-        }
+    &:nth-of-type(2n) {
+      background: $light-grey;
+    }
+
+    @include mq(mq768) {
+      width: calc(100% / 3);
+
+      .block--rides & {
+        width: calc(100% / 4);        
       }
     }
+
+    picture {
+      overflow: hidden;
+      display: block;
+    }
+
+    img {
+      margin: 0;
+      transition: 0.3s all;
+    }
+
+    div {
+      padding: 20px;
+    }
+
+    .summary__title {
+      font-size: font-size(20);
+    }
+
+    .summary__desc {
+      margin: 0;
+      font-size: font-size(16) !important;
+    }
+
+    @include states {
+      background: $brand;
+    }
+  }
+
+  a {
+    color: $base-font-color;
+    text-decoration: none;
   }
 }

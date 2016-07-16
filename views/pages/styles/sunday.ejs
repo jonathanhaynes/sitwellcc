@@ -7,11 +7,13 @@
   <h2 id="upcoming-rides">Upcoming rides</h2>
   <div id="rides">
     <% for(var i = 0; i < facebook.length; i++) { %>
-      <article>
-        <time><strong><%= facebook[i].date %></strong></time>
-        <h4><a href="<%= facebook[i].link %>"><%= facebook[i].title %></a><br /><small><%= facebook[i].location %></small></h4>
-        <p><%- facebook[i].description %></p>
-      </article>
+      <% if (i <= 3) { %>
+        <article>
+          <time><strong><%= facebook[i].date %></strong></time>
+          <h4><a href="<%= facebook[i].link %>"><%= facebook[i].title %></a><br /><small><%= facebook[i].location %></small></h4>
+          <p><%- facebook[i].description %></p>
+        </article>
+      <% } %>
     <% } %>
   </div>
 </section>

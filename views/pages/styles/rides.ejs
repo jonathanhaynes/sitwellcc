@@ -11,8 +11,10 @@
         <picture>
           <img src="<%= asset_path('template/wednesday.jpg') %>" alt="">
         </picture>
-        <h3>Wednesday evening</h3>
-        <p>Around 1.5 hours at 13-14mph</p>
+        <div>
+          <h3 class="summary__title">Wednesday evening</h3>
+          <p class="summary__desc">Around 1.5 hours at 13-14mph</p>
+        </div>
       </a>
     </article>
     <article class="summary__item">
@@ -20,8 +22,10 @@
         <picture>
           <img src="<%= asset_path('template/saturday.jpg') %>" alt="">
         </picture>
-        <h3>Saturday morning</h3>
-        <p>Around 2.5 hours plus café stop at 11-12mph</p>
+        <div>
+          <h3 class="summary__title">Saturday morning</h3>
+          <p class="summary__desc">Around 2.5 hours plus café stop at 11-12mph</p>
+        </div>
       </a>
     </article>
     <article class="summary__item">
@@ -29,8 +33,10 @@
         <picture>
           <img src="<%= asset_path('template/sunday.jpg') %>" alt="">
         </picture>
-        <h3>Sunday morning</h3>
-        <p>Around 4 hours plus café stop at 13-14mph</p>
+        <div>
+          <h3 class="summary__title">Sunday morning</h3>
+          <p class="summary__desc">Around 4 hours plus café stop at 13-14mph</p>
+        </div>
       </a>
     </article>
   </section>
@@ -68,7 +74,7 @@
 
   <p><a href="https://www.britishcycling.org.uk/knowledge/article/izn20121221-group-ride-0">British Cycling</a> has some great information on group riding and even has a guide on hand signals and communication to keep each other safe whilst out on the road. There's also this <a href="<%= asset_path('group-riding-skills-ctc.pdf') %>">handy PDF</a> from CTC that is well worth a look.</p>
 
-  <div class="module module--video"><iframe width="560" height="315" src="https://www.youtube.com/embed/QPXijIKgFVM" frameborder="0" allowfullscreen=""></iframe></div>
+  <div class="module module__video"><iframe width="560" height="315" src="https://www.youtube.com/embed/QPXijIKgFVM" frameborder="0" allowfullscreen=""></iframe></div>
 </section>
 
 <aside class="secondary-content">

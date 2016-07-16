@@ -62,6 +62,12 @@
       line-height: 1.2;
     }
   }
+
+  ul {
+    margin: {
+      left: 20px;
+    }
+  }
 }
 
 .secondary-content {
@@ -80,6 +86,68 @@
 
     @include mq(mq768) {
       display: block;
+    }
+  }
+
+  nav {
+    background: #121212;
+    margin: {
+      bottom: 20px;
+    }
+
+    li {
+      &:not(:first-of-type) {
+        border: {
+          top: 1px solid lighten(#121212, 5%);
+        }
+      }
+
+      &:not(:last-of-type) {
+        border: {
+          bottom: 1px solid darken(#121212, 5%);
+        }
+      }
+    }
+
+    a {
+      padding: 15px 5%;
+      display: block;
+      font: {
+        family: $heading-font;
+        size: font-size(17);
+      }
+      text: {
+        transform: uppercase;
+        decoration: none;
+      }
+      color: #fff;
+
+      @include states {
+        background: {
+          color: darken(#121212, 2.5%);
+        }
+      }
+    }
+  }
+}
+
+.module {
+  &__video {
+    position: relative;
+    padding-bottom: 56.25%;
+    margin: 25px 0;
+    height: 0;
+    max-width: 100%;
+    overflow: hidden;
+
+    iframe,
+    object,
+    embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
   }
 }

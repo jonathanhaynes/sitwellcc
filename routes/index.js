@@ -133,6 +133,9 @@ router.get('/', function(req, res, next) {
     description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!'
   };
 
+  req.weekDay = 'Sunday';
+  fbAPISort(req);
+
   res.render('pages/index', {
     active: 'home',
     facebook: req.fbMedia,
@@ -152,7 +155,7 @@ router.get('/about', function(req, res, next) {
   };
 
   req.weekDay = 'Sunday';
-  console.log(fbAPISort(req));
+  fbAPISort(req);
 
   res.render('pages/show', {
     active: 'about',
