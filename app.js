@@ -5,11 +5,17 @@ var express = require('express'),
     connectMincer = require('connect-mincer'),
     Mincer = require('mincer'),
     expressLayouts = require('express-ejs-layouts'),
-    autoprefixer = require('autoprefixer');
+    autoprefixer = require('autoprefixer'),
+    ghost = require('ghost');
 
 // var api = require('instagram-node').instagram();
 
 var app = express();
+
+ghost().then(function (ghostServer) { 
+  app.use(ghostServer.config.paths.subdir, ghostServer.rootApp);
+  ghostServer.start(app);
+}); - See more at: http://blog.codeply.com/2015/03/26/ghost-blog-on-node-express-4/#sthash.jL6b0kSK.dpuf
 
 var routes = require('./routes/index');
 

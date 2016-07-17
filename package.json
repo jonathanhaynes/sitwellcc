@@ -16,7 +16,8 @@
     "node-sass": "^3.4.2",
     "postcss": "^5.0.21",
     "postcss-cli": "^2.5.2",
-    "powerhouse-js": "^1.0.1"
+    "powerhouse-js": "^1.0.1",
+    "ghost": "0.8.0"
   },
   "devDependencies": {
     "async": "*",
