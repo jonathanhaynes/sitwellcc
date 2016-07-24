@@ -2,8 +2,6 @@ const express = require('express'),
     router = express.Router(),
     PowerHouse = require('powerhouse-js');
 
-
-
 const igAPI = function(req, res, next) {
 
   const ig = require('instagram-node').instagram();
@@ -122,6 +120,48 @@ const fbAPISort = function(req) {
   }
 
   return req.fbMedia;
+};
+
+const ghostAPI = function(req, res, next) {
+  // http://api.ghost.org/docs/user-authentication
+  ghost.init({
+    clientId: "ghost-frontend",
+    clientSecret: "c8ad6de9b24c"
+  });
+
+  next();
+  // const onSuccess = function(response) {
+  //   console.log(response);
+  //   next();
+  // };
+
+  // const onError = function() {
+  //   next();
+  // };
+
+  // PowerHouse.getFileContents('http://www.sitwell.cc/shared/ghost-url.min.js?v=04cab333b6', onSuccess, onError);
+
+  // ghost.init({
+  //   clientId: "ghost-frontend",
+  //   clientSecret: "c8ad6de9b24c"
+  //  });
+  
+  // function onSuccess(data) {
+  //   var $result = $('#blog-posts');
+  //   $.each(data.posts, function (i, post) {
+  //     $result.append(
+  //       '<li>' + post.title + '</li>'
+  //     );
+  //   });
+  // }  
+
+  // jQuery(document).ready(function () {
+  //   $.get(
+      
+  //   ).done(onSuccess);
+  // });
+
+  
 };
 
 router.get('/', fbAPI);
@@ -347,6 +387,7 @@ router.get('/membership', function(req, res, next) {
   });
 
 router.get('/news', fbAPI);
+router.get('/news', ghostAPI);
 router.get('/news', function(req, res, next) {
   res.locals.meta = {
     title: 'Club News - Sitwell Cycling Club, Whiston, Rotherham', 
