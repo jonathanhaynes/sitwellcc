@@ -123,49 +123,34 @@ const fbAPISort = function(req) {
 };
 
 const ghostAPI = function(req, res, next) {
-  // http://api.ghost.org/docs/user-authentication
-  ghost.init({
-    clientId: "ghost-frontend",
-    clientSecret: "c8ad6de9b24c"
+  const ghost = require('ghost-client'),
+        ghostURL = 'http://www.sitwell.cc',
+        ghostMedia = [],
+        moment = require('moment');
+
+  const ghostClient = ghost.createClient({
+    endpoint: ghostURL,
+    token: 'Bearer 93S8NQocVaGDlDcCgtdpOJTrO82wHu2gPvXbKcfobX0mKtVMDm3sEC7FNdjMrdhcYIxo9qRf5f3ao1zlFTlBVlEOypopTTMemslUHVkvw0cFvQ1Qx3qQTgXnfTB2wSErMPMSsvy9r6c8dZp2YmOhH92RKnTpjUeOLnB8Ahf1LfySNqlImp1W2FNIch8VgtkQwGnuwn1VfM4Psy40roauSNKTrivlPCSvYpQDTWEd9ZJEClnIGn2eMme6XHqfN33'
   });
 
-  next();
-  // const onSuccess = function(response) {
-  //   console.log(response);
-  //   next();
-  // };
+  ghostClient.posts({}, function (err, data) {
+    data.posts.forEach(function(item, i){
+      ghostMedia.push({
+        'title': item.title,
+        'link': `/news/${item.slug}`,
+        'image': ghostURL + item.image,
+        'description': item.html
+      });
+    });
 
-  // const onError = function() {
-  //   next();
-  // };
-
-  // PowerHouse.getFileContents('http://www.sitwell.cc/shared/ghost-url.min.js?v=04cab333b6', onSuccess, onError);
-
-  // ghost.init({
-  //   clientId: "ghost-frontend",
-  //   clientSecret: "c8ad6de9b24c"
-  //  });
-  
-  // function onSuccess(data) {
-  //   var $result = $('#blog-posts');
-  //   $.each(data.posts, function (i, post) {
-  //     $result.append(
-  //       '<li>' + post.title + '</li>'
-  //     );
-  //   });
-  // }  
-
-  // jQuery(document).ready(function () {
-  //   $.get(
-      
-  //   ).done(onSuccess);
-  // });
-
-  
+    req.ghostMedia = ghostMedia;
+    next();
+  });
 };
 
 router.get('/', fbAPI);
 router.get('/', igAPI);
+router.get('/', ghostAPI);
 router.get('/', function(req, res, next) {
 
   res.locals.meta = {
@@ -179,7 +164,8 @@ router.get('/', function(req, res, next) {
   res.render('pages/index', {
     active: 'home',
     facebook: req.fbMedia,
-    instagram: req.igMedia
+    instagram: req.igMedia,
+    ghost: req.ghostMedia
   });
 });
 
@@ -401,9 +387,32 @@ router.get('/news', function(req, res, next) {
 
   res.render('pages/show', {
     active: 'news',
-    facebook: req.fbMedia
+    facebook: req.fbMedia,
+    ghost: req.ghostMedia
   });
 });
+
+  router.get('/news/:slug', fbAPI);
+  router.get('/news/:slug', igAPI);
+  router.get('/news/:slug', ghostAPI);
+  router.get('/news/:slug', function(req, res, next) {
+    res.locals.meta = {
+      title: 'Club News - Sitwell Cycling Club, Whiston, Rotherham', 
+      description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!', 
+      name: 'Club News', 
+      content: 'article' 
+    };
+
+    req.weekDay = 'Sunday';
+    fbAPISort(req);
+
+    res.render('pages/show', {
+      active: 'news',
+      facebook: req.fbMedia,
+      instagram: req.igMedia,
+      ghost: req.ghostMedia
+    });
+  });
 
 router.get('/contact', fbAPI);
 router.get('/contact', function(req, res, next) {

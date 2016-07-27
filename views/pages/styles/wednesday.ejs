@@ -6,15 +6,11 @@
   <h2 id="upcoming-rides">Upcoming ride</h2>
   <div id="rides">
     <% if (facebook.length > 0) { %>
-      <% for(var i = 0; i < facebook.length; i++) { %>
-        <% if (i <= 0) { %>
-          <article>
-            <time><strong><%= facebook[i].date %></strong></time>
-            <h4><a href="<%= facebook[i].link %>"><%= facebook[i].title %></a><br /><small><%= facebook[i].location %></small></h4>
-            <p><%- facebook[i].description %></p>
-          </article>
-        <% } %>
-      <% } %>
+      <article class="post post--event">
+        <time class="post__date"><strong><%= facebook[0].date %></strong></time>
+        <h3 class="post__title"><a href="<%= facebook[0].link %>"><%= facebook[0].title %></a><br /><small><%= facebook[0].location %></small></h3>
+        <p class="post__summary"><%- facebook[0].description %></p>
+      </article>
     <% } else { %>
       <p>Sorry, we have no planned rides at present. Please check out our <a href="/club-rides/saturday-morning">Saturday morning</a> or <a href="/club-rides/sunday-morning">Sunday morning</a> rides.</p>
     <% } %>

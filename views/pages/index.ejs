@@ -5,6 +5,17 @@
     </section>
     <section class="intro intro--news">
       <h2 class="block__title">Latest news</h2>
+      <% for(var i = 0; i < ghost.length; i++) { %>
+        <% if (i <= 1) { %>
+          <article class="post post--news">
+            <a href="<%= ghost[i].link %>">
+              <img src="<%= ghost[i].image %>" class="post__img">
+              <h3 class="post__title"><%= ghost[i].title %></h3>
+              <%- ghost[i].description.split('\n')[0] %>
+            </a>
+          </article>
+        <% } %>
+      <% } %>
     </section>
   </div>
 </section>
