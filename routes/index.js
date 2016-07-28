@@ -123,6 +123,17 @@ const fbAPISort = function(req) {
 };
 
 const ghostAPI = function(req, res, next) {
+  // const request = require('request');
+  
+  // request('http://www.sitwell.cc/shared/ghost-url.min.js?v=225a1395f3', function (error, response, body) {
+  //   if (!error && response.statusCode == 200) {
+  //     ghost.init({
+  //       clientId: 'ghost-frontend',
+  //       clientSecret: 'c8ad6de9b24c'
+  //     });
+  //   }
+  // });
+
   const ghost = require('ghost-client'),
         ghostURL = 'http://www.sitwell.cc',
         ghostMedia = [],
@@ -130,18 +141,20 @@ const ghostAPI = function(req, res, next) {
 
   const ghostClient = ghost.createClient({
     endpoint: ghostURL,
-    token: 'Bearer 93S8NQocVaGDlDcCgtdpOJTrO82wHu2gPvXbKcfobX0mKtVMDm3sEC7FNdjMrdhcYIxo9qRf5f3ao1zlFTlBVlEOypopTTMemslUHVkvw0cFvQ1Qx3qQTgXnfTB2wSErMPMSsvy9r6c8dZp2YmOhH92RKnTpjUeOLnB8Ahf1LfySNqlImp1W2FNIch8VgtkQwGnuwn1VfM4Psy40roauSNKTrivlPCSvYpQDTWEd9ZJEClnIGn2eMme6XHqfN33'
+    clientId: 'ghost-frontend',
+    clientSecret: 'c8ad6de9b24c'
   });
 
   ghostClient.posts({}, function (err, data) {
-    data.posts.forEach(function(item, i){
-      ghostMedia.push({
-        'title': item.title,
-        'link': `/news/${item.slug}`,
-        'image': ghostURL + item.image,
-        'description': item.html
-      });
-    });
+    console.log(err, data);
+    // data.posts.forEach(function(item, i){
+    //   ghostMedia.push({
+    //     'title': item.title,
+    //     'link': `/news/${item.slug}`,
+    //     'image': ghostURL + item.image,
+    //     'description': item.html
+    //   });
+    // });
 
     req.ghostMedia = ghostMedia;
     next();

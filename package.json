@@ -19,7 +19,8 @@
     "path": "^0.12.7",
     "postcss": "^5.0.21",
     "postcss-cli": "^2.5.2",
-    "powerhouse-js": "^1.0.1"
+    "powerhouse-js": "^1.0.1",
+    "request": "^2.74.0"
   },
   "devDependencies": {
     "async": "*",
