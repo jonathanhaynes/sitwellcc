@@ -122,42 +122,68 @@ const fbAPISort = function(req) {
   return req.fbMedia;
 };
 
-const ghostAPI = function(req, res, next) {
-  // const request = require('request');
+const whatDay = function(req) {
   
-  // request('http://www.sitwell.cc/shared/ghost-url.min.js?v=225a1395f3', function (error, response, body) {
-  //   if (!error && response.statusCode == 200) {
-  //     ghost.init({
-  //       clientId: 'ghost-frontend',
-  //       clientSecret: 'c8ad6de9b24c'
-  //     });
-  //   }
-  // });
+  const theDayToday = new Date().getDay();
 
-  const ghost = require('ghost-client'),
-        ghostURL = 'http://www.sitwell.cc',
-        ghostMedia = [],
-        moment = require('moment');
+  var dayofTheWeek;    
 
-  const ghostClient = ghost.createClient({
-    endpoint: ghostURL,
-    clientId: 'ghost-frontend',
-    clientSecret: 'c8ad6de9b24c'
-  });
+  switch(theDayToday) {
+    case 0:
+      dayofTheWeek = "Sunday";
+      break;
+    case 1:
+      dayofTheWeek = "Monday";
+      break;
+    case 2:
+      dayofTheWeek = "Tuesday";
+      break;
+    case 3:
+      dayofTheWeek = "Wednesday";
+      break;
+    case 4:
+      dayofTheWeek = "Thursday";
+      break;
+    case 5:
+      dayofTheWeek = "Friday";
+      break;
+    case 6:
+      dayofTheWeek = "Saturday";
+      break;
+    default:
+      dayofTheWeek = "Invalid day";
+  }
 
-  ghostClient.posts({}, function (err, data) {
-    console.log(err, data);
-    // data.posts.forEach(function(item, i){
-    //   ghostMedia.push({
-    //     'title': item.title,
-    //     'link': `/news/${item.slug}`,
-    //     'image': ghostURL + item.image,
-    //     'description': item.html
-    //   });
-    // });
+  return dayofTheWeek;
+};
 
-    req.ghostMedia = ghostMedia;
-    next();
+const ghostAPI = function(req, res, next) {
+  const request = require('request');
+
+  var options = {
+    url: 'http://www.sitwell.cc/ghost/api/v0.1/posts/?limit=15&client_id=ghost-frontend&client_secret=c8ad6de9b24c',
+    headers: {
+      'Referer': 'http://localhost:5000'
+    }
+  };
+  
+  const ghostMedia = [];
+
+  request(options, function (error, response, data) {    
+    if (!error && response.statusCode == 200) {
+
+      JSON.parse(data).posts.forEach(function(item, i) {
+        ghostMedia.push({
+          'title': item.title,
+          'link': `/news/${item.slug}`,
+          'image': 'http://www.sitwell.cc/' + item.image,
+          'description': item.html
+        });
+      });
+      
+      req.ghostMedia = ghostMedia;
+      next();
+    }
   });
 };
 
@@ -171,8 +197,7 @@ router.get('/', function(req, res, next) {
     description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!'
   };
 
-  req.weekDay = 'Sunday';
-  fbAPISort(req);
+  whatDay(req);
 
   res.render('pages/index', {
     active: 'home',
