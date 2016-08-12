@@ -153,7 +153,6 @@ const whatDay = function(req) {
     default:
       dayofTheWeek = "Invalid day";
   }
-
   return dayofTheWeek;
 };
 
