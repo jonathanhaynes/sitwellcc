@@ -243,9 +243,9 @@ router.get('/about', function(req, res, next) {
 
   router.get('/about/sponsors', function(req, res, next) {
     res.locals.meta = {
-      title: 'Sponsors of the club - Sitwell Cycling Club, Whiston, Rotherham',
-      description: '',
-      name: 'Sponsors of the club',
+      title: 'Sponsorship FAQs - Sitwell Cycling Club, Whiston, Rotherham',
+      description: 'Rotherham\'s newest cycle club serving Whiston, Rotherham and the surrounding areas. We\'re a not-for-profit, volunteer run organisation registered to British Cycling.', 
+      name: 'Sponsorship FAQs',
       content: 'sponsors' 
     };
 
@@ -257,7 +257,7 @@ router.get('/about', function(req, res, next) {
   router.get('/about/constitution', function(req, res, next) {
     res.locals.meta = {
       title: 'Rules & Constitution - Sitwell Cycling Club, Whiston, Rotherham',
-      description: '',
+      description: 'Rotherham\'s newest cycle club serving Whiston, Rotherham and the surrounding areas. We\'re a not-for-profit, volunteer run organisation registered to British Cycling.', 
       name: 'Sitwell Cycling Club (Sitwell CC) Rules and Constitution 2016',
       content: 'constitution' 
     };
