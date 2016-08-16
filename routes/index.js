@@ -186,6 +186,17 @@ const ghostAPI = function(req, res, next) {
   });
 };
 
+const ghostAPISearch = function(req) {
+  function whatPage(object) {
+    if (('title' in object) && (object.link === `/news/${req.ghostSlug}`)) {
+      return object;
+    }
+  }
+
+  req.ghostMedia = req.ghostMedia.filter(whatPage);
+  return req.ghostSlug;
+};
+
 router.get('/', fbAPI);
 router.get('/', igAPI);
 router.get('/', ghostAPI);
@@ -196,7 +207,8 @@ router.get('/', function(req, res, next) {
     description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!'
   };
 
-  whatDay(req);
+  req.weekDay = 'Sunday';
+  fbAPISort(req);
 
   res.render('pages/index', {
     active: 'home',
@@ -433,15 +445,18 @@ router.get('/news', function(req, res, next) {
   router.get('/news/:slug', igAPI);
   router.get('/news/:slug', ghostAPI);
   router.get('/news/:slug', function(req, res, next) {
-    res.locals.meta = {
-      title: 'Club News - Sitwell Cycling Club, Whiston, Rotherham', 
-      description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!', 
-      name: 'Club News', 
-      content: 'article' 
-    };
-
     req.weekDay = 'Sunday';
     fbAPISort(req);
+
+    req.ghostSlug = req.params.slug;
+    ghostAPISearch(req);
+
+    res.locals.meta = {
+      title: `${req.ghostMedia[0].title} - Club News - Sitwell Cycling Club, Whiston, Rotherham`, 
+      description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!', 
+      name: req.ghostMedia[0].title, 
+      content: 'article' 
+    };
 
     res.render('pages/show', {
       active: 'news',
