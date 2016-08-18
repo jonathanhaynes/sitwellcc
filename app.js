@@ -5,7 +5,8 @@ var express = require('express'),
     connectMincer = require('connect-mincer'),
     Mincer = require('mincer'),
     expressLayouts = require('express-ejs-layouts'),
-    autoprefixer = require('autoprefixer');
+    autoprefixer = require('autoprefixer'),
+    dotenv = require('dotenv').config();
 
 var app = express();
 

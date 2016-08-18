@@ -7,9 +7,9 @@ const igAPI = function(req, res, next) {
   const ig = require('instagram-node').instagram();
 
   ig.use({
-    client_id: '25f9fc11c5474e69ae6220c1d5095f2d',
-    client_secret: '43b4227a99c545dcab7cc0b7a7eaf566',
-    access_token: '2399073333.25f9fc1.47ed772a4e2940acbfc7e2c54fc129ef'
+    client_id: process.env.IG_CLIENT_ID,
+    client_secret: process.env.IG_CLIENT_SECRET,
+    access_token: process.env.IG_ACCESS_TOKEN
   });
 
   const igMedia = [];
@@ -46,7 +46,7 @@ const fbAPI = function (req, res, next) {
     '/1076165799068349/',
     'GET',
     {
-      "access_token" : "CAANZCRZCVZCr84BAM1q36ZBQOvEujS0Jjq1ZBavTXtIpDjZAQyLYwCZBovmrDHWIUmkGzPJsO5sdsM48HZAvBwebAJqIBhsBeEBnG9LxVHUdvaNVwGhQfXC9WHNbBzQ7GjrmjLrjZCuYYHXxmNXpZBCuB1C0T22WOfEqNqOxHn4rb6rmXZAaWaNjs1HH1PEfnpkSIsZD",
+      "access_token" : process.env.FB_ACCESS_TOKEN,
       "fields" : "events.since(" + dateNow + ")"
     },
     function(response) {
@@ -160,7 +160,7 @@ const ghostAPI = function(req, res, next) {
   const request = require('request');
 
   var options = {
-    url: 'http://www.sitwell.cc/ghost/api/v0.1/posts/?limit=15&client_id=ghost-frontend&client_secret=c8ad6de9b24c',
+    url: `http://www.sitwell.cc/ghost/api/v0.1/posts/?limit=15&client_id=ghost-frontend&client_secret=${process.env.GHOST_CLIENT_SECRET}`,
     headers: {
       'Referer': 'http://localhost:5000'
     }
