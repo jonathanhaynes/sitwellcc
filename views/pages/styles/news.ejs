@@ -1,5 +1,5 @@
 <section class="primary-content layout--news">
-  <h2>Our next Sunday club ride is to</h2>
+  <h2>Our next club ride is</h2>
   <a href="<%= facebook[0].link %>">
     <h3><%= facebook[0].title %></h3>
     <ul>
@@ -7,7 +7,7 @@
       <li><%= facebook[0].location %></li>
     </ul>
   </a>
-  <p>As always, leaving from the corner of <a href="https://goo.gl/maps/ArXDRXnkWEr">Turner Lane and High Street</a> at 8am.</p>
+  <p>Leaving from the corner of <a href="https://goo.gl/maps/ArXDRXnkWEr">Turner Lane and High Street</a> at <%= facebook[0].time %>.</p>
 
   <h2>Latest news</h2>
   <% for(var i = 0; i < ghost.length; i++) { %>

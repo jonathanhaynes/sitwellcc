@@ -55,11 +55,12 @@ const fbAPI = function (req, res, next) {
 
       filteredFbMedia.forEach(function(item, i){
         fbMedia.push({
-          'title': item.name,
-          'description': linkify(item.description),
-          'link': 'https://www.facebook.com/events/' + item.id + '/',
-          'location': item.place.name,
-          'date': moment(item.start_time).format("dddd Do MMMM YYYY")
+          'title': item.name != null ? item.name : '',
+          'description': item.description != null ? linkify(item.description) : '',
+          'link': item.id != null ? 'https://www.facebook.com/events/' + item.id + '/' : '',
+          'location': item.place != null ? item.place.name : '',
+          'date': item.start_time != null ? moment(item.start_time).format("dddd Do MMMM YYYY") : '',
+          'time': item.start_time != null ? moment(item.start_time).format("h:mma") : '',
         });
       });
 
@@ -207,9 +208,6 @@ router.get('/', function(req, res, next) {
     description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!'
   };
 
-  req.weekDay = 'Sunday';
-  fbAPISort(req);
-
   res.render('pages/index', {
     active: 'home',
     facebook: req.fbMedia,
@@ -228,9 +226,6 @@ router.get('/about', function(req, res, next) {
     name: 'Sitwell Cycling Club, Whiston, Rotherham', 
     content: 'about'
   };
-
-  req.weekDay = 'Sunday';
-  fbAPISort(req);
 
   res.render('pages/show', {
     active: 'about',
@@ -288,9 +283,6 @@ router.get('/club-rides', function(req, res, next) {
     name: 'Club Rides',
     content: 'rides' 
   };
-
-  req.weekDay = 'Sunday';
-  fbAPISort(req);
 
   res.render('pages/show', {
     active: 'club-rides',
@@ -371,9 +363,6 @@ router.get('/kit', function(req, res, next) {
     content: 'kit' 
   };
 
-  req.weekDay = 'Sunday';
-  fbAPISort(req);
-
   res.render('pages/show', {
     active: 'kit',
     facebook: req.fbMedia,
@@ -390,9 +379,6 @@ router.get('/membership', function(req, res, next) {
     name: 'Join us!', 
     content: 'membership' 
   };
-
-  req.weekDay = 'Sunday';
-  fbAPISort(req);
 
   res.render('pages/show', {
     active: 'membership',
@@ -411,9 +397,6 @@ router.get('/membership', function(req, res, next) {
       content: 'discounts' 
     };
 
-    req.weekDay = 'Sunday';
-    fbAPISort(req);
-
     res.render('pages/show', {
       active: 'membership',
       facebook: req.fbMedia,
@@ -430,9 +413,6 @@ router.get('/news', function(req, res, next) {
     name: 'Club News', 
     content: 'news' 
   };
-
-  req.weekDay = 'Sunday';
-  fbAPISort(req);
 
   res.render('pages/show', {
     active: 'news',
@@ -474,9 +454,6 @@ router.get('/contact', function(req, res, next) {
     name: 'Contact Sitwell Cycling Club', 
     content: 'contact' 
   };
-
-  req.weekDay = 'Sunday';
-  fbAPISort(req);
 
   res.render('pages/show', {
     active: 'contact',
