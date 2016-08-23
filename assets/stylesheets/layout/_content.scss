@@ -160,3 +160,50 @@
     }
   }
 }
+
+.img {
+  &--thirty-three {
+    @include mq(mq600) {
+      width: calc((100% - 40px) / 3);
+      margin: {
+        right: 20px;
+      }
+    }
+  }
+  &--fifty {
+    @include mq(mq600) {
+      width: calc((100% - 20px) / 2);
+      margin: {
+        right: 20px;
+      }
+    }
+  }
+
+  &--left {
+    float: left;
+  }
+
+  &--right {
+    float: right;
+    margin: {
+      right: 0;
+    }
+  }
+
+  &--britishcycling,
+  &--bikepure {
+    max-width: 250px;
+  }
+}
+
+.committee {
+  img {
+    @include mq(mq600) {
+      width: calc((100% - 40px) / 3);
+      margin: {
+        right: 20px;
+      }
+    }
+  }
+}
+

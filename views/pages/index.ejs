@@ -1,9 +1,24 @@
+<section class="block block--media-window">
+  <picture>
+    <source srcset="<%= asset_path('template/wide/media-window.jpg') %>" media="(min-width: 1200px)">
+    <source srcset="<%= asset_path('template/desktop/media-window.jpg') %>, <%= asset_path('template/desktop/media-window-2x.jpg') %> 2x" media="(min-width: 960px)">
+    <source srcset="<%= asset_path('template/tablet/media-window.jpg') %>, <%= asset_path('template/tablet/media-window-2x.jpg') %> 2x" media="(min-width: 600px)">
+    <img srcset="<%= asset_path('template/mobile/media-window.jpg') %>, <%= asset_path('template/mobile/media-window-2x.jpg') %> 2x" alt="Sitwell Cycling Club">
+  </picture>
+</section>
+
 <section class="block block--intro">
   <div class="wrap">
+    <section class="intro intro--about">
+      <h1 class="block__title">Sitwell Cycling Club</h1>
+      <p>Founded January 2016. Rotherham's newest cycling club serving Whiston and the surrounding areas.</p>
+      <p>Come and join us for a club ride on a Wednesday evening or Sunday morning. Show us your stripes!</p>
+      <p><a href="/about">Find out more</a></p>
+    </section>
     <section class="intro intro--news">
       <h2 class="block__title">Latest news</h2>
       <% for(var i = 0; i < ghost.length; i++) { %>
-        <% if (i <= 1) { %>
+        <% if (i <= 2) { %>
           <article class="post post--news">
             <a href="<%= ghost[i].link %>">
               <img src="<%= ghost[i].image %>" class="post__img">
@@ -13,9 +28,6 @@
           </article>
         <% } %>
       <% } %>
-    </section>
-    <section class="intro intro--about">
-      <h2 class="block__title">Sitwell Cycling Club</h2>
     </section>
   </div>
 </section>

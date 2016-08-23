@@ -160,6 +160,10 @@
         padding: {
           bottom: 40px !important;
         }
+
+        p {
+          max-width: 600px;
+        }
       }
 
       &--strava {
