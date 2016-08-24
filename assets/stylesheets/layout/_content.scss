@@ -162,6 +162,9 @@
 }
 
 .img {
+  width: 100%;
+  height: auto;
+
   &--thirty-three {
     @include mq(mq600) {
       width: calc((100% - 40px) / 3);

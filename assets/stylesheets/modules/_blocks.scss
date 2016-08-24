@@ -48,6 +48,10 @@
 
         &--about {
           @include span(5 of 15);
+
+          p {
+            max-width: 90%;
+          }
         }
 
         &--news {
@@ -59,6 +63,60 @@
         font: {
           size: font-size(16);
         }
+
+        &:first-of-type {
+          font: {
+            size: font-size(20);
+          }
+          line-height: 1.2;
+        }
+      }
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .post__img {
+      min-height: 300px;
+      background: {
+        position: 50% 50%;
+        repeat: no-repeat;
+        size: cover;
+      }
+      margin: {
+        bottom: 30px;
+      }
+
+      @include mq(mq768) {
+        @include span(5 of 10);
+        margin: {
+          bottom: 0;
+        }
+      }
+    }
+
+    .post__content {
+      color: $base-font-color;
+
+      .post__title {
+        @include states {
+          text-decoration: underline;
+        }
+      }
+
+      p {
+        &,
+        &:first-of-type {
+          font: {
+            size: font-size(16);
+          }
+          line-height: 1.4;
+        }
+      }
+
+      @include mq(mq768) {
+        @include span(last 5 of 10);
       }
     }
   }

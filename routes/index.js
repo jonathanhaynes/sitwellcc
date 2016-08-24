@@ -34,7 +34,7 @@ const fbAPI = function (req, res, next) {
   const fb = require('fb');
 
   fb.options({
-    appId: '984371968323534',
+    appId: process.env.FB_APP_ID,
     version: 'v2.5'
   });
 
