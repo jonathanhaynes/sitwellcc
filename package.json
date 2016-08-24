@@ -21,7 +21,8 @@
     "postcss": "^5.0.21",
     "postcss-cli": "^2.5.2",
     "powerhouse-js": "^1.0.1",
-    "request": "^2.74.0"
+    "request": "^2.74.0",
+    "twitter-fetcher": "^16.0.2"
   },
   "devDependencies": {
     "async": "*",

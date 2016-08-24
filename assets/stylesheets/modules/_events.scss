@@ -1,0 +1,52 @@
+/*------------------------------------*\
+  $EVENTS
+\*------------------------------------*/
+
+.post--event {
+  &:not(:last-of-type) {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .post__date {
+    display: block;
+    margin: {
+      bottom: 10px;
+    }
+    font: {
+      size: font-size(16);
+    }
+  }
+
+  .post__title {
+    margin: {
+      bottom: 10px;
+    }
+  }
+
+  .post__location {
+    margin: {
+      bottom: 20px;
+    }
+    font: {
+      size: font-size(16);
+    }
+  }
+
+  .post__summary {
+    &,
+    &:first-of-type {
+      font: {
+        size: font-size(16);
+      }
+      line-height: 1.4;
+    }
+
+    &:last-of-type {
+      margin: {
+        bottom: 0;
+      }
+    }
+  }
+}

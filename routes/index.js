@@ -56,7 +56,7 @@ const fbAPI = function (req, res, next) {
       filteredFbMedia.forEach(function(item, i){
         fbMedia.push({
           'title': item.name != null ? item.name : '',
-          'description': item.description != null ? linkify(item.description) : '',
+          'description': item.description != null ? linkify(item.description).replace(/\n/gi, '<br>') : '',
           'link': item.id != null ? 'https://www.facebook.com/events/' + item.id + '/' : '',
           'location': item.place != null ? item.place.name : '',
           'date': item.start_time != null ? moment(item.start_time).format("dddd Do MMMM YYYY") : '',
@@ -196,6 +196,38 @@ const ghostAPISearch = function(req) {
 
   req.ghostMedia = req.ghostMedia.filter(whatPage);
   return req.ghostSlug;
+};
+
+const twitterAPI = function(req, res, next) {
+  const twitterFetcher = require('twitter-fetcher');
+
+  console.log(twitterFetcher);
+
+  const twitterConfig = {
+    "profile": {"screenName": 'sitwellcc'},
+    "dataOnly": true,
+    "customCallback": twitterMediaPopulate
+  };
+
+  twitterFetcher.fetch(twitterConfig);
+
+  const twitterMedia = [];
+
+  const twitterMediaPopulate = function(item) {
+
+    console.log(item);
+
+    // twitterMedia.push({
+    //   'content': item[0].tweet,
+    //   'link': item[0].permalinkURL,
+    //   'image': item[0].image != null ? item[0].image : '',
+    //   'author': item[0].author,
+    //   'time': item[0].time
+    // });
+
+    // req.twitterMedia = twitterMedia;
+    // next();
+  }
 };
 
 router.get('/', fbAPI);

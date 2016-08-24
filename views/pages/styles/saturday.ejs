@@ -9,8 +9,8 @@
     <% if (facebook.length > 0) { %>
       <% for(var i = 0; i < facebook.length; i++) { %>
         <article class="post post--event">
+          <h3 class="post__title"><%= facebook[i].title %></h3>
           <time class="post__date"><strong><%= facebook[i].date %></strong></time>
-          <h3 class="post__title"><a href="<%= facebook[i].link %>"><%= facebook[i].title %></a><br /><small><%= facebook[i].location %></small></h3>
           <p class="post__summary"><%- facebook[i].description %></p>
         </article>
       <% } %>

@@ -7,8 +7,8 @@
   <div id="rides">
     <% if (facebook.length > 0) { %>
       <article class="post post--event">
+        <h3 class="post__title"><%= facebook[0].title %></h3>
         <time class="post__date"><strong><%= facebook[0].date %></strong></time>
-        <h3 class="post__title"><a href="<%= facebook[0].link %>"><%= facebook[0].title %></a><br /><small><%= facebook[0].location %></small></h3>
         <p class="post__summary"><%- facebook[0].description %></p>
       </article>
     <% } else { %>
