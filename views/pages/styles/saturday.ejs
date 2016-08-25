@@ -1,3 +1,30 @@
+<% if (facebook.length > 0) { %>
+  <script type="application/ld_json">
+
+    <% if (facebook.length > 1) { %>
+      [
+    <% } %>
+    <% for(var i = 0; i < facebook.length; i++) { %>
+        {
+          "@context": "http://schema.org/",
+          "@type": "Event",
+          "name": "<%= facebook[i].title %>",
+          "startDate": "<%= facebook[i].date %>",
+          "location": {
+            "place": "<%- facebook[i].location %>"
+          }
+        }
+      <% if ((facebook.length > 1) && (i < facebook.length - 1)) { %>
+        ,
+      <% } %>  
+    <% } %>
+    <% if (facebook.length > 1) { %>
+        ]
+    <% } %>
+
+  </script>
+<% } %>
+
 <section class="primary-content">
   <p>These rides are great as an introduction to club riding due to there short nature and relaxed pace.</p>
   <p>Saturday morning rides depart from the corner of Turner Lane and High Street, <a href="https://goo.gl/maps/ArXDRXnkWEr">Whiston</a> at 9:00am prompt.</p>

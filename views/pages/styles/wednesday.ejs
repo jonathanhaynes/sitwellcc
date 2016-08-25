@@ -1,3 +1,30 @@
+<% if (facebook.length > 0) { %>
+  <script type="application/ld_json">
+
+    <% if (facebook.length > 1) { %>
+      [
+    <% } %>
+    <% for(var i = 0; i < facebook.length; i++) { %>
+        {
+          "@context": "http://schema.org/",
+          "@type": "Event",
+          "name": "<%= facebook[i].title %>",
+          "startDate": "<%= facebook[i].date %>",
+          "location": {
+            "place": "<%- facebook[i].location %>"
+          }
+        }
+      <% if ((facebook.length > 1) && (i < facebook.length - 1)) { %>
+        ,
+      <% } %>  
+    <% } %>
+    <% if (facebook.length > 1) { %>
+        ]
+    <% } %>
+
+  </script>
+<% } %>
+
 <section class="primary-content">
   <p>Wednesday evening rides depart from the corner of Turner Lane and High Street, <a href="https://goo.gl/maps/ArXDRXnkWEr">Whiston</a> at 7:30pm prompt.</p>
   <p>Wednesday club rides are much shorter than a Sunday ride, we will be on the road for around 1 and a half hours riding at about 13-14mph.</p>

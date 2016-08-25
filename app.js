@@ -10,6 +10,8 @@ var express = require('express'),
 
 var app = express();
 
+app.use(require('express-status-monitor')());
+
 var routes = require('./routes/index');
 
 // set up connect-mincer middleware
@@ -17,13 +19,9 @@ var mincer = new connectMincer({
   // you can, optionally, pass in your own required Mincer class, so long as it is >= 0.5.0
   mincer: Mincer,
   root: __dirname,
-  production: env === 'production' || env === 'staging',
-  // uncomment to have view helpers generate urls of the form: //assets.example.com/assets/...
-  // assetHost: '//assets.example.com',
-  // you'll probably want to get this from a environment-specific config, e.g:
-  // assetHost: config.get('asset_host')
+  production: process.env === 'production',
   mountPoint: '/assets',
-  manifestFile: __dirname + '/public/assets/manifest.json',
+  manifestFile: __dirname + '/build/assets/manifest.json',
   paths: [
     'assets/downloads',
     'assets/images',
@@ -33,7 +31,7 @@ var mincer = new connectMincer({
     'vendor/javascripts'
   ],
   // precompiling can take a long time: when testing, you may want to turn it off
-  precompile: env !== 'test'
+  precompile: process.env !== 'test'
 });
 
 mincer.environment.registerHelper('version', function() {
@@ -45,18 +43,7 @@ mincer.environment.enable('autoprefixer')
 // the main connectMincer middleware, which sets up a Mincer Environment and provides view helpers
 app.use(mincer.assets());
 
-if (env === 'production' || env === 'staging') {
-  // in production, use the connect static() middleware to serve resources. In a real deployment
-  // you'd probably not want this, and would use nginx (or similar) instead
-  app.use(express.static(__dirname + '/public'));
-
-} else {
-  // in dev, just use the normal server which recompiles assets as needed
-  // app.use('/assets/stylesheets', postcssMiddleware({
-  //   plugins: [autoprefixer({ browsers: ['last 2 versions'] })]
-  // }));
-  app.use('/assets', mincer.createServer());
-}
+app.use('/assets', mincer.createServer());
 
 app.set('view engine', 'ejs');
 app.set('layout', 'layouts/application');
