@@ -230,6 +230,11 @@ const twitterAPI = function(req, res, next) {
   }
 };
 
+const members = {
+  number : '25',
+  date : '18/08/2016'
+};
+
 router.get('/', fbAPI);
 router.get('/', igAPI);
 router.get('/', ghostAPI);
@@ -244,7 +249,8 @@ router.get('/', function(req, res, next) {
     active: 'home',
     facebook: req.fbMedia,
     instagram: req.igMedia,
-    ghost: req.ghostMedia
+    ghost: req.ghostMedia,
+    members: members
   });
 });
 
@@ -262,7 +268,8 @@ router.get('/about', function(req, res, next) {
   res.render('pages/show', {
     active: 'about',
     facebook: req.fbMedia,
-    instagram: req.igMedia
+    instagram: req.igMedia,
+    members: members
   });
   
 });
@@ -289,7 +296,8 @@ router.get('/about', function(req, res, next) {
     };
 
     res.render('pages/show', {
-      active: 'about'
+      active: 'about',
+      members: members
     });
   });
 

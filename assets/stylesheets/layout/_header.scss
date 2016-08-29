@@ -5,11 +5,14 @@
 .page-header {
 
   background: #121212;
-  padding: 30px 0;
+  padding: 15px 0;
   color: #9B9B9B;
 
   .wrap {
     overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     //border: {
     //  width: 10px;
     //  style: solid;
@@ -24,13 +27,51 @@
 
 .header {
   &__logo {
-    width: 100%;
-    max-width: 175px;
-    display: block;
+    display: flex;
+    align-items: center;
     float: left;
 
     img {
       margin: 0;
+
+      &:first-of-type {
+        width: 50px;
+        float: left;
+        margin: {
+          right: 10px;
+        }
+
+        @include mq(mq768) {
+          width: 75px;
+          margin: {
+            right: 20px;
+          }
+        }
+      }
+
+      &:last-of-type {
+        width: 135px;
+        float: left;
+
+        @include mq(mq768) {
+          width: 175px;
+        }
+      }
+    }
+  }
+
+  &__strapline {
+    display: none;
+
+    @include mq(mq768) {
+      display: block;
+      width: calc(100% - 270px - 128px - 40px);
+      text-align: right;
+      height: 20px;
+      line-height: 16px;
+      font: {
+        weight: 600;
+      }
     }
   }
 
@@ -48,6 +89,13 @@
         display: inline-block;
         margin: {
           right: 20px;
+          bottom: 0;
+        }
+
+        &:last-of-type {
+          margin: {
+            right: 0;
+          }
         }
       }
 

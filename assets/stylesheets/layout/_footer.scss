@@ -91,25 +91,36 @@
       ul {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: center;
+        align-items: center;
 
         &:first-of-type {
           li {
             width: calc((100% - 20px) / 2);
-          }
+            margin: {
+              right: 20px;
+            }
 
-          a {
-            height: 100px;
+            &:nth-of-type(2n) {
+              margin: {
+                right: 0;
+              }
+            }
           }
         }
 
         &:last-of-type {
           li {
             width: calc((100% - 60px) / 4);
-          }
+            margin: {
+              right: 20px;
+            }
 
-          a {
-            height: 50px;
+            &:nth-of-type(4n) {
+              margin: {
+                right: 0;
+              }
+            }
           }
         }
       }
@@ -121,12 +132,26 @@
         }
       }
 
+      svg {
+        path,
+        polyline {
+          fill: #fff;
+        }
+      }
+
       a {
-        background: rgba(#fff, 0.1);
         width: 100%;
         display: block;
-        text-indent: -1000em;
-      }
+
+        @include states {
+          svg {
+            path,
+            polyline {
+              fill: auto;
+            }
+          }
+        }
+      }      
     }
 
     @include mq(mq768) {
@@ -143,13 +168,39 @@
         ul {
           &:first-of-type {
             li {
-              width: calc((100% - 60px) / 4);
+              &,
+              &:nth-of-type(2n) {
+                width: calc((100% - 60px) / 4);
+                margin: {
+                  right: 20px;
+                }
+              }
+
+              &:nth-of-type(4n) {
+                margin: {
+                  right: 0;
+                }
+              }
+
             }
           }
 
           &:last-of-type {
             li {
-              width: calc((100% - 140px) / 8);
+              &,
+              &:nth-of-type(4n) {
+                width: calc((100% - 140px) / 8);  
+                margin: {
+                  right: 20px;
+                }
+              }
+
+              &:nth-of-type(8n) {
+                margin: {
+                  right: 0;
+                }
+              }
+              
             }
           }
         }
