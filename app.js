@@ -10,8 +10,6 @@ var express = require('express'),
 
 var app = express();
 
-app.use(require('express-status-monitor')());
-
 var routes = require('./routes/index');
 
 // set up connect-mincer middleware
@@ -19,9 +17,9 @@ var mincer = new connectMincer({
   // you can, optionally, pass in your own required Mincer class, so long as it is >= 0.5.0
   mincer: Mincer,
   root: __dirname,
-  production: process.env === 'production',
+  production: env === 'production' || env === 'staging',
   mountPoint: '/assets',
-  manifestFile: __dirname + '/build/assets/manifest.json',
+  manifestFile: __dirname + '/public/assets/manifest.json',
   paths: [
     'assets/downloads',
     'assets/images',
@@ -31,19 +29,26 @@ var mincer = new connectMincer({
     'vendor/javascripts'
   ],
   // precompiling can take a long time: when testing, you may want to turn it off
-  precompile: process.env !== 'test'
+  precompile: env !== 'test'
 });
 
 mincer.environment.registerHelper('version', function() {
   return require(__dirname + 'package.json').version;
 });
 
-mincer.environment.enable('autoprefixer')
+mincer.environment.enable('autoprefixer');
 
 // the main connectMincer middleware, which sets up a Mincer Environment and provides view helpers
 app.use(mincer.assets());
 
-app.use('/assets', mincer.createServer());
+if (env === 'production' || env === 'staging') {
+  // in production, use the connect static() middleware to serve resources. In a real deployment
+  // you'd probably not want this, and would use nginx (or similar) instead
+  app.use(express.static(__dirname + '/public'));
+} else {
+  // in dev, just use the normal server which recompiles assets as needed
+  app.use('/assets', mincer.createServer());
+}
 
 app.set('view engine', 'ejs');
 app.set('layout', 'layouts/application');

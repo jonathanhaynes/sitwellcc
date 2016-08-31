@@ -2,6 +2,10 @@
   $PRINT
 \*------------------------------------*/
 
+// vars
+@import
+  'vars';
+
 $use-rems: false;
 
 @media print {
@@ -83,7 +87,7 @@ $use-rems: false;
 
   pre,
   blockquote {
-    border: 1px solid $dark-grey;
+    border: 1px solid rgba;
   }
 
   img {
