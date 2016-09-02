@@ -8,27 +8,20 @@ PowerHouse.ready(function () {
   /**
    * Initialise inlineSVG
    */
-  loadJS('/assets/libraries/inlineSVG.js', function () {
+  loadJS(inlineSVGSrc, function () {
     inlineSVG.init();
   });
 
   /**
-   * Initialise placeholders for browsers that don't support them.
-   */
-  if (!Modernizr.placeholder) {
-    loadJS('/assets/libraries/placeholders.js');
-  }
-
-  /**
    * Initialise LazySizes
    */
-  loadJS('/assets/libraries/lazysizes.js');
+  loadJS(lazysizesSrc);
 
   /**
    * Initialise Cookie Disclaimer
    */
   CookieDisclaimer.init({
-    template: '/assets/templates/cookie-banner.html'
+    template: cookieBannerSrc
   });
 
   /**

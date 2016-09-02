@@ -18,14 +18,14 @@
 
   <noscript><link rel="stylesheet" href="<%= asset_path('main.css') %>"></noscript>
 
-  <link rel="shortcut icon" href="<%= asset_path('favicon.png') %>">
-  <link rel="apple-touch-icon-precomposed" href="<%= asset_path('touch-icon.png') %>">
-  <meta name="theme-color" content="#ffce00">
-  <meta name="application-name" content="Site Name">
+  <link rel="shortcut icon" href="<%= asset_path('favicon.ico') %>">
+  <link rel="apple-touch-icon-precomposed" href="<%= asset_path('apple-touch-icon.png') %>">
+  <meta name="theme-color" content="#121212">
+  <meta name="application-name" content="Sitwell CC">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Site Name">
-  <meta name="msapplication-TileColor" content="#000">
-  <meta name="msapplication-TileImage" content="<%= asset_path('ms-tile.png') %>">
+  <meta name="apple-mobile-web-app-title" content="Sitwell CC">
+  <meta name="msapplication-TileColor" content="#121212">
+  <meta name="msapplication-TileImage" content="<%= asset_path('mstile-150x150.png') %>">
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,600|Open+Sans+Condensed:700" rel="stylesheet">
   <%- css('main.css') %>
@@ -39,6 +39,12 @@
 
     ga('create', 'UA-72232417-1', 'auto');
     ga('send', 'pageview');
+  </script>
+
+  <script>
+    var inlineSVGSrc = "<%= asset_path('libraries/inlineSVG.js') %>",
+        lazysizesSrc = "<%= asset_path('libraries/lazysizes.js') %>",
+        cookieBannerSrc = "<%= asset_path('templates/cookie-banner.html') %>";
   </script>
 
 </head>
