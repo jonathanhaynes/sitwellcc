@@ -1,6 +1,7 @@
 const express = require('express'),
     router = express.Router(),
-    PowerHouse = require('powerhouse-js');
+    PowerHouse = require('powerhouse-js'),
+    moment = require('moment');
 
 const igAPI = function(req, res, next) {
 
@@ -39,7 +40,6 @@ const fbAPI = function (req, res, next) {
   });
 
   const dateNow = Math.round(new Date().getTime()/1000.0),
-      moment = require('moment'),
       fbMedia = [];
 
   fb.api(
@@ -59,6 +59,7 @@ const fbAPI = function (req, res, next) {
           'description': item.description != null ? linkify(item.description).replace(/\n/gi, '<br>') : '',
           'link': item.id != null ? 'https://www.facebook.com/events/' + item.id + '/' : '',
           'location': item.place != null ? item.place.name : '',
+          'full_date': item.start_time != null ? item.start_time : '',
           'date': item.start_time != null ? {day: moment(item.start_time).format("dddd"), date: moment(item.start_time).format("Do"), month: moment(item.start_time).format("MMMM"), year: moment(item.start_time).format("YYYY")} : '',
           'time': item.start_time != null ? moment(item.start_time).format("h:mma") : ''
         });
@@ -118,6 +119,15 @@ const fbAPISort = function(req) {
     if (!req.fbMedia[i].date.day.startsWith(req.weekDay)) {
       req.fbMedia.splice(i, 1);
     }
+  }
+
+  return req.fbMedia;
+};
+
+const fbDateChange = function(req) {
+  for (var i = 0; i < req.fbMedia.length; i++) {
+    req.fbMedia[i].date.date = moment(req.fbMedia[i].full_date).format("D");
+    req.fbMedia[i].date.month = moment(req.fbMedia[i].full_date).format("MMM");
   }
 
   return req.fbMedia;
@@ -231,8 +241,8 @@ const twitterAPI = function(req, res, next) {
 };
 
 const members = {
-  number : '25',
-  date : '18/08/2016'
+  number : '27',
+  date : '01/09/2016'
 };
 
 router.get('/', fbAPI);
@@ -244,6 +254,8 @@ router.get('/', function(req, res, next) {
     title: 'Sitwell Cycling Club, Whiston, Rotherham - Founded 2016',
     description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!'
   };
+
+  fbDateChange(req);
 
   res.render('pages/index', {
     active: 'home',
@@ -264,6 +276,8 @@ router.get('/about', function(req, res, next) {
     name: 'Sitwell Cycling Club, Whiston, Rotherham', 
     content: 'about'
   };
+
+  fbDateChange(req);
 
   res.render('pages/show', {
     active: 'about',
@@ -323,6 +337,8 @@ router.get('/club-rides', function(req, res, next) {
     name: 'Club Rides',
     content: 'rides' 
   };
+
+  fbDateChange(req);
 
   res.render('pages/show', {
     active: 'club-rides',
@@ -403,6 +419,8 @@ router.get('/kit', function(req, res, next) {
     content: 'kit' 
   };
 
+  fbDateChange(req);
+
   res.render('pages/show', {
     active: 'kit',
     facebook: req.fbMedia,
@@ -419,6 +437,8 @@ router.get('/membership', function(req, res, next) {
     name: 'Join us!', 
     content: 'membership' 
   };
+
+  fbDateChange(req);
 
   res.render('pages/show', {
     active: 'membership',
@@ -437,6 +457,8 @@ router.get('/membership', function(req, res, next) {
       content: 'discounts' 
     };
 
+    fbDateChange(req);
+
     res.render('pages/show', {
       active: 'membership',
       facebook: req.fbMedia,
@@ -454,6 +476,8 @@ router.get('/news', function(req, res, next) {
     content: 'news' 
   };
 
+  fbDateChange(req);
+
   res.render('pages/show', {
     active: 'news',
     facebook: req.fbMedia,
@@ -470,6 +494,8 @@ router.get('/news', function(req, res, next) {
 
     req.ghostSlug = req.params.slug;
     ghostAPISearch(req);
+
+    fbDateChange(req);
 
     res.locals.meta = {
       title: `${req.ghostMedia[0].title} - Club News - Sitwell Cycling Club, Whiston, Rotherham`, 
@@ -494,6 +520,8 @@ router.get('/contact', function(req, res, next) {
     name: 'Contact Sitwell Cycling Club', 
     content: 'contact' 
   };
+
+  fbDateChange(req);
 
   res.render('pages/show', {
     active: 'contact',

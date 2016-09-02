@@ -90,10 +90,14 @@
   <section class="widget widget--facebook">
     <h3 class="widget__title">Our next club ride is</h3>
     <a href="<%= facebook[0].link %>">
-      <time><%= facebook[0].date %></time>
+      <time>
+        <span class="day"><%= facebook[0].date.day %></span>
+        <span class="date"><%= facebook[0].date.date %></span>
+        <span class="month"><%= facebook[0].date.month %></span>
+      </time>
       <h4><%= facebook[0].title %></h4>
+      <p>Leaving from the corner of Turner Lane and High Street at <%= facebook[0].time %>.</p>
     </a>
-    <p>Leaving from the corner of <a href="https://goo.gl/maps/ArXDRXnkWEr">Turner Lane and High Street</a> at <%= facebook[0].time %>.</p>
   </section>
   
   <section class="widget widget--instagram">

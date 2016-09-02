@@ -39,12 +39,14 @@
       <article class="summary__item summay__item--rides">
         <h3 class="summary__title">Our next club ride is</h3>
         <a href="<%= facebook[0].link %>">
+          <time>
+            <span class="day"><%= facebook[0].date.day %></span>
+            <span class="date"><%= facebook[0].date.date %></span>
+            <span class="month"><%= facebook[0].date.month %></span>
+          </time>
           <h4><%= facebook[0].title %></h4>
-          <ul>
-            <li><%= facebook[0].date %></li>
-          </ul>
+          <p>Leaving from the corner of Turner Lane and High Street at <%= facebook[0].time %>.</p>
         </a>
-        <p>Leaving from the corner of <a href="https://goo.gl/maps/ArXDRXnkWEr">Turner Lane and High Street</a> at <%= facebook[0].time %>.</p>
       </article>
       <article class="summary__item">
         <a href="/club-rides/wednesday-evening">

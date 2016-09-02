@@ -2,10 +2,14 @@
   <article>
     <h2>Our next club ride is</h2>
     <a href="<%= facebook[0].link %>">
-      <time><%= facebook[0].date %></time>
+      <time>
+        <span class="day"><%= facebook[0].date.day %></span>
+        <span class="date"><%= facebook[0].date.date %></span>
+        <span class="month"><%= facebook[0].date.month %></span>
+      </time>
       <h3><%= facebook[0].title %></h3>
+      <p>Leaving from the corner of Turner Lane and High Street at <%= facebook[0].time %>.</p>
     </a>
-    <p>Leaving from the corner of <a href="https://goo.gl/maps/ArXDRXnkWEr">Turner Lane and High Street</a> at <%= facebook[0].time %>.</p>
   </article>
 
   <% for(var i = 0; i < ghost.length; i++) { %>
