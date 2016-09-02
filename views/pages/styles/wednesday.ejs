@@ -9,7 +9,7 @@
           "@context": "http://schema.org/",
           "@type": "Event",
           "name": "<%= facebook[i].title %>",
-          "startDate": "<%= facebook[i].date %>",
+          "startDate": "<%= facebook[i].date.day %> <%= facebook[i].date.date %> <%= facebook[i].date.month %> <%= facebook[i].date.year %>",
           "location": {
             "place": "<%- facebook[i].location %>"
           }
@@ -35,7 +35,7 @@
     <% if (facebook.length > 0) { %>
       <article class="post post--event">
         <h3 class="post__title"><%= facebook[0].title %></h3>
-        <time class="post__date"><strong><%= facebook[0].date %></strong></time>
+        <time class="post__date"><strong><%= facebook[0].date.day %> <%= facebook[0].date.date %> <%= facebook[0].date.month %> at <%= facebook[0].time %></strong></time>
         <p class="post__summary"><%- facebook[0].description %></p>
       </article>
     <% } else { %>

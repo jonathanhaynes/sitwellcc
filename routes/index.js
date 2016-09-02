@@ -59,8 +59,8 @@ const fbAPI = function (req, res, next) {
           'description': item.description != null ? linkify(item.description).replace(/\n/gi, '<br>') : '',
           'link': item.id != null ? 'https://www.facebook.com/events/' + item.id + '/' : '',
           'location': item.place != null ? item.place.name : '',
-          'date': item.start_time != null ? moment(item.start_time).format("dddd Do MMMM YYYY") : '',
-          'time': item.start_time != null ? moment(item.start_time).format("h:mma") : '',
+          'date': item.start_time != null ? {day: moment(item.start_time).format("dddd"), date: moment(item.start_time).format("Do"), month: moment(item.start_time).format("MMMM"), year: moment(item.start_time).format("YYYY")} : '',
+          'time': item.start_time != null ? moment(item.start_time).format("h:mma") : ''
         });
       });
 
@@ -115,7 +115,7 @@ const fbAPI = function (req, res, next) {
 
 const fbAPISort = function(req) {
   for (var i = req.fbMedia.length -1; i >= 0; i--) {
-    if (!req.fbMedia[i].date.startsWith(req.weekDay)) {
+    if (!req.fbMedia[i].date.day.startsWith(req.weekDay)) {
       req.fbMedia.splice(i, 1);
     }
   }

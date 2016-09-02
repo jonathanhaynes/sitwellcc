@@ -4,7 +4,13 @@
 
 .widget {
   margin: {
-    bottom: 20px;
+    bottom: 40px;
+  }
+  padding: {
+    top: 20px;
+  }
+  border: {
+    top: 1px solid #eee;
   }
 
   &__title {
@@ -14,24 +20,36 @@
   }
 
   &--facebook {
-    background: $light-grey;
-    padding: 20px;
-    text-align: center;
-
     > a {
-      background: $yellow;
-      color: #fff;
-      display: block;
+      background: $light-grey;
       padding: 20px;
+      color: $dark-grey;
+      display: block;
+      margin: {
+        bottom: 10px;
+      }
     }
 
-    ul {
-      margin: 0;
+    time {
+      display: block;
+      margin: {
+        bottom: 5px;
+      }
+      font: {
+        size: font-size(14);
+      }
     }
 
-    li {
-      list-style: none;
-      text-align: left;
+    h4 {
+      margin: {
+        bottom: 0;
+      }
+    }
+
+    p {
+      font: {
+        size: font-size(14);
+      }
     }
   }
 
