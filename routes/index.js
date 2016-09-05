@@ -489,9 +489,6 @@ router.get('/news', function(req, res, next) {
   router.get('/news/:slug', igAPI);
   router.get('/news/:slug', ghostAPI);
   router.get('/news/:slug', function(req, res, next) {
-    req.weekDay = 'Sunday';
-    fbAPISort(req);
-
     req.ghostSlug = req.params.slug;
     ghostAPISearch(req);
 
