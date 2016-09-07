@@ -171,9 +171,9 @@ const ghostAPI = function(req, res, next) {
   const request = require('request');
 
   var options = {
-    url: `http://www.sitwell.cc/ghost/api/v0.1/posts/?limit=15&client_id=ghost-frontend&client_secret=${process.env.GHOST_CLIENT_SECRET}`,
+    url: `http://blog.sitwell.cc/ghost/api/v0.1/posts/?limit=50&client_id=ghost-frontend&client_secret=${process.env.GHOST_CLIENT_SECRET}`,
     headers: {
-      'Referer': 'http://localhost:5000'
+      'Referer': 'http://www.sitwell.cc'
     }
   };
   
