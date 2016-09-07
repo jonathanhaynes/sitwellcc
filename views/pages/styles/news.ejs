@@ -1,17 +1,4 @@
 <section class="primary-content layout--news">
-  <article>
-    <h2>Our next club ride is</h2>
-    <a href="<%= facebook[0].link %>">
-      <time>
-        <span class="day"><%= facebook[0].date.day %></span>
-        <span class="date"><%= facebook[0].date.date %></span>
-        <span class="month"><%= facebook[0].date.month %></span>
-      </time>
-      <h3><%= facebook[0].title %></h3>
-      <p>Leaving from the corner of Turner Lane and High Street at <%= facebook[0].time %>.</p>
-    </a>
-  </article>
-
   <% for(var i = 0; i < ghost.length; i++) { %>
     <% if (i <= 5) { %>
       <article class="post post--news">

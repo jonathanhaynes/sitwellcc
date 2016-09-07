@@ -26,6 +26,102 @@
       }
     }
 
+    &--rides {
+      padding: 20px;
+      background: mix($light-grey, #fff, 25%) !important;
+
+      > a {
+        background: $light-grey;
+        padding: 20px;
+        color: $dark-grey;
+        display: block;
+        margin: {
+          bottom: 10px;
+        }
+        overflow: hidden;
+
+        p {
+          font: {
+            size: font-size(13);
+          }
+          clear: right;
+          float: right;
+          width: calc(100% - 70px);
+          margin: {
+            bottom: 0;
+          }
+        }
+      }
+
+      time {
+        background: lighten($dark-grey, 25%);
+        color: #fff;
+        display: block;
+        margin: {
+          bottom: 0;
+        }
+        font: {
+          size: font-size(9);
+        }
+        width: 50px;
+        text-align: center;
+        float: left;
+
+        span {
+          display: block;
+          padding: 0 0 5px;
+          text-transform: uppercase;
+          font: {
+            family: $heading-font;
+          }
+
+          &:first-of-type {
+            padding: {
+              top: 5px;
+            }
+          }
+
+          &.date {
+            font: {
+              size: font-size(30);
+            }
+          }
+
+          &.month {
+            font: {
+              size: font-size(16);
+            }
+          }
+
+          &:last-of-type {
+            background: $dark-grey;
+            color: $light-grey;
+            padding: {
+              top: 5px;
+            }
+          }
+        }
+      }
+
+      h4 {
+        margin: {
+          bottom: 10px;
+        }
+        float: right;
+        width: calc(100% - 70px);
+      }
+
+      p {
+        a {
+          color: $link-color;
+
+          @include states {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
     picture {
       overflow: hidden;
       display: block;

@@ -18,13 +18,6 @@ PowerHouse.ready(function () {
   loadJS(lazysizesSrc);
 
   /**
-   * Initialise Cookie Disclaimer
-   */
-  CookieDisclaimer.init({
-    template: cookieBannerSrc
-  });
-
-  /**
    * Initialise Picturefill
    */
   picturefill();
