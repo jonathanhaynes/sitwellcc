@@ -14,8 +14,16 @@
   }
 
   &__title {
+    &,
+    a {
+      color: $base-font-color;
+    }
+
     font: {
       size: font-size(20);
+    }
+    margin: {
+      bottom: 20px;
     }
   }
 
@@ -122,5 +130,59 @@
         }
       }
     }
+  }
+
+  &--sponsors {
+    margin: {
+      bottom: 20px;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+
+        &:first-of-type {
+          li {
+            width: 100%;
+          }
+        }
+
+        &:last-of-type {
+          li {
+            width: calc((100% - 20px) / 2);
+            margin: {
+              right: 20px;
+            }
+
+            &:nth-of-type(2n) {
+              margin: {
+                right: 0;
+              }
+            }
+          }
+        }
+      }
+
+      li {
+        list-style: none;
+        margin: {
+          bottom: 20px;
+        }
+      }
+
+      svg {
+        path,
+        polyline {
+          //fill: #fff;
+        }
+      }
+
+      a {
+        width: 100%;
+        display: block;
+      }      
   }
 }

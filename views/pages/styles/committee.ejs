@@ -23,12 +23,12 @@
   </ul>
   <h2>The current Committee</h2>
   <article class="committee cf">
-    <img src="<%= asset_path('template/placeholder.png') %>" alt="Jonathan Haynes - Chair" class="img img--fifty img--left" />
+    <img src="<%= asset_path('template/jonny.jpg') %>" alt="Jonathan Haynes - Chair" class="img img--fifty img--left" />
     <h3>Chair (Membership Secretary)</h3>
     <h2>Jonathan Haynes</h2>
   </article>
   <article class="committee cf">
-    <img src="<%= asset_path('template/placeholder.png') %>" alt="Andrew Laidler - Vice Chair" class="img img--fifty img--left" />
+    <img src="<%= asset_path('template/andy.jpg') %>" alt="Andrew Laidler - Vice Chair" class="img img--fifty img--left" />
     <h3>Vice Chair (Kit Secretary)</h3>
     <h2>Andrew Laidler</h2>
   </article>
@@ -58,4 +58,9 @@
       <li><a href="/about/constitution">Rules &amp; Constitution</a></li>
     </ul>
   </nav>
+
+  <section class="widget widget--sponsors">
+    <h3 class="widget__title"><a href="/about/sponsors">Sponsors</a></h3>
+    <% include ../../shared/sponsors %>
+  </section>  
 </aside>

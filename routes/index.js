@@ -171,7 +171,7 @@ const ghostAPI = function(req, res, next) {
   const request = require('request');
 
   var options = {
-    url: `http://blog.sitwell.cc/ghost/api/v0.1/posts/?limit=50&client_id=ghost-frontend&client_secret=${process.env.GHOST_CLIENT_SECRET}`,
+    url: `http://blog.sitwell.cc/ghost/api/v0.1/posts/?limit=20&client_id=ghost-frontend&client_secret=${process.env.GHOST_CLIENT_SECRET}`,
     headers: {
       'Referer': 'http://www.sitwell.cc'
     }
@@ -181,6 +181,8 @@ const ghostAPI = function(req, res, next) {
 
   request(options, function (error, response, data) {    
     if (!error && response.statusCode == 200) {
+
+      // meta: { pagination: { page: 1, limit: 20, pages: 2, total: 35, next: 2, prev: null } } }
 
       JSON.parse(data).posts.forEach(function(item, i) {
         ghostMedia.push({
@@ -192,6 +194,11 @@ const ghostAPI = function(req, res, next) {
       });
       
       req.ghostMedia = ghostMedia;
+      req.ghostMeta = {
+        'page': JSON.parse(data).meta.pagination.page,
+        'next': JSON.parse(data).meta.pagination.next,
+        'prev': JSON.parse(data).meta.pagination.prev
+      };
       next();
     }
   });
@@ -223,7 +230,7 @@ const twitterAPI = function(req, res, next) {
 
   const twitterMedia = [];
 
-  const twitterMediaPopulate = function(item) {
+  function twitterMediaPopulate(item) {
 
     console.log(item);
 
@@ -236,8 +243,8 @@ const twitterAPI = function(req, res, next) {
     // });
 
     // req.twitterMedia = twitterMedia;
-    // next();
-  }
+    next();
+  };
 };
 
 const members = {
@@ -319,7 +326,7 @@ router.get('/about', function(req, res, next) {
     res.locals.meta = {
       title: 'Rules & Constitution - Sitwell Cycling Club, Whiston, Rotherham',
       description: 'Rotherham\'s newest cycle club serving Whiston, Rotherham and the surrounding areas. We\'re a not-for-profit, volunteer run organisation registered to British Cycling.', 
-      name: 'Sitwell Cycling Club (Sitwell CC) Rules and Constitution 2016',
+      name: 'Sitwell Cycling Club (Sitwell CC) Rules and Constitution',
       content: 'constitution' 
     };
 
@@ -481,7 +488,8 @@ router.get('/news', function(req, res, next) {
   res.render('pages/show', {
     active: 'news',
     facebook: req.fbMedia,
-    ghost: req.ghostMedia
+    ghostMedia: req.ghostMedia,
+    ghostMeta: req.ghostMeta
   });
 });
 
