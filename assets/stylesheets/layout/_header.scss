@@ -23,6 +23,33 @@
     //border-left: 0;
     //border-right: 0;
   }
+
+  .btn--menu {
+    outline: none; 
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    background: {
+      color: lighten(#121212, 2.5%) !important;
+    }
+    position: relative;
+
+    svg {
+      fill: #fff;
+      width: 26px;
+      height: 25px;
+      @include centrally-align;
+      position: absolute;
+    }
+
+    .no-js & {
+      display: none;
+    }
+
+    @include mq(mq768) {
+      display: none;
+    }
+  }
 }
 
 .header {
@@ -115,6 +142,18 @@
 .primary-nav {
   background: #121212;
   border-top: 1px solid lighten(#121212, 5%);
+  
+  .js & {
+    display: none;
+
+    &.is-visible {
+      display: block;
+    }
+
+    @include mq(mq768) {
+      display: block;
+    }
+  }
 
   .wrap {
     max-width: 100%;

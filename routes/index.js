@@ -211,7 +211,7 @@ const ghostAPISearch = function(req) {
     }
   }
 
-  req.ghostMedia = req.ghostMedia.filter(whatPage);
+  req.ghostMediaPost = req.ghostMedia.filter(whatPage);
   return req.ghostSlug;
 };
 
@@ -503,9 +503,9 @@ router.get('/news', function(req, res, next) {
     fbDateChange(req);
 
     res.locals.meta = {
-      title: `${req.ghostMedia[0].title} - Club News - Sitwell Cycling Club, Whiston, Rotherham`, 
+      title: `${req.ghostMediaPost[0].title} - Club News - Sitwell Cycling Club, Whiston, Rotherham`, 
       description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!', 
-      name: req.ghostMedia[0].title, 
+      name: req.ghostMediaPost[0].title, 
       content: 'article' 
     };
 
@@ -513,7 +513,8 @@ router.get('/news', function(req, res, next) {
       active: 'news',
       facebook: req.fbMedia,
       instagram: req.igMedia,
-      ghost: req.ghostMedia
+      ghostMediaPost: req.ghostMediaPost,
+      ghostMedia: req.ghostMedia
     });
   });
 

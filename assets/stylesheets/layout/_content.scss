@@ -107,17 +107,25 @@
           bottom: 1px solid darken(#121212, 5%);
         }
       }
+
+      &:first-of-type {
+        a {
+          padding: 25px 20px;
+          text: {
+            transform: uppercase;
+          }
+        }
+      }
     }
 
     a {
-      padding: 15px 5%;
+      padding: 15px 20px;
       display: block;
       font: {
         family: $heading-font;
         size: font-size(17);
       }
       text: {
-        transform: uppercase;
         decoration: none;
       }
       color: #fff;

@@ -22,4 +22,10 @@ PowerHouse.ready(function () {
    */
   picturefill();
 
+  document.querySelector('.btn--menu').addEventListener('click', toggleMenu);
+
 });
+
+const toggleMenu = function() {
+  document.querySelector('.primary-nav').classList.toggle('is-visible');
+};
