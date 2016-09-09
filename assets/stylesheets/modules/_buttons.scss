@@ -46,6 +46,28 @@ $btn-text-color--hover: #fff;
   }
 }
 
+.btn--link {
+  display: inline;
+  padding: 0;
+  font: {
+    family: $body-font;
+    weight: 400;
+  }
+  text: {
+    align: left;
+    transform: none;
+  }
+  color: $green;
+  background: none;
+
+  @include states {
+    text-decoration: underline;
+    color: $green;
+    background: none;
+  }
+
+}
+
 
 /**
  * Full-width buttons

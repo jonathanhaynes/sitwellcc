@@ -24,6 +24,12 @@
     a {
       color: $base-font-color;
     }
+
+    a {
+      @include states {
+        text-decoration: underline;
+      }
+    }
   }
 
   &--media-window {
@@ -69,6 +75,12 @@
             size: font-size(20);
           }
           line-height: 1.2;
+        }
+
+        a {
+          @include states {
+            text-decoration: underline;
+          }
         }
       }
     }

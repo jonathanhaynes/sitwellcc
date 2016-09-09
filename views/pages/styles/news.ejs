@@ -1,15 +1,14 @@
-<%= ghostMeta.page %>
-
 <section class="primary-content layout--news">
   <% for(var i = 0; i < ghostMedia.length; i++) { %>
-    <% if (i <= 5) { %>
-      <article class="post post--news">
-        <a href="<%= ghostMedia[i].link %>">
-          <img src="<%= ghostMedia[i].image %>" class="post__img">
+    <article class="post post--news">
+      <a href="<%= ghostMedia[i].link %>">
+        <figure style="background-image: url(<%= ghostMedia[i].image %>);" class="post__img"></figure>
+        <div class="post__content">
           <h2 class="post__title"><%= ghostMedia[i].title %></h2>
           <%- ghostMedia[i].description.split('\n')[0] %>
-        </a>
-      </article>
-    <% } %>
+          <button class="btn btn--link">Read more</button>
+        </div>
+      </a>
+    </article>
   <% } %>
 </section>
