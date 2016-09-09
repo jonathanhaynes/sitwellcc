@@ -188,7 +188,7 @@ const ghostAPI = function(req, res, next) {
         ghostMedia.push({
           'title': item.title,
           'link': `/news/${item.slug}`,
-          'image': 'http://www.sitwell.cc/' + item.image,
+          'image': 'http://blog.sitwell.cc' + item.image,
           'description': item.html
         });
       });
