@@ -40,6 +40,7 @@
       height: 25px;
       @include centrally-align;
       position: absolute;
+      display: block;
     }
 
     .no-js & {
