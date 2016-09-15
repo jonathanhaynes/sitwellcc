@@ -134,37 +134,27 @@ const fbDateChange = function(req) {
 };
 
 const whatDay = function(req) {
+  return moment(new Date().getDay()).format('dddd');
+};
+
+const whatSundayTime = function(req) {
+  const theMonthToday = moment(new Date()).format("MMMM");
   
-  const theDayToday = new Date().getDay();
+  var theTime;
 
-  var dayofTheWeek;    
-
-  switch(theDayToday) {
-    case 0:
-      dayofTheWeek = "Sunday";
-      break;
-    case 1:
-      dayofTheWeek = "Monday";
-      break;
-    case 2:
-      dayofTheWeek = "Tuesday";
-      break;
-    case 3:
-      dayofTheWeek = "Wednesday";
-      break;
-    case 4:
-      dayofTheWeek = "Thursday";
-      break;
-    case 5:
-      dayofTheWeek = "Friday";
-      break;
-    case 6:
-      dayofTheWeek = "Saturday";
+  switch (theMonthToday) {
+    case 'November':
+    case 'December':
+    case 'January':
+    case 'February':
+    case 'March':
+      theTime = '9.00';
       break;
     default:
-      dayofTheWeek = "Invalid day";
+      theTime = '8.00';
   }
-  return dayofTheWeek;
+
+  return theTime;
 };
 
 const ghostAPI = function(req, res, next) {
@@ -248,8 +238,8 @@ const twitterAPI = function(req, res, next) {
 };
 
 const members = {
-  number : '27',
-  date : '01/09/2016'
+  number : '28',
+  date : '14/09/2016'
 };
 
 router.get('/', fbAPI);
@@ -411,7 +401,8 @@ router.get('/club-rides', function(req, res, next) {
     res.render('pages/show', {
       active: 'club-rides',
       facebook: req.fbMedia,
-      instagram: req.igMedia
+      instagram: req.igMedia,
+      time: whatSundayTime(req)
     });
 
   });
@@ -504,7 +495,7 @@ router.get('/news', function(req, res, next) {
 
     res.locals.meta = {
       title: `${req.ghostMediaPost[0].title} - Club News - Sitwell Cycling Club, Whiston, Rotherham`, 
-      description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!', 
+      description: req.ghostMediaPost[0].description.split('\n')[0], 
       name: req.ghostMediaPost[0].title, 
       content: 'article' 
     };

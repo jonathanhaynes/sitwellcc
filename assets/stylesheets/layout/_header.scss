@@ -38,9 +38,8 @@
       fill: #fff;
       width: 26px;
       height: 25px;
-      @include centrally-align;
-      position: absolute;
-      display: block;
+      position: relative;
+      top: 2px;
     }
 
     .no-js & {
