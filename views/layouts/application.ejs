@@ -30,6 +30,7 @@
   <%- css('main.css') %>
   <%- js('modernizer.js') %>
 
+  <meta name="google-site-verification" content="lqoX8mT5-X7E0JNWw_0dIxg0GvG-tXPCV2B5Dv2HNZY" />
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -44,6 +45,34 @@
     var inlineSVGSrc = "<%= asset_path('libraries/inlineSVG.js') %>",
         lazysizesSrc = "<%= asset_path('libraries/lazysizes.js') %>",
         cookieBannerSrc = "<%= asset_path('templates/cookie-banner.html') %>";
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "SportsTeam",
+      "name": "Sitwell Cycling Club",
+      "sport": "Cycling",
+      "email": "team@sitwell.cc",
+      "url": "http://www.sitwell.cc",
+      "founder": "Jonny Haynes",
+      "logo": "http://www.sitwell.cc<%= asset_path('template/sitwellcc-crest.svg') %>",
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "South Yorkshire"
+      },
+      "memberOf": [{
+        "@type": "SportsOrganization",
+        "name": "British Cycling"
+      }],
+      "sameAs" : [
+        "https://www.twitter.com/sitwellcc",
+        "https://www.facebook.com/sitwellcc",
+        "https://www.instagram.com/sitwellcc",
+        "https://www.strava.com/clubs/sitwellcc"
+      ]
+
+    }
   </script>
 
 </head>

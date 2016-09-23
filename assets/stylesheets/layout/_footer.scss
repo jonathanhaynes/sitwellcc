@@ -77,7 +77,7 @@
   }
 
   .footer {
-    border-bottom: 1px solid #1F1F1F;
+    border-bottom: 1px solid lighten(#121212, 7.5%);
     padding: {
       bottom: 40px;
     }
@@ -153,7 +153,7 @@
       }
 
       &--sponsors {
-        border-bottom: 1px solid #1F1F1F !important;
+        border-bottom: 1px solid lighten(#121212, 7.5%) !important;
         padding-bottom: 20px !important;
 
         ul {
@@ -198,7 +198,7 @@
       }
 
       &--about {
-        border-bottom: 1px solid #1F1F1F !important;
+        border-bottom: 1px solid lighten(#121212, 7.5%) !important;
         padding: {
           bottom: 40px !important;
         }
@@ -218,7 +218,7 @@
 
       &--links {
         width: 100%;
-        border-top: 1px solid #1F1F1F;
+        border-top: 1px solid lighten(#121212, 7.5%);
         padding: {
           top: 40px;
         }
@@ -300,14 +300,18 @@
         }
       }
 
+      a {
+        @include states {
+          svg {
+            fill: $brand;
+          }
+        }
+      }
+
       svg {
         width: 20px;
         height: 20px;
         fill: #fff;
-
-        @include states {
-          fill: $brand;
-        }
       }
     }
   }

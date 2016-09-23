@@ -1,17 +1,24 @@
 <% if (facebook.length > 0) { %>
-  <script type="application/ld_json">
-
+  <script type="application/ld+json">
     <% if (facebook.length > 1) { %>
       [
     <% } %>
     <% for(var i = 0; i < facebook.length; i++) { %>
         {
           "@context": "http://schema.org/",
-          "@type": "Event",
+          "@type": "SportsEvent",
           "name": "<%= facebook[i].title %>",
-          "startDate": "<%= facebook[i].date.day %> <%= facebook[i].date.date %> <%= facebook[i].date.month %> <%= facebook[i].date.year %>",
+          "Description": "<%- facebook[i].description.split('<br>')[0] %>",
+          "startDate": "<%= facebook[i].full_date %>",
           "location": {
-            "place": "<%- facebook[i].location %>"
+            "@type": "Place",
+            "name": "Whiston",
+            "address": "Corner of Turner Lane and High Street",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "53.405298",
+              "longitude": "-1.327339"
+            }
           }
         }
       <% if ((facebook.length > 1) && (i < facebook.length - 1)) { %>

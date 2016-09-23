@@ -179,7 +179,9 @@ const ghostAPI = function(req, res, next) {
           'title': item.title,
           'link': `/news/${item.slug}`,
           'image': 'http://blog.sitwell.cc' + item.image,
-          'description': item.html
+          'description': item.html,
+          'published_at': item.published_at,
+          'updated_at': item.updated_at
         });
       });
       

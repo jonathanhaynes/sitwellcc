@@ -126,14 +126,18 @@
         }
       }
 
+      a {
+        @include states {
+          svg {
+            fill: $brand;
+          }
+        }
+      }
+
       svg {
         width: 20px;
         height: 20px;
         fill: #fff;
-
-        @include states {
-          fill: $brand;
-        }
       }
     }
   }
@@ -141,7 +145,7 @@
 
 .primary-nav {
   background: #121212;
-  border-top: 1px solid lighten(#121212, 5%);
+  border-top: 1px solid lighten(#121212, 7.5%);
   
   .js & {
     display: none;
@@ -177,13 +181,13 @@
     @include mq($until: mq768) {
       &:not(:first-of-type) {
         border: {
-          top: 1px solid lighten(#121212, 5%);
+          top: 1px solid lighten(#121212, 7.5%);
         }
       }
 
       &:not(:last-of-type) {
         border: {
-          bottom: 1px solid darken(#121212, 5%);
+          bottom: 1px solid darken(#121212, 7.5%);
         }
       }
     }
@@ -193,13 +197,13 @@
 
       &:not(:first-of-type) {
         border: {
-          left: 1px solid lighten(#121212, 5%);
+          left: 1px solid lighten(#121212, 7.5%);
         }
       }
 
       &:not(:last-of-type) {
         border: {
-          right: 1px solid darken(#121212, 5%);
+          right: 1px solid darken(#121212, 7.5%);
         }
       }
     }
@@ -220,13 +224,13 @@
 
     &.active {
       background: {
-        color: darken(#121212, 5%);
+        color: darken(#121212, 7.5%);
       }
     }
 
     @include states {
       background: {
-        color: darken(#121212, 2.5%);
+        color: darken(#121212, 5%);
       }
     }
 

@@ -1,3 +1,42 @@
+<% if (ghostMedia.length > 0) { %>
+  <script type="application/ld+json">
+
+    <% if (ghostMedia.length > 1) { %>
+      [
+    <% } %>
+    <% for(var i = 0; i < ghostMedia.length; i++) { %>
+        {
+          "@context": "http://schema.org",
+          "@type": "NewsArticle",
+          "headline": "<%= ghostMedia[i].title %>",
+          "datePublished": "<%= ghostMedia[i].published_at %>",
+          "dateModified": "<%= ghostMedia[i].updated_at %>",
+          "publisher": {
+            "@type": "SportsTeam",
+            "name": "Sitwell Cycling Club",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "http://www.sitwell.cc<%= asset_path('template/sitwellcc-crest.svg') %>"
+            }
+          },
+          "image": {
+            "@type": "ImageObject",
+            "url": "<%= ghostMedia[i].image %>"
+          },
+          "description": "<%- ghostMedia[i].description.split('\n')[0].replace(/(<p>|<\/p>)/g, '') %>",
+          "author": "Sitwell Cycling Club"
+        }
+      <% if ((ghostMedia.length > 1) && (i < ghostMedia.length - 1)) { %>
+        ,
+      <% } %>  
+    <% } %>
+    <% if (ghostMedia.length > 1) { %>
+        ]
+    <% } %>
+
+  </script>
+<% } %>
+
 <section class="primary-content layout--news">
   <% for(var i = 0; i < ghostMedia.length; i++) { %>
     <article class="post post--news">
