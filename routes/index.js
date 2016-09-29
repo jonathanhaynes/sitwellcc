@@ -240,8 +240,8 @@ const twitterAPI = function(req, res, next) {
 };
 
 const members = {
-  number : '28',
-  date : '14/09/2016'
+  number : '30',
+  date : '28/09/2016'
 };
 
 router.get('/', fbAPI);
