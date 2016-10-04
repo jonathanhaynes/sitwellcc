@@ -55,6 +55,15 @@ app.set('layout', 'layouts/application');
 
 app.use(expressLayouts);
 
+app.use(function(req, res, next) {
+  if (req.url.substr(-1) == '/' && req.url.length > 1) {
+    var query = req.url.slice(req.path.length);
+    res.redirect(301, req.path.slice(0, -1) + query);
+  } else {
+    next();
+  }
+});
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler

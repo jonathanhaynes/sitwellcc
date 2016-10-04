@@ -1,16 +1,14 @@
 {
   "name": "sitwellcc",
-  "version": "0.3.0",
+  "version": "1.0.1",
   "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
   "dependencies": {
     "autoprefixer": "^6.3.6",
     "connect-mincer": "1.1.0 ",
     "dotenv": "^2.0.0",
     "ejs": "*",
     "express": "~4.13.3",
+    "express-ejs-layouts": "^2.1.0",
     "fb": "^1.0.2",
     "ghost": "0.8.0",
     "ghost-client": "^2.0.0",
@@ -22,8 +20,7 @@
     "postcss-cli": "^2.5.2",
     "powerhouse-js": "^1.0.1",
     "request": "^2.74.0",
-    "twitter-fetcher": "^16.0.2",
-    "express-ejs-layouts": "^2.1.0"
+    "twitter-fetcher": "^16.0.2"
   },
   "devDependencies": {
     "async": "^2.0.1",
