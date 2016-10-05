@@ -66,78 +66,52 @@ app.use(function(req, res, next) {
 
 app.use('/', routes);
 
-// error handlers
-app.get('*', function(req, res, next) {
-  var err = new Error();
-  err.status = 404;
-  next(err);
+app.use(function(req, res, next){
+  res.status(404);
+
+  // respond with html page
+  if (req.accepts('html')) {
+    res.locals.meta = {
+      title: '404 Page Not Found - Sitwell Cycling Club', 
+      description: 'Rotherham\'s newest cycle club serving Whiston, Rotherham and the surrounding areas. We\'re a not-for-profit, volunteer run organisation registered to British Cycling.', 
+      name: '404 Page Not Found'
+    };
+
+    res.render('pages/404', {
+      active: '',
+      url: req.url
+    });
+    return;
+  }
+
+  // respond with json
+  if (req.accepts('json')) {
+    res.send({ error: 'Not found' });
+    return;
+  }
+
+  // default to plain-text. send()
+  res.type('txt').send('Not found');
 });
 
-if (app.get('env') === 'development') {
+app.use(function(err, req, res, next) {
+  res.status(500);
 
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
+  res.locals.meta = {
+    title: '500 Error - Sitwell Cycling Club', 
+    description: 'Rotherham\'s newest cycle club serving Whiston, Rotherham and the surrounding areas. We\'re a not-for-profit, volunteer run organisation registered to British Cycling.', 
+    name: '500 Error'
+  };
 
-    res.locals.meta = {
-      title: '404 Page Not Found - Sitwell Cycling Club', 
-      description: 'Rotherham\'s newest cycle club serving Whiston, Rotherham and the surrounding areas. We\'re a not-for-profit, volunteer run organisation registered to British Cycling.', 
-      name: '404 Page Not Found'
-    };
+  const error = app.get('env') === 'development' ? err : '';
 
-    res.render('pages/error', {
-        active: '',
-        error: err
-    });
+  res.render('pages/500', {
+    active: '',
+    error: error,
+    url: req.url
   });
-
-} else {
-
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-
-    res.locals.meta = {
-      title: '404 Page Not Found - Sitwell Cycling Club', 
-      description: 'Rotherham\'s newest cycle club serving Whiston, Rotherham and the surrounding areas. We\'re a not-for-profit, volunteer run organisation registered to British Cycling.', 
-      name: '404 Page Not Found'
-    };
-
-    res.render('pages/error', {
-        active: '',
-        error: {}
-    });
-  });
-}
-
-// app.use(function(err, req, res, next) {
-//   console.log(err.stack);
-//   res.status(500).send({"Error" : err.stack});
-// });
-
-// // development error handler
-// // will print stacktrace
-// if (app.get('env') === 'development') {
-//   app.use(function(err, req, res, next) {
-//     if (err.status === 404) {
-//       res.status(404);
-//       res.render('pages/error', { title: '404 Page Not Found - Sitwell Cycling Club', name: '404 Page Not Found', message: err.message, error: err });
-//     } else {
-//       res.status(500);
-//       res.render('pages/error', { title: '500 Error - Sitwell Cycling Club', name: '500 Error', message: err.message, error: err });
-//     }
-//   });
-// }
-
-// // production error handler
-// // no stacktraces leaked to user
-// app.use(function(err, req, res, next) {
-//   if (err.status === 404) {
-//       res.status(404);
-//       res.render('pages/error', { title: '404 Page Not Found - Sitwell Cycling Club', name: '404 Page Not Found', message: err.message, error: err });
-//     } else {
-//       res.status(500);
-//       res.render('pages/error', { title: '500 Error - Sitwell Cycling Club', name: '500 Error', message: err.message, error: err });
-//     }
-// });
+  return;
+});
 
 app.set('port', process.env.PORT || 5000);
 
