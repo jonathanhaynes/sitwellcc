@@ -102,9 +102,9 @@
 
         &:last-of-type {
           li {
-            width: calc((100% - 20px) / 2);
+            width: calc((100% - 40px) / 2);
             margin: {
-              right: 20px;
+              right: 40px;
             }
 
             &:nth-of-type(2n) {
@@ -138,7 +138,7 @@
           svg {
             path,
             polyline {
-              fill: auto;
+              fill: $yellow;
             }
           }
         }
@@ -156,18 +156,23 @@
         border-bottom: 1px solid lighten(#121212, 7.5%) !important;
         padding-bottom: 20px !important;
 
+        .footer-title {
+          text-align: center;
+        }
+
         ul {
           &:first-of-type {
             li {
               &,
               &:nth-of-type(2n) {
-                width: calc((100% - 60px) / 4);
+                width: calc((100% - 120px) / 4);
                 margin: {
-                  right: 20px;
+                  right: 40px;
                 }
               }
 
-              &:nth-of-type(4n) {
+              &:nth-of-type(4n),
+              &:last-of-type {
                 margin: {
                   right: 0;
                 }
@@ -180,13 +185,14 @@
             li {
               &,
               &:nth-of-type(4n) {
-                width: calc((100% - 140px) / 8);  
+                width: calc((100% - 280px) / 8);  
                 margin: {
-                  right: 20px;
+                  right: 40px;
                 }
               }
 
-              &:nth-of-type(8n) {
+              &:nth-of-type(8n),
+              &:last-of-type {
                 margin: {
                   right: 0;
                 }
