@@ -20,6 +20,7 @@
     "postcss-cli": "^2.5.2",
     "powerhouse-js": "^1.0.1",
     "request": "^2.74.0",
+    "sitemap": "^1.8.2",
     "twitter-fetcher": "^16.0.2"
   },
   "devDependencies": {
