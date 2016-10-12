@@ -1,7 +1,8 @@
 const express = require('express'),
     router = express.Router(),
     PowerHouse = require('powerhouse-js'),
-    moment = require('moment');
+    moment = require('moment'),
+    sm = require('sitemap');
 
 const igAPI = function(req, res, next) {
 
@@ -551,6 +552,21 @@ router.get('/thankyou', function(req, res, next) {
 
   res.render('pages/show', {
     active: ''
+  });
+});
+
+const sitemap = sm.createSitemap ({
+  hostname: 'http://www.sitwell.cc',
+  cacheTime: 600000
+});
+
+router.get('/sitemap.xml', function(req, res, next) {
+  sitemap.toXML( function (err, xml) {
+      if (err) {
+        return res.status(500).end();
+      }
+      res.header('Content-Type', 'application/xml');
+      res.send( xml );
   });
 });
 

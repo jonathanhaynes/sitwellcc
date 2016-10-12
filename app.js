@@ -6,8 +6,7 @@ var express = require('express'),
     Mincer = require('mincer'),
     expressLayouts = require('express-ejs-layouts'),
     autoprefixer = require('autoprefixer'),
-    dotenv = require('dotenv').config(),
-    sm = require('sitemap');
+    dotenv = require('dotenv').config();
 
 var app = express();
 
@@ -112,21 +111,6 @@ app.use(function(err, req, res, next) {
     url: req.url
   });
   return;
-});
-
-const sitemap = sm.createSitemap ({
-  hostname: 'http://www.sitwell.cc',
-  cacheTime: 600000
-});
-
-app.get('/sitemap.xml', function(req, res) {
-  sitemap.toXML( function (err, xml) {
-      if (err) {
-        return res.status(500).end();
-      }
-      res.header('Content-Type', 'application/xml');
-      res.send( xml );
-  });
 });
 
 app.set('port', process.env.PORT || 5000);
