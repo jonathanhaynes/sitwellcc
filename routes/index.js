@@ -557,7 +557,10 @@ router.get('/thankyou', function(req, res, next) {
 
 const sitemap = sm.createSitemap ({
   hostname: 'http://www.sitwell.cc',
-  cacheTime: 600000
+  cacheTime: 600000,
+  urls: [
+    { url: '/page-1/',  changefreq: 'daily', priority: 0.3 }
+  ]
 });
 
 router.get('/sitemap.xml', function(req, res, next) {
