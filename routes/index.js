@@ -4,7 +4,7 @@ const express = require('express'),
     moment = require('moment'),
     sm = require('sitemap');
 
-const igAPI = function(req, res, next) {
+const igAPI = (req, res, next) => {
 
   const ig = require('instagram-node').instagram();
 
@@ -31,7 +31,7 @@ const igAPI = function(req, res, next) {
   });
 };
 
-const fbAPI = function (req, res, next) {
+const fbAPI = (req, res, next) => {
 
   const fb = require('fb');
 
@@ -54,7 +54,7 @@ const fbAPI = function (req, res, next) {
 
       var filteredFbMedia = response.events.data.sort(dynamicSort('start_time'));
 
-      filteredFbMedia.forEach(function(item, i){
+      filteredFbMedia.forEach((item, i) => {
         fbMedia.push({
           'title': item.name != null ? item.name : '',
           'description': item.description != null ? linkify(item.description).replace(/\n/gi, '<br>') : '',
@@ -71,7 +71,7 @@ const fbAPI = function (req, res, next) {
     }
   );
 
-  function dynamicSort(property) {
+  var dynamicSort = (property) => {
     var sortOrder = 1;
 
     if(property[0] === "-") {
@@ -79,13 +79,13 @@ const fbAPI = function (req, res, next) {
       property = property.substr(1);
     }
 
-    return function (a,b) {
+    return (a,b) => {
       var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
         return result * sortOrder;
     };
-  }
+  };
 
-  function nth(d) {
+  var nth = (d) => {
     if(d>3 && d<21) return 'th'; // thanks kennebec
     switch (d % 10) {
       case 1:  return "st";
@@ -93,12 +93,12 @@ const fbAPI = function (req, res, next) {
       case 3:  return "rd";
       default: return "th";
     }
-  }
+  };
 
-  function linkify(text) {
+  var linkify = (text) => {
     if( !text ) return text;
 
-    text = text.replace(/((https?\:\/\/|ftp\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi,function(url){
+    text = text.replace(/((https?\:\/\/|ftp\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi, (url) => {
       nice = url;
       if( url.match('^https?:\/\/') )
       {
@@ -112,10 +112,10 @@ const fbAPI = function (req, res, next) {
     });
 
     return text;
-  }
+  };
 };
 
-const fbAPISort = function(req) {
+const fbAPISort = (req) => {
   for (var i = req.fbMedia.length -1; i >= 0; i--) {
     if (!req.fbMedia[i].date.day.startsWith(req.weekDay)) {
       req.fbMedia.splice(i, 1);
@@ -125,7 +125,7 @@ const fbAPISort = function(req) {
   return req.fbMedia;
 };
 
-const fbDateChange = function(req) {
+const fbDateChange = (req) => {
   for (var i = 0; i < req.fbMedia.length; i++) {
     req.fbMedia[i].date.date = moment(req.fbMedia[i].full_date).format("D");
     req.fbMedia[i].date.month = moment(req.fbMedia[i].full_date).format("MMM");
@@ -134,11 +134,11 @@ const fbDateChange = function(req) {
   return req.fbMedia;
 };
 
-const whatDay = function(req) {
+const whatDay = (req) => {
   return moment(new Date().getDay()).format('dddd');
 };
 
-const whatSundayTime = function(req) {
+const whatSundayTime = (req) => {
   const theMonthToday = moment(new Date()).format("MMMM");
   
   var theTime;
@@ -158,11 +158,13 @@ const whatSundayTime = function(req) {
   return theTime;
 };
 
-const ghostAPI = function(req, res, next) {
+const ghostAPI = (req, res, next) => {
   const request = require('request');
 
-  var options = {
-    url: `http://blog.sitwell.cc/ghost/api/v0.1/posts/?limit=10&client_id=ghost-frontend&client_secret=${process.env.GHOST_CLIENT_SECRET}`,
+  const ghostLimit = res.ghostLimit != null ? res.ghostLimit : 10;
+
+  const options = {
+    url: `http://blog.sitwell.cc/ghost/api/v0.1/posts/?limit=${ghostLimit}&client_id=ghost-frontend&client_secret=${process.env.GHOST_CLIENT_SECRET}`,
     headers: {
       'Referer': 'http://www.sitwell.cc'
     }
@@ -170,12 +172,12 @@ const ghostAPI = function(req, res, next) {
   
   const ghostMedia = [];
 
-  request(options, function (error, response, data) {    
+  request(options, (error, response, data) => {    
     if (!error && response.statusCode == 200) {
 
       // meta: { pagination: { page: 1, limit: 20, pages: 2, total: 35, next: 2, prev: null } } }
 
-      JSON.parse(data).posts.forEach(function(item, i) {
+      JSON.parse(data).posts.forEach((item, i) => {
         ghostMedia.push({
           'title': item.title,
           'link': `/news/${item.slug}`,
@@ -197,18 +199,18 @@ const ghostAPI = function(req, res, next) {
   });
 };
 
-const ghostAPISearch = function(req) {
-  function whatPage(object) {
+const ghostAPISearch = (req) => {
+  const whatPage = (object) => {
     if (('title' in object) && (object.link === `/news/${req.ghostSlug}`)) {
       return object;
     }
-  }
+  };
 
   req.ghostMediaPost = req.ghostMedia.filter(whatPage);
   return req.ghostSlug;
 };
 
-const twitterAPI = function(req, res, next) {
+const twitterAPI = (req, res, next) => {
   const twitterFetcher = require('twitter-fetcher');
 
   console.log(twitterFetcher);
@@ -223,7 +225,7 @@ const twitterAPI = function(req, res, next) {
 
   const twitterMedia = [];
 
-  function twitterMediaPopulate(item) {
+  const twitterMediaPopulate = (item) => {
 
     console.log(item);
 
@@ -240,6 +242,43 @@ const twitterAPI = function(req, res, next) {
   };
 };
 
+const sitemapAPI = (req, res, next) => {
+  const routerStack = router.stack;
+
+  const sitemapData = [],
+        filteredSitemapData = [];
+
+  routerStack.forEach((item, i) => {
+    sitemapData.push(item.route.path);
+  });
+
+  const ghostMedia = req.ghostMedia;
+
+  ghostMedia.forEach((item, i) => {
+    sitemapData.push(item.link);
+  });
+
+  removeArrayDuplicates(sitemapData).forEach((item, i) => {
+    filteredSitemapData.push({
+      url: item,
+      changefreq: 'monthly'
+    });
+  });
+
+  const sitemap = sm.createSitemap ({
+    hostname: 'http://www.sitwell.cc',
+    cacheTime: 600000,
+    urls: filteredSitemapData
+  });
+
+  req.sitemap = sitemap;
+  next();
+};
+
+const removeArrayDuplicates = (a) => {
+   return Array.from(new Set(a));
+};
+
 const members = {
   number : '30',
   date : '28/09/2016'
@@ -248,7 +287,7 @@ const members = {
 router.get('/', fbAPI);
 router.get('/', igAPI);
 router.get('/', ghostAPI);
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
 
   res.locals.meta = {
     title: 'Sitwell Cycling Club, Whiston, Rotherham - Founded 2016',
@@ -268,7 +307,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/about', fbAPI);
 router.get('/about', igAPI);
-router.get('/about', function(req, res, next) { 
+router.get('/about', (req, res, next) => { 
 
   res.locals.meta = {
     title: 'About - Sitwell Cycling Club, Whiston, Rotherham', 
@@ -288,7 +327,7 @@ router.get('/about', function(req, res, next) {
   
 });
 
-  router.get('/about/committee', function(req, res, next) {
+  router.get('/about/committee', (req, res, next) => {
     res.locals.meta = {
       title: 'The Committee - Sitwell Cycling Club, Whiston, Rotherham',
       description: 'The Sitwell Cycling Club Committee is a group of volunteer members who run the club. They generally meet on the first Monday of every month to discuss matters relating to the club and it\'s membership.',
@@ -301,7 +340,7 @@ router.get('/about', function(req, res, next) {
     });
   });
 
-  router.get('/about/sponsors', function(req, res, next) {
+  router.get('/about/sponsors', (req, res, next) => {
     res.locals.meta = {
       title: 'Sponsorship FAQs - Sitwell Cycling Club, Whiston, Rotherham',
       description: 'Rotherham\'s newest cycle club serving Whiston, Rotherham and the surrounding areas. We\'re a not-for-profit, volunteer run organisation registered to British Cycling.', 
@@ -315,7 +354,7 @@ router.get('/about', function(req, res, next) {
     });
   });
 
-  router.get('/about/constitution', function(req, res, next) {
+  router.get('/about/constitution', (req, res, next) => {
     res.locals.meta = {
       title: 'Rules & Constitution - Sitwell Cycling Club, Whiston, Rotherham',
       description: 'Rotherham\'s newest cycle club serving Whiston, Rotherham and the surrounding areas. We\'re a not-for-profit, volunteer run organisation registered to British Cycling.', 
@@ -330,7 +369,7 @@ router.get('/about', function(req, res, next) {
 
 router.get('/club-rides', fbAPI);
 router.get('/club-rides', igAPI);
-router.get('/club-rides', function(req, res, next) {
+router.get('/club-rides', (req, res, next) => {
   res.locals.meta = {
     title: 'Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
     description: 'Club rides take place every Wednesday evening, occasional Saturday mornings and every Sunday morning. The meeting place is on the corner of Turner Lane and High Street, Whiston.',
@@ -349,7 +388,7 @@ router.get('/club-rides', function(req, res, next) {
 
   router.get('/club-rides/wednesday-evening', fbAPI);
   router.get('/club-rides/wednesday-evening', igAPI);
-  router.get('/club-rides/wednesday-evening', function(req, res, next) {
+  router.get('/club-rides/wednesday-evening', (req, res, next) => {
     res.locals.meta = {
       title: 'Wednesday Evening - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
       description: 'Wednesday evening rides depart from the corner of Turner Lane and High Street, Whiston at 7:30pm prompt.',
@@ -369,7 +408,7 @@ router.get('/club-rides', function(req, res, next) {
 
   router.get('/club-rides/saturday-morning', fbAPI);
   router.get('/club-rides/saturday-morning', igAPI);
-  router.get('/club-rides/saturday-morning', function(req, res, next) {
+  router.get('/club-rides/saturday-morning', (req, res, next) => {
     res.locals.meta = {
       title: 'Saturday Morning - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
       description: 'Saturday morning rides depart from the corner of Turner Lane and High Street, Whiston at 9:30am prompt.',
@@ -389,7 +428,7 @@ router.get('/club-rides', function(req, res, next) {
 
   router.get('/club-rides/sunday-morning', fbAPI);
   router.get('/club-rides/sunday-morning', igAPI);
-  router.get('/club-rides/sunday-morning', function(req, res, next) {
+  router.get('/club-rides/sunday-morning', (req, res, next) => {
 
     res.locals.meta = {
       title: 'Sunday Morning - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
@@ -412,7 +451,7 @@ router.get('/club-rides', function(req, res, next) {
 
 router.get('/kit', fbAPI);
 router.get('/kit', igAPI);
-router.get('/kit', function(req, res, next) {
+router.get('/kit', (req, res, next) => {
   res.locals.meta = {
     title: 'Kit - Sitwell Cycling Club, Whiston, Rotherham', 
     description: 'Akuma Cycling is our manufacturer of choice. They have a great range of items including casual wear and are very competitive on price. Kit is only available to club members - join us today!', 
@@ -431,7 +470,7 @@ router.get('/kit', function(req, res, next) {
 
 router.get('/membership', fbAPI);
 router.get('/membership', igAPI);
-router.get('/membership', function(req, res, next) {
+router.get('/membership', (req, res, next) => {
   res.locals.meta = {
     title: 'Membership - Sitwell Cycling Club, Whiston, Rotherham', 
     description: 'We are always on the look out for new members. If you want to be part of Rotherham\'s newest club please get in touch for details.', 
@@ -450,7 +489,7 @@ router.get('/membership', function(req, res, next) {
 
   router.get('/membership/discounts', fbAPI);
   router.get('/membership/discounts', igAPI);
-  router.get('/membership/discounts', function(req, res, next) {
+  router.get('/membership/discounts', (req, res, next) => {
     res.locals.meta = {
       title: 'Discounts - Sitwell Cycling Club, Whiston, Rotherham', 
       description: 'One of the benefits of joining Sitwell Cycling Club is the great discounts we have to offer.', 
@@ -469,7 +508,7 @@ router.get('/membership', function(req, res, next) {
 
 router.get('/news', fbAPI);
 router.get('/news', ghostAPI);
-router.get('/news', function(req, res, next) {
+router.get('/news', (req, res, next) => {
   res.locals.meta = {
     title: 'Club News - Sitwell Cycling Club, Whiston, Rotherham', 
     description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!', 
@@ -490,7 +529,7 @@ router.get('/news', function(req, res, next) {
   router.get('/news/:slug', fbAPI);
   router.get('/news/:slug', igAPI);
   router.get('/news/:slug', ghostAPI);
-  router.get('/news/:slug', function(req, res, next) {
+  router.get('/news/:slug', (req, res, next) => {
     req.ghostSlug = req.params.slug;
     ghostAPISearch(req);
 
@@ -513,7 +552,7 @@ router.get('/news', function(req, res, next) {
   });
 
 router.get('/contact', fbAPI);
-router.get('/contact', function(req, res, next) {
+router.get('/contact', (req, res, next) => {
   res.locals.meta = {
     title: 'Contact - Sitwell Cycling Club, Whiston, Rotherham', 
     description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!', 
@@ -529,7 +568,7 @@ router.get('/contact', function(req, res, next) {
   });
 });
 
-router.get('/cookies', function(req, res, next) {
+router.get('/cookies', (req, res, next) => {
   res.locals.meta = {
     title: 'Cookie Policy - Sitwell Cycling Club, Whiston, Rotherham', 
     description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!', 
@@ -542,7 +581,7 @@ router.get('/cookies', function(req, res, next) {
   });
 });
 
-router.get('/thankyou', function(req, res, next) {
+router.get('/thankyou', (req, res, next) => {
   res.locals.meta = {
     title: 'Thankyou - Sitwell Cycling Club, Whiston, Rotherham', 
     description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!', 
@@ -555,16 +594,14 @@ router.get('/thankyou', function(req, res, next) {
   });
 });
 
-const sitemap = sm.createSitemap ({
-  hostname: 'http://www.sitwell.cc',
-  cacheTime: 600000,
-  urls: [
-    { url: '/page-1/',  changefreq: 'daily', priority: 0.3 }
-  ]
+router.get('/sitemap.xml', (req, res, next) => {
+  res.ghostLimit = 'all';
+  next();
 });
-
-router.get('/sitemap.xml', function(req, res, next) {
-  sitemap.toXML( function (err, xml) {
+router.get('/sitemap.xml', ghostAPI);
+router.get('/sitemap.xml', sitemapAPI);
+router.get('/sitemap.xml', (req, res, next) => {
+  req.sitemap.toXML( function (err, xml) {
       if (err) {
         return res.status(500).end();
       }

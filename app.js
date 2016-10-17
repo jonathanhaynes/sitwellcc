@@ -1,6 +1,6 @@
 'use strict';
 
-var express = require('express'),
+const express = require('express'),
     env = process.env.NODE_ENV,
     connectMincer = require('connect-mincer'),
     Mincer = require('mincer'),
@@ -8,9 +8,9 @@ var express = require('express'),
     autoprefixer = require('autoprefixer'),
     dotenv = require('dotenv').config();
 
-var app = express();
+const app = express();
 
-var routes = require('./routes/index');
+const routes = require('./routes/index');
 
 // set up connect-mincer middleware
 var mincer = new connectMincer({
