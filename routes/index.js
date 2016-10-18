@@ -533,6 +533,10 @@ router.get('/news', (req, res, next) => {
 
   router.get('/news/:slug', fbAPI);
   router.get('/news/:slug', igAPI);
+  router.get('/news/:slug', (req, res, next) => {
+    res.ghostLimit = 'all';
+    next();
+  });
   router.get('/news/:slug', ghostAPI);
   router.get('/news/:slug', (req, res, next) => {
     req.ghostSlug = req.params.slug;
