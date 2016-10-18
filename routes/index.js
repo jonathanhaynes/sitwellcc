@@ -258,6 +258,11 @@ const sitemapAPI = (req, res, next) => {
     sitemapData.push(item.link);
   });
 
+  for(var i = sitemapData.length-1; i--;){
+    if (sitemapData[i] === '/sitemap.xml') sitemapData.splice(i, 1);
+    if (sitemapData[i] === '/news/:slug') sitemapData.splice(i, 1);
+  }
+
   removeArrayDuplicates(sitemapData).forEach((item, i) => {
     filteredSitemapData.push({
       url: item,
