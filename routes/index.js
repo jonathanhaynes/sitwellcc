@@ -371,7 +371,7 @@ router.get('/club-rides', function(req, res, next) {
   router.get('/club-rides/saturday-morning', function(req, res, next) {
     res.locals.meta = {
       title: 'Saturday Morning - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
-      description: 'Saturday morning rides depart from the corner of Turner Lane and High Street, Whiston at 9:30am prompt.',
+      description: 'Saturday morning rides depart from the corner of Turner Lane and High Street, Whiston at 9:00am prompt.',
       name: 'Club Rides - Saturday Morning',
       content: 'saturday' 
     };
