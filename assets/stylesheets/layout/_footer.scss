@@ -125,7 +125,9 @@
 
       svg {
         path,
-        polyline {
+        polyline,
+        polygon,
+        rect {
           fill: #fff;
         }
       }
@@ -137,7 +139,9 @@
         @include states {
           svg {
             path,
-            polyline {
+            polyline,
+            polygon,
+            rect {
               fill: $yellow;
             }
           }
@@ -184,6 +188,7 @@
           &:last-of-type {
             li {
               &,
+              &:nth-of-type(2n),
               &:nth-of-type(4n) {
                 width: calc((100% - 280px) / 8);  
                 margin: {
