@@ -345,7 +345,24 @@ router.get('/about', (req, res, next) => {
     });
   });
 
-  router.get('/about/sponsors', (req, res, next) => {
+  router.get('/about/road-captains', fbAPI);
+  router.get('/about/road-captains', igAPI);
+  router.get('/about/road-captains', function(req, res, next) {
+    res.locals.meta = {
+      title: 'Road Captains - Sitwell Cycling Club, Whiston, Rotherham',
+      description: 'Road Captain is the term used to describe our ride leaders. They\'re experienced, fit members of the club with basic first-aid training who are on-hand to provide guidance and assist members and guests when out on the road.',
+      name: 'Road Captains',
+      content: 'captains' 
+    };
+
+    res.render('pages/show', {
+      active: 'about',
+      facebook: req.fbMedia,
+      instagram: req.igMedia,
+    });
+  });
+
+  router.get('/about/sponsors', function(req, res, next) {
     res.locals.meta = {
       title: 'Sponsorship FAQs - Sitwell Cycling Club, Whiston, Rotherham',
       description: 'Rotherham\'s newest cycle club serving Whiston, Rotherham and the surrounding areas. We\'re a not-for-profit, volunteer run organisation registered to British Cycling.', 
