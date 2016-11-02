@@ -355,6 +355,8 @@ router.get('/about', (req, res, next) => {
       content: 'captains' 
     };
 
+    fbDateChange(req);
+
     res.render('pages/show', {
       active: 'about',
       facebook: req.fbMedia,
