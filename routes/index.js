@@ -456,7 +456,7 @@ router.get('/club-rides', (req, res, next) => {
 
     res.locals.meta = {
       title: 'Sunday Morning - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
-      description: 'Sunday morning rides depart from the corner of Turner Lane and High Street, Whiston at 8.00am prompt.',
+      description: `Sunday morning rides depart from the corner of Turner Lane and High Street, Whiston at ${whatSundayTime(req)}am prompt.`,
       name: 'Club Rides - Sunday Morning',
       content: 'sunday'
     };
@@ -469,6 +469,27 @@ router.get('/club-rides', (req, res, next) => {
       facebook: req.fbMedia,
       instagram: req.igMedia,
       time: whatSundayTime(req)
+    });
+
+  });
+
+  router.get('/club-rides/sportives-races', fbAPI);
+  router.get('/club-rides/sportives-races', igAPI);
+  router.get('/club-rides/sportives-races', (req, res, next) => {
+
+    res.locals.meta = {
+      title: 'Sportives & Races - Sitwell Cycling Club, Whiston, Rotherham',
+      description: 'Our members love a good sportive or race as much as the next person.',
+      name: 'Sportives & Races',
+      content: 'sportives-races'
+    };
+
+    fbDateChange(req);
+
+    res.render('pages/show', {
+      active: 'club-rides',
+      facebook: req.fbMedia,
+      instagram: req.igMedia,
     });
 
   });
