@@ -55,9 +55,12 @@ const fbAPI = (req, res, next) => {
       var filteredFbMedia = response.events.data.sort(dynamicSort('start_time'));
 
       filteredFbMedia.forEach((item, i) => {
+
+        const filteredDisclaimer = removeDisclaimer(item.description);
+
         fbMedia.push({
           'title': item.name != null ? item.name : '',
-          'description': item.description != null ? linkify(item.description).replace(/\n/gi, '<br>') : '',
+          'description': filteredDisclaimer != null ? linkify(filteredDisclaimer).replace(/\n/gi, '<br>') : '',
           'link': item.id != null ? 'https://www.facebook.com/events/' + item.id + '/' : '',
           'location': item.place != null ? item.place.name : '',
           'full_date': item.start_time != null ? item.start_time : '',
@@ -70,6 +73,13 @@ const fbAPI = (req, res, next) => {
       next();
     }
   );
+
+  var removeDisclaimer = (theDescription) => {
+    const filtered = theDescription.indexOf('----');
+    theDescription = theDescription.substring(0, filtered != -1 ? filtered : theDescription.length);
+
+    return theDescription;
+  };
 
   var dynamicSort = (property) => {
     var sortOrder = 1;
