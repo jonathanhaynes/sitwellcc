@@ -208,6 +208,12 @@
 }
 
 .committee {
+  &:not(:last-of-type) {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+  }
+
   img {
     @include mq(mq600) {
       width: calc((100% - 40px) / 3);
