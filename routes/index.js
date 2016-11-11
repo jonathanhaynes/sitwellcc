@@ -390,9 +390,9 @@ router.get('/about', (req, res, next) => {
 
   router.get('/about/constitution', (req, res, next) => {
     res.locals.meta = {
-      title: 'Rules & Constitution - Sitwell Cycling Club, Whiston, Rotherham',
+      title: 'Constitution - Sitwell Cycling Club, Whiston, Rotherham',
       description: 'Rotherham\'s newest cycle club serving Whiston, Rotherham and the surrounding areas. We\'re a not-for-profit, volunteer run organisation registered to British Cycling.', 
-      name: 'Sitwell Cycling Club (Sitwell CC) Rules and Constitution',
+      name: 'Sitwell Cycling Club (Sitwell CC, SCC) Constitution',
       content: 'constitution' 
     };
 
@@ -445,7 +445,7 @@ router.get('/club-rides', (req, res, next) => {
   router.get('/club-rides/saturday-morning', (req, res, next) => {
     res.locals.meta = {
       title: 'Saturday Morning - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
-      description: 'Saturday morning rides depart from the corner of Turner Lane and High Street, Whiston at 9:30am prompt.',
+      description: 'Saturday morning rides depart from the corner of Turner Lane and High Street, Whiston at 9:00am prompt.',
       name: 'Club Rides - Saturday Morning',
       content: 'saturday' 
     };
