@@ -21,6 +21,20 @@ dd {
   margin-bottom: 5px;
 }
 
+ol {
+  &.alpha {
+    > li {
+      list-style: upper-alpha;
+
+      > ol {
+        > li {
+          list-style: upper-roman;          
+        }
+      }
+    }
+  }
+}
+
 ul {
   nav & {
     margin: 0;
