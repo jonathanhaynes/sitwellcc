@@ -295,8 +295,8 @@ const removeArrayDuplicates = (a) => {
 };
 
 const members = {
-  number : '47',
-  date : '30/04/2017'
+  number : '53',
+  date : '03/07/2017'
 };
 
 router.get('/', fbAPI);
@@ -406,7 +406,7 @@ router.get('/club-rides', igAPI);
 router.get('/club-rides', (req, res, next) => {
   res.locals.meta = {
     title: 'Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
-    description: 'Club rides take place every Wednesday evening, occasional Saturday mornings and every Sunday morning. The meeting place is on the corner of Turner Lane and High Street, Whiston.',
+    description: 'Club rides take place every Wing it Wednesday™, occasional Saturday mornings and every Sunday Café Run. The meeting place is on the corner of Turner Lane and High Street, Whiston.',
     name: 'Club Rides',
     content: 'rides' 
   };
@@ -420,13 +420,13 @@ router.get('/club-rides', (req, res, next) => {
   });
 });
 
-  router.get('/club-rides/wednesday-evening', fbAPI);
-  router.get('/club-rides/wednesday-evening', igAPI);
-  router.get('/club-rides/wednesday-evening', (req, res, next) => {
+  router.get('/club-rides/wing-it-wednesday', fbAPI);
+  router.get('/club-rides/wing-it-wednesday', igAPI);
+  router.get('/club-rides/wing-it-wednesday', (req, res, next) => {
     res.locals.meta = {
-      title: 'Wednesday Evening - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
-      description: 'Wednesday evening rides depart from the corner of Turner Lane and High Street, Whiston at 7:30pm prompt.',
-      name: 'Club Rides - Wednesday Evening',
+      title: 'Wing it Wednesday™ - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
+      description: 'Wing it Wednesday™ rides depart from the corner of Turner Lane and High Street, Whiston at 7:30pm prompt.',
+      name: 'Club Rides - Wing it Wednesday™',
       content: 'wednesday' 
     };
 
@@ -440,13 +440,13 @@ router.get('/club-rides', (req, res, next) => {
     });
   });
 
-  router.get('/club-rides/saturday-morning', fbAPI);
-  router.get('/club-rides/saturday-morning', igAPI);
-  router.get('/club-rides/saturday-morning', (req, res, next) => {
+  router.get('/club-rides/saturday-saunter', fbAPI);
+  router.get('/club-rides/saturday-saunter', igAPI);
+  router.get('/club-rides/saturday-saunter', (req, res, next) => {
     res.locals.meta = {
-      title: 'Saturday Morning - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
-      description: 'Saturday morning rides depart from the corner of Turner Lane and High Street, Whiston at 9:00am prompt.',
-      name: 'Club Rides - Saturday Morning',
+      title: 'Saturday Saunter - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
+      description: 'Saturday Saunter rides depart from the corner of Turner Lane and High Street, Whiston at 9:00am prompt.',
+      name: 'Club Rides - Saturday Saunter',
       content: 'saturday' 
     };
 
@@ -460,14 +460,14 @@ router.get('/club-rides', (req, res, next) => {
     });
   });
 
-  router.get('/club-rides/sunday-morning', fbAPI);
-  router.get('/club-rides/sunday-morning', igAPI);
-  router.get('/club-rides/sunday-morning', (req, res, next) => {
+  router.get('/club-rides/sunday-cafe-run', fbAPI);
+  router.get('/club-rides/sunday-cafe-run', igAPI);
+  router.get('/club-rides/sunday-cafe-run', (req, res, next) => {
 
     res.locals.meta = {
-      title: 'Sunday Morning - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
-      description: `Sunday morning rides depart from the corner of Turner Lane and High Street, Whiston at ${whatSundayTime(req)}am prompt.`,
-      name: 'Club Rides - Sunday Morning',
+      title: 'Sunday Café Run - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
+      description: `Sunday Café Run rides depart from the corner of Turner Lane and High Street, Whiston at ${whatSundayTime(req)}am prompt.`,
+      name: 'Club Rides - Sunday Café Run',
       content: 'sunday'
     };
 

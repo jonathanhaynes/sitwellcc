@@ -30,9 +30,9 @@ The Node.js application for the Sitwell Cycling Club website
     - Sponsors
     - Rules & Constitution
   - Club Rides
-    - Wednesday Evening
-    - Saturday Morning
-    - Sunday Morning
+    - Wing it Wednesday™
+    - Saturday Saunter
+    - Sunday Café Run
   - Kit
   - Membership
     - Discounts
