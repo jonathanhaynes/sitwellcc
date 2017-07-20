@@ -406,7 +406,7 @@ router.get('/club-rides', igAPI);
 router.get('/club-rides', (req, res, next) => {
   res.locals.meta = {
     title: 'Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
-    description: 'Club rides take place every Wing it Wednesday™, occasional Saturday mornings and every Sunday Café Run. The meeting place is on the corner of Turner Lane and High Street, Whiston.',
+    description: 'Club rides take place every Wednesday evening, occasional Saturday mornings and every Sunday morning. The meeting place is on the corner of Turner Lane and High Street, Whiston.',
     name: 'Club Rides',
     content: 'rides' 
   };
