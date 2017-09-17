@@ -98,14 +98,18 @@
 
   <section class="widget widget--facebook">
     <h3 class="widget__title">Our next club ride is</h3>
-    <a href="<%= facebook[0].link %>">
+    <a href="/club-rides">
       <time>
         <span class="day"><%= facebook[0].date.day %></span>
         <span class="date"><%= facebook[0].date.date %></span>
         <span class="month"><%= facebook[0].date.month %></span>
       </time>
       <h4><%= facebook[0].title %></h4>
-      <p>Leaving from the corner of Turner Lane and High Street at <%= facebook[0].time %>.</p>
+      <p>Leaving from
+        <% if (facebook[0].date.day === 'Tuesday') { %>the corner of Europa Court and Europa Link, Tinsley
+          <% } else { %>the corner of Turner Lane and High Street, Whiston
+            <% } %> at
+              <%= facebook[0].time %>.</p>
     </a>
   </section>
 

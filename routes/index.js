@@ -37,7 +37,7 @@ const fbAPI = (req, res, next) => {
 
   fb.options({
     appId: process.env.FB_APP_ID,
-    version: 'v2.5'
+    version: 'v2.10'
   });
 
   const dateNow = Math.round(new Date().getTime()/1000.0),
@@ -48,7 +48,8 @@ const fbAPI = (req, res, next) => {
     'GET',
     {
       "access_token" : process.env.FB_ACCESS_TOKEN,
-      "fields" : "events.since(" + dateNow + ")"
+      "fields" : "events.since(" + dateNow + ")",
+      "limit" : "100"
     },
     function(response) {
 
@@ -159,10 +160,16 @@ const whatSundayTime = (req) => {
     case 'January':
     case 'February':
     case 'March':
-      theTime = '9.00';
+      theTime = {
+        'a' : '9.00',
+        'b' : '9.30'
+      };
       break;
     default:
-      theTime = '8.00';
+      theTime = {
+        'a': '8.00',
+        'b': '8.30'
+      };
   }
 
   return theTime;
@@ -309,8 +316,6 @@ router.get('/', (req, res, next) => {
     description: 'Founded January 2016. Rotherham\'s newest cycling club serving Whiston and the surrounding areas. Come and join us for a club ride on Wednesday evenings, Saturday mornings or Sunday mornings. Show us your stripes!'
   };
 
-  fbDateChange(req);
-
   res.render('pages/index', {
     active: 'home',
     facebook: req.fbMedia,
@@ -412,6 +417,26 @@ router.get('/club-rides', (req, res, next) => {
   };
 
   fbDateChange(req);
+
+  res.render('pages/show', {
+    active: 'club-rides',
+    facebook: req.fbMedia,
+    instagram: req.igMedia
+  });
+});
+
+router.get('/club-rides/chaingang-tuesday', fbAPI);
+router.get('/club-rides/chaingang-tuesday', igAPI);
+router.get('/club-rides/chaingang-tuesday', (req, res, next) => {
+  res.locals.meta = {
+    title: 'Chaingang Tuesday - Club Rides - Sitwell Cycling Club, Whiston, Rotherham',
+    description: 'Chaingang Tuesday rides depart from the corner of Europa Court and Europa Link, Tinsley at 7:30pm prompt.',
+    name: 'Club Rides - Chaingang Tuesday',
+    content: 'tuesday'
+  };
+
+  req.weekDay = 'Tuesday';
+  fbAPISort(req);
 
   res.render('pages/show', {
     active: 'club-rides',

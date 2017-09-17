@@ -1,5 +1,5 @@
 <section class="primary-content">
-  <p>Club rides take place every <a href="/club-rides/wing-it-wednesday">Wednesday evening</a>, occasional <a href="/club-rides/saturday-saunter">Saturday mornings</a> and every <a href="/club-rides/sunday-cafe-run">Sunday morning</a>.</p>
+  <p>Club rides take place every <a href="/club-rides/wing-it-wednesday">Wednesday evening</a>, and on <a href="/club-rides/saturday-saunter">Saturday</a> and <a href="/club-rides/sunday-cafe-run">Sunday</a> mornings.</p>
 
   <p>The meeting place is on the corner of Turner Lane and High Street, <a href="https://goo.gl/maps/ArXDRXnkWEr">Whiston</a>. This is easily located, just around the corner from the Sitwell Arms pub.</p>
 
@@ -9,13 +9,24 @@
 
   <section class="summary">
     <article class="summary__item">
+      <a href="/club-rides/chaingang-tuesday">
+        <picture>
+          <img src="<%= asset_path('template/wednesday.jpg') %>" alt="">
+        </picture>
+        <div>
+          <h3 class="summary__title">Chaingang Tuesday</h3>
+          <p class="summary__desc">60 minutes race craft lapping Europa Link, Tinsley</p>
+        </div>
+      </a>
+    </article>
+    <article class="summary__item">
       <a href="/club-rides/wing-it-wednesday">
         <picture>
           <img src="<%= asset_path('template/wednesday.jpg') %>" alt="">
         </picture>
         <div>
           <h3 class="summary__title">Wing it Wednesday™</h3>
-          <p class="summary__desc">Around 90 minutes <br> Road (13-14mph) <br> MTB (9-10mph)</p>
+          <p class="summary__desc">Around 90 minutes <br> Road (14-15mph) <br> MTB (9-10mph)</p>
         </div>
       </a>
     </article>
@@ -37,7 +48,7 @@
         </picture>
         <div>
           <h3 class="summary__title">Sunday Café Run</h3>
-          <p class="summary__desc">Around 4 hours plus café stop at 13-14mph</p>
+          <p class="summary__desc">Around 4 hours plus café stop <br> Group A (14-15mph) <br> Group B (17-18mph)</p>
         </div>
       </a>
     </article>
@@ -64,7 +75,7 @@
 
   <p>In the Winter months riders should have full length mudguards and preferably a <a href="http://rawmudflap.uk/index.html">mudguard flap</a> - it helps to keep our kit clean!</p>
 
-  <p>Our no-drop policy applies to every club ride so there will usually be a tool for the job amongst us somewhere and hands on deck to help out. However, it's still wise to carry a toolkit of your own in case you have to head back home alone for any reason.</p>
+  <p>There will usually be a tool for the job amongst us somewhere and hands on deck to help out. However, it's still wise to carry a toolkit of your own in case you have to head back home alone for any reason.</p>
 
   <h3>Rules of the road</h3>
 
@@ -135,23 +146,27 @@
   <nav>
     <ul>
       <li><a href="/club-rides">Club Rides</a></li>
+      <li><a href="/club-rides/chaingang-tuesday">Chaingang Tuesday</a></li>
       <li><a href="/club-rides/wing-it-wednesday">Wing it Wednesday™</a></li>
       <li><a href="/club-rides/saturday-saunter">Saturday Saunter</a></li>
       <li><a href="/club-rides/sunday-cafe-run">Sunday Café Run</a></li>
-      <li><a href="/club-rides/sportives-races">Sportives &amp; Races</a></li>
     </ul>
   </nav>
 
   <section class="widget widget--facebook">
     <h3 class="widget__title">Our next club ride is</h3>
-    <a href="<%= facebook[0].link %>">
+    <a href="/club-rides">
       <time>
         <span class="day"><%= facebook[0].date.day %></span>
         <span class="date"><%= facebook[0].date.date %></span>
         <span class="month"><%= facebook[0].date.month %></span>
       </time>
       <h4><%= facebook[0].title %></h4>
-      <p>Leaving from the corner of Turner Lane and High Street at <%= facebook[0].time %>.</p>
+      <p>Leaving from
+        <% if (facebook[0].date.day === 'Tuesday') { %>the corner of Europa Court and Europa Link, Tinsley
+          <% } else { %>the corner of Turner Lane and High Street, Whiston
+            <% } %> at
+              <%= facebook[0].time %>.</p>
     </a>
   </section>
 

@@ -9,6 +9,10 @@
   
   @include mq(mq768) {
     display: flex;
+
+    section:not(.block--rides) & {
+      flex-wrap: wrap;
+    }
   }
 
   &__item {
@@ -19,7 +23,7 @@
     }
 
     @include mq(mq768) {
-      width: calc(100% / 3);
+      width: calc(100% / 2);
 
       .block--rides & {
         width: calc(100% / 4);        
