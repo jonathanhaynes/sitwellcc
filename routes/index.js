@@ -37,22 +37,23 @@ const fbAPI = (req, res, next) => {
 
   fb.options({
     appId: process.env.FB_APP_ID,
-    version: 'v2.5'
+    version: 'v2.10'
   });
 
   const dateNow = Math.round(new Date().getTime()/1000.0),
       fbMedia = [];
 
   fb.api(
-    '/1076165799068349/',
+    '/1076165799068349/events',
     'GET',
     {
       "access_token" : process.env.FB_ACCESS_TOKEN,
-      "fields" : "events.since(" + dateNow + ")"
+      "since" : dateNow,
+      "limit": "500"
     },
     function(response) {
 
-      var filteredFbMedia = response.events.data.sort(dynamicSort('start_time'));
+      var filteredFbMedia = response.data.sort(dynamicSort('start_time'));
 
       filteredFbMedia.forEach((item, i) => {
 
