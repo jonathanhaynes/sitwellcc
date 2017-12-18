@@ -51,7 +51,11 @@
 
       &--rides {
         background: $yellow;
-        color: #fff;
+
+        &,
+        a {
+          color: #121212 !important;
+        }
 
         p:first-of-type,
         time {
@@ -125,7 +129,7 @@
         }
 
         a {
-          color: #fff; 
+          color: #fff;
 
           @include states {
             text-decoration: underline;
