@@ -44,6 +44,14 @@ $btn-text-color--hover: #fff;
     color: $btn-text-color--hover;
     background-color: $btn-background-color--hover;
   }
+
+  &-buy {
+    width: 225px;
+
+    @include mq(mq600) {
+      float: right;
+    }
+  }
 }
 
 .btn--link {
