@@ -1,0 +1,19 @@
+import React from 'react';
+import {
+  Route,
+  Switch,
+} from 'react-router-dom';
+
+import Page from '../Page/Page';
+import NotFound from '../../NotFound';
+
+const About = (props) => (
+  <Switch>
+    <Route exact path='/about' render={routeProps => <h1>About</h1>}/>
+    <Route path='/about/:title' render={routeProps => <Page {...routeProps} prismicCtx={props.prismicCtx} />}/>
+
+    <Route component={NotFound} />
+  </Switch>
+);
+
+export default About;

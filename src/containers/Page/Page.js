@@ -19,6 +19,8 @@ export default class Page extends React.Component {
   }
 
   componentDidUpdate() {
+    console.log('PROPS', this.props)
+
     this.props.prismicCtx.toolbar();
   }
 
