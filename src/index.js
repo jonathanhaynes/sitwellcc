@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PrismicApp from './PrismicApp';
+import PrismicApp from './containers/PrismicApp/PrismicApp';
 import './index.css';
 
 ReactDOM.render(
