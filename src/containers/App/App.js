@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import './App.css';
 
+import Home from '../Home/Home';
 import About from '../About/About';
 import ClubRides from '../ClubRides/ClubRides';
 import Kit from '../Kit/Kit';
@@ -18,7 +19,7 @@ import NotFound from '../../NotFound';
 const App = (props) => (
   <Router>
     <Switch>
-      <Route exact path='/' render={routeProps => <div {...routeProps} prismicCtx={props.prismicCtx}><h1>Home</h1></div>}/>
+      <Route exact path='/' render={routeProps => <Home {...routeProps} prismicCtx={props.prismicCtx} />} />
 
       <Route path='/about' render={routeProps => <About {...routeProps} prismicCtx={props.prismicCtx} />} />
       <Route path='/club-rides' render={routeProps => <ClubRides {...routeProps} prismicCtx={props.prismicCtx} />} />
