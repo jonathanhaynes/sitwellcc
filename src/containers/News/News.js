@@ -9,8 +9,8 @@ import NotFound from '../../NotFound';
 
 const News = (props) => (
   <Switch>
-    <Route exact path='/news' render={routeProps => <h1>News</h1>}/>
-    <Route path='/news/:title' render={routeProps => <Page {...routeProps} prismicCtx={props.prismicCtx} />}/>
+    <Route exact path={props.match.path} render={routeProps => <h1>News</h1>}/>
+    <Route path={`${props.match.path}/:title`} render={routeProps => <Page {...routeProps} prismicCtx={props.prismicCtx} />}/>
 
     <Route component={NotFound} />
   </Switch>
