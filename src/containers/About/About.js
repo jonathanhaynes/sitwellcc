@@ -4,7 +4,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import Page from '../Page/Page';
+import Page from '../../components/Page/Page';
 import NotFound from '../../NotFound';
 
 const About = (props) => (
