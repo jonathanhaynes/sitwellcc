@@ -19,16 +19,17 @@ export default class Rides extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('PROPS', this.props)
+    console.log('THIS PROPS', this.props)
 
     this.props.prismicCtx.toolbar();
   }
 
   fetchRides(props) {
+    console.log('PROPS', props);
+
     if (props.prismicCtx) {
       // We are using the function to get a document by its uid
       return props.prismicCtx.api.getByUID('rides', props.match.params.title, {}, (err, doc) => {
-          console.log(err, doc);
         if (doc) {
           // We put the retrieved content in the state as a doc variable
           this.setState({ doc });

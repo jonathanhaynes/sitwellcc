@@ -1,6 +1,5 @@
 import React from 'react';
 import NotFound from '../../NotFound';
-import PrismicReact from 'prismic-reactjs';
 
 // Declare your component
 export default class Home extends React.Component {
