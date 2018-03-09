@@ -360,6 +360,19 @@ router.get('/about', (req, res, next) => {
     });
   });
 
+  router.get('/about/welfare', (req, res, next) => {
+    res.locals.meta = {
+      title: 'Welfare Officers - Sitwell Cycling Club, Whiston, Rotherham',
+      description: 'The welfare and safeguarding of our members is something we tale very seriously at Sitwell Cycling Club.',
+      name: 'Welfare Officers',
+      content: 'welfare'
+    };
+
+    res.render('pages/show', {
+      active: 'about'
+    });
+  });
+
   router.get('/about/road-captains', fbAPI);
   router.get('/about/road-captains', igAPI);
   router.get('/about/road-captains', function(req, res, next) {
