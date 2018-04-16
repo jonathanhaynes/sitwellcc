@@ -363,7 +363,7 @@ router.get('/about', (req, res, next) => {
   router.get('/about/welfare', (req, res, next) => {
     res.locals.meta = {
       title: 'Welfare Officers - Sitwell Cycling Club, Whiston, Rotherham',
-      description: 'The welfare and safeguarding of our members is something we tale very seriously at Sitwell Cycling Club.',
+      description: 'The welfare and safeguarding of our members is something we take very seriously at Sitwell Cycling Club.',
       name: 'Welfare Officers',
       content: 'welfare'
     };
@@ -569,6 +569,25 @@ router.get('/membership', (req, res, next) => {
     description: 'We are always on the look out for new members. If you want to be part of Rotherham\'s newest club please get in touch for details.',
     name: 'Join us!',
     content: 'membership'
+  };
+
+  fbDateChange(req);
+
+  res.render('pages/show', {
+    active: 'membership',
+    facebook: req.fbMedia,
+    instagram: req.igMedia
+  });
+});
+
+router.get('/membership/juniors', fbAPI);
+router.get('/membership/juniors', igAPI);
+router.get('/membership/juniors', (req, res, next) => {
+  res.locals.meta = {
+    title: 'Juniors - Sitwell Cycling Club, Whiston, Rotherham',
+    description: 'We are always on the look out for new members. If you want to be part of Rotherham\'s newest club please get in touch for details.',
+    name: 'Juniors',
+    content: 'juniors'
   };
 
   fbDateChange(req);

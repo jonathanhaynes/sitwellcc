@@ -7,10 +7,10 @@
 
   <p>Primarily a social cycling club, our core activity is the <a href="/club-rides/">Sunday Cafe Ride</a>. We also meet on Saturday mornings, and on a Tuesday and Wednesday evening too.</p>
 
-  <p>At now <%= members.number %> members strong (as of <%= members.date %>), we're growing steadily, so come and give us a try - no obligation to join unless you enjoy your ride with us enough to make you want to repeat the experience.</p>
+  <p>Come and give us a try - no obligation to join unless you enjoy your ride with us enough to make you want to repeat the experience.</p>
 
   <p>Whether you are a beginner, returning competitive cyclist or triathlete looking to improve your cycling performance Sitwell Cycling Club will provide you a warm and friendly welcome, whatever your age (If you're under the age of 16 you'll need to be accompanied by a responsible adult).</p>
-  
+
   <p><a href="/membership">Membership applications</a> are available on the site as well as a guide to <a href="/club-rides">upcoming rides</a>, we look forward to meeting you at the next Sitwell CC event.</p>
 
   <h2>Our aims</h2>
@@ -39,6 +39,7 @@
     <ul>
       <li><a href="/about">About</a></li>
       <li><a href="/about/committee">Committee</a></li>
+      <li><a href="/about/welfare">Welfare</a></li>
       <li><a href="/about/road-captains">Road Captains</a></li>
       <li><a href="/about/sponsors">Sponsors</a></li>
       <li><a href="/about/constitution">Constitution</a></li>
@@ -55,7 +56,7 @@
       </time>
       <h4><%= facebook[0].title %></h4>
       <p>Leaving from
-        <% if (facebook[0].date.day === 'Tuesday') { %>the corner of Europa Court and Europa Link, Tinsley
+        <% if (facebook[0].date.day === 'Tuesday') { %>Forge Valley Circuit, Sheffield
           <% } else { %>the corner of Turner Lane and High Street, Whiston
             <% } %> at
               <%= facebook[0].time %>.</p>
@@ -65,7 +66,7 @@
   <section class="widget widget--sponsors">
     <h3 class="widget__title"><a href="/about/sponsors">Please visit our sponsors</a></h3>
     <% include ../../shared/sponsors %>
-  </section>  
+  </section>
 
   <section class="widget widget--instagram">
     <h3 class="widget__title"><a href="https://instagram.com/sitwellcc">Follow us on Instagram</a></h3>

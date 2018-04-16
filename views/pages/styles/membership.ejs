@@ -50,12 +50,13 @@
 </section>
 
 <aside class="secondary-content">
-  <nav>
-    <ul>
-      <li><a href="/membership">Membership</a></li>
-      <li><a href="/membership/discounts">Discounts</a></li>
-    </ul>
-  </nav>
+    <nav>
+        <ul>
+          <li><a href="/membership">Membership</a></li>
+          <li><a href="/membership/juniors">Juniors</a></li>
+          <li><a href="/membership/discounts">Discounts</a></li>
+        </ul>
+      </nav>
 
   <section class="widget widget--facebook">
     <h3 class="widget__title">Our next club ride is</h3>
@@ -67,7 +68,7 @@
       </time>
       <h4><%= facebook[0].title %></h4>
       <p>Leaving from
-        <% if (facebook[0].date.day === 'Tuesday') { %>the corner of Europa Court and Europa Link, Tinsley
+        <% if (facebook[0].date.day === 'Tuesday') { %>Forge Valley Circuit, Sheffield
           <% } else { %>the corner of Turner Lane and High Street, Whiston
             <% } %> at
               <%= facebook[0].time %>.</p>
@@ -77,7 +78,7 @@
   <section class="widget widget--sponsors">
     <h3 class="widget__title"><a href="/about/sponsors">Please visit our sponsors</a></h3>
     <% include ../../shared/sponsors %>
-  </section>  
+  </section>
 
   <section class="widget widget--instagram">
     <h3 class="widget__title"><a href="https://instagram.com/sitwellcc">Follow us on Instagram</a></h3>
