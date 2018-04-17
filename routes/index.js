@@ -362,9 +362,9 @@ router.get('/about', (req, res, next) => {
 
   router.get('/about/welfare', (req, res, next) => {
     res.locals.meta = {
-      title: 'Welfare Officers - Sitwell Cycling Club, Whiston, Rotherham',
+      title: 'Welfare and Safeguarding - Sitwell Cycling Club, Whiston, Rotherham',
       description: 'The welfare and safeguarding of our members is something we take very seriously at Sitwell Cycling Club.',
-      name: 'Welfare Officers',
+      name: 'Welfare and Safeguarding',
       content: 'welfare'
     };
 
