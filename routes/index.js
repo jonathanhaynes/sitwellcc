@@ -2,7 +2,8 @@ const express = require('express'),
     router = express.Router(),
     PowerHouse = require('powerhouse-js'),
     moment = require('moment'),
-    sm = require('sitemap');
+    sm = require('sitemap')
+    crypto = require('crypto');
 
 const igAPI = (req, res, next) => {
 
@@ -33,45 +34,47 @@ const igAPI = (req, res, next) => {
 
 const fbAPI = (req, res, next) => {
 
-  const fb = require('fb');
-
-  fb.options({
-    appId: process.env.FB_APP_ID,
-    version: 'v2.12'
-  });
+  const FB = require('fb'),
+        fb = new FB.Facebook({
+          client_id: process.env.FB_APP_ID,
+          client_secret: process.env.FB_APP_SECRET,
+          grant_type: 'client_credentials',
+          version: 'v2.12'
+        });
 
   const dateNow = Math.round(new Date().getTime()/1000.0),
       fbMedia = [];
 
+  fb.setAccessToken(process.env.FB_ACCESS_TOKEN);
+
   fb.api(
-    '/1076165799068349/',
-    'GET',
-    {
-      "access_token" : process.env.FB_ACCESS_TOKEN,
-      "fields" : "events",
-      "limit" : "100"
-    },
+    '/1076165799068349/events/',
     function(response) {
 
-      var filteredFbMedia = response.events.data.sort(dynamicSort('start_time'));
+      console.log('RESPONSE', response);
 
-      filteredFbMedia.forEach((item, i) => {
+      if (response && !response.error) {
 
-        const filteredDisclaimer = removeDisclaimer(item.description);
+        // var filteredFbMedia = response.events.data.sort(dynamicSort('start_time'));
 
-        fbMedia.push({
-          'title': item.name != null ? item.name : '',
-          'description': filteredDisclaimer != null ? linkify(filteredDisclaimer).replace(/\n/gi, '<br>') : '',
-          'link': item.id != null ? 'https://www.facebook.com/events/' + item.id + '/' : '',
-          'location': item.place != null ? item.place.name : '',
-          'full_date': item.start_time != null ? item.start_time : '',
-          'date': item.start_time != null ? {day: moment(item.start_time).format("dddd"), date: moment(item.start_time).format("Do"), month: moment(item.start_time).format("MMMM"), year: moment(item.start_time).format("YYYY")} : '',
-          'time': item.start_time != null ? moment(item.start_time).format("h:mma") : ''
-        });
-      });
+        // filteredFbMedia.forEach((item, i) => {
 
-      req.fbMedia = fbMedia;
-      next();
+        //   const filteredDisclaimer = removeDisclaimer(item.description);
+
+        //   fbMedia.push({
+        //     'title': item.name != null ? item.name : '',
+        //     'description': filteredDisclaimer != null ? linkify(filteredDisclaimer).replace(/\n/gi, '<br>') : '',
+        //     'link': item.id != null ? 'https://www.facebook.com/events/' + item.id + '/' : '',
+        //     'location': item.place != null ? item.place.name : '',
+        //     'full_date': item.start_time != null ? item.start_time : '',
+        //     'date': item.start_time != null ? {day: moment(item.start_time).format("dddd"), date: moment(item.start_time).format("Do"), month: moment(item.start_time).format("MMMM"), year: moment(item.start_time).format("YYYY")} : '',
+        //     'time': item.start_time != null ? moment(item.start_time).format("h:mma") : ''
+        //   });
+        // });
+      }
+
+      // req.fbMedia = fbMedia;
+      // next();
     }
   );
 

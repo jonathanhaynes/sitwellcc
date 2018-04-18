@@ -13,18 +13,18 @@
           "startDate": "<%= facebook[i].full_date %>",
           "location": {
             "@type": "Place",
-            "name": "Tinsley",
-            "address": "Corner of Europa Court and Europa Link",
+            "name": "Forge Valley",
+            "address": "Forge Valley School, Wood Lane, Sheffield, S6 5HG",
             "geo": {
               "@type": "GeoCoordinates",
-              "latitude": "53.405298",
-              "longitude": "-1.327339"
+              "latitude": "53.397801",
+              "longitude": "-1.520115"
             }
           }
         }
       <% if ((facebook.length > 1) && (i < facebook.length - 1)) { %>
         ,
-      <% } %>  
+      <% } %>
     <% } %>
     <% if (facebook.length > 1) { %>
         ]
@@ -34,8 +34,8 @@
 <% } %>
 
 <section class="primary-content">
-  <p>Chaingang Tuesday rides depart from the corner of Europa Court and Europa Link, <a href="https://goo.gl/maps/saYm2Q6pYbt">Tinsley</a> at 7:30pm prompt.</p>
-  <p>Tuesday chaingang rides are are there to perfect race craft and practice through anf off at high speed. We use the Europa Link circuit as it's well lit, light on traffic but has roundabouts where rideers can drop off the group and rejoin if the pace is too high.</p>
+  <p>We hold a member's only Chaingang session at <a href="https://goo.gl/maps/kUBu1DkFPxC2">Froge Valley School</a> on Tuesday evenings.</p>
+  <p>Tuesday chaingang rides are are there to perfect race craft and practice through anf off at high speed. We use the Forge Valley circuit as it's a smooth tarmac, traffic environment but has points where rideers can drop off the group and rejoin if the pace is too high.</p>
   <p>Please take time to read our <strong><a href="<%= asset_path('SitwellCyclingClubSitwellCCGenericRiskAssessment–RoadRides2016.pdf') %>">Risk Assessment</a> on Road Riding</strong>.</p>
   <h2 id="upcoming-rides">Upcoming ride</h2>
   <div id="rides">
@@ -44,10 +44,8 @@
         <h3 class="post__title">Chaingang Tuesday</h3>
         <time class="post__date"><strong><%= facebook[0].date.day %> <%= facebook[0].date.date %> <%= facebook[0].date.month %> at <%= facebook[0].time %></strong></time>
         <p class="post__summary">
-          Leaving from the corner of Europa Court and Europa Link at 7:30pm.<br><br>
-          There's no Sitwell CC Road Captain on this ride.<br><br>
-          Riders can come and go as they please. There's parking available on the side road of Europa Court if you wish to drive over.<br><br>
-          The strava route can be found here: <a href="https://www.strava.com/routes/10497162">strava.com/routes/10497162</a>
+          Starts at 7:30pm.<br><br>
+          There's no Sitwell CC Road Captain on this ride.
         </p>
       </article>
     <% } else { %>
@@ -70,7 +68,7 @@
   <section class="widget widget--sponsors">
     <h3 class="widget__title"><a href="/about/sponsors">Please visit our sponsors</a></h3>
     <% include ../../shared/sponsors %>
-  </section>  
+  </section>
 
   <section class="widget widget--instagram">
     <h3 class="widget__title"><a href="https://instagram.com/sitwellcc">Follow us on Instagram</a></h3>

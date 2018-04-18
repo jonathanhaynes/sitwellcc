@@ -9,7 +9,7 @@
     "ejs": "*",
     "express": "~4.13.3",
     "express-ejs-layouts": "^2.1.0",
-    "fb": "^1.0.2",
+    "fb": "2.0.0",
     "instagram-node": "^0.5.8",
     "moment": "^2.13.0",
     "node-sass": "^4.8.3",
