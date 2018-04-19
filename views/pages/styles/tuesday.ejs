@@ -1,57 +1,7 @@
-<% if (facebook.length > 0) { %>
-  <script type="application/ld+json">
-
-    <% if (facebook.length > 1) { %>
-      [
-    <% } %>
-    <% for(var i = 0; i < facebook.length; i++) { %>
-        {
-          "@context": "http://schema.org/",
-          "@type": "SportsEvent",
-          "name": "<%= facebook[i].title %>",
-          "Description": "<%- facebook[i].description.split('<br>')[0] %>",
-          "startDate": "<%= facebook[i].full_date %>",
-          "location": {
-            "@type": "Place",
-            "name": "Forge Valley",
-            "address": "Forge Valley School, Wood Lane, Sheffield, S6 5HG",
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "53.397801",
-              "longitude": "-1.520115"
-            }
-          }
-        }
-      <% if ((facebook.length > 1) && (i < facebook.length - 1)) { %>
-        ,
-      <% } %>
-    <% } %>
-    <% if (facebook.length > 1) { %>
-        ]
-    <% } %>
-
-  </script>
-<% } %>
-
 <section class="primary-content">
   <p>We hold a member's only Chaingang session at <a href="https://goo.gl/maps/kUBu1DkFPxC2">Froge Valley School</a> on Tuesday evenings.</p>
   <p>Tuesday chaingang rides are are there to perfect race craft and practice through anf off at high speed. We use the Forge Valley circuit as it's a smooth tarmac, traffic environment but has points where rideers can drop off the group and rejoin if the pace is too high.</p>
   <p>Please take time to read our <strong><a href="<%= asset_path('SitwellCyclingClubSitwellCCGenericRiskAssessment–RoadRides2016.pdf') %>">Risk Assessment</a> on Road Riding</strong>.</p>
-  <h2 id="upcoming-rides">Upcoming ride</h2>
-  <div id="rides">
-    <% if (facebook.length > 0) { %>
-      <article class="post post--event">
-        <h3 class="post__title">Chaingang Tuesday</h3>
-        <time class="post__date"><strong><%= facebook[0].date.day %> <%= facebook[0].date.date %> <%= facebook[0].date.month %> at <%= facebook[0].time %></strong></time>
-        <p class="post__summary">
-          Starts at 7:30pm.<br><br>
-          There's no Sitwell CC Road Captain on this ride.
-        </p>
-      </article>
-    <% } else { %>
-      <p>Sorry, we have no planned rides at present. Please check out our <a href="/club-rides/saturday-saunter">Saturday Saunter</a> or <a href="/club-rides/sunday-cafe-run">Sunday Café Run</a> rides.</p>
-    <% } %>
-  </div>
 </section>
 
 <aside class="secondary-content">

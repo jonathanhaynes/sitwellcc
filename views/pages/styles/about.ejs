@@ -20,18 +20,6 @@
     <li>To provide a focus for recreational cyclists and promote the sport at grassroots level</li>
     <li>To be open to all, and to encourage cycling for everyone</li>
   </ul>
-
-  <h2>We support Bike Pure ethics</h2>
-
-  <a href="http://www.bikepure.org/"><img src="<%= asset_path('template/bike-pure-black.png') %>" class="img img--bikepure"></a>
-
-  <p><strong>Bike Pure Mission Statement</strong></p>
-
-  <blockquote>
-    <p>Bike Pure aims to protect the integrity of cycling and promote honesty in cycle sport. Cycling fans worldwide deserve heroes they can believe in. Bike Pure believe that education provides a solid foundation of sporting ethics and fair play to athletes, coaches and parents.</p>
-  </blockquote>
-
-  <p>Get your free Bike Pure wristband to show your support <a href="https://www.bikepurestore.org/bike-pure-wristbands/official-bike-pure-wristbands.html">here</a>.</p>
 </section>
 
 <aside class="secondary-content">
@@ -45,23 +33,6 @@
       <li><a href="/about/constitution">Constitution</a></li>
     </ul>
   </nav>
-
-  <section class="widget widget--facebook">
-    <h3 class="widget__title">Our next club ride is</h3>
-    <a href="/club-rides">
-      <time>
-        <span class="day"><%= facebook[0].date.day %></span>
-        <span class="date"><%= facebook[0].date.date %></span>
-        <span class="month"><%= facebook[0].date.month %></span>
-      </time>
-      <h4><%= facebook[0].title %></h4>
-      <p>Leaving from
-        <% if (facebook[0].date.day === 'Tuesday') { %>Forge Valley Circuit, Sheffield
-          <% } else { %>the corner of Turner Lane and High Street, Whiston
-            <% } %> at
-              <%= facebook[0].time %>.</p>
-    </a>
-  </section>
 
   <section class="widget widget--sponsors">
     <h3 class="widget__title"><a href="/about/sponsors">Please visit our sponsors</a></h3>

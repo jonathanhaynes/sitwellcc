@@ -11,11 +11,11 @@
     <article class="summary__item">
       <a href="/club-rides/chaingang-tuesday">
         <picture>
-          <img src="<%= asset_path('template/wednesday.jpg') %>" alt="">
+          <img src="<%= asset_path('template/tuesday.jpg') %>" alt="">
         </picture>
         <div>
           <h3 class="summary__title">Chaingang Tuesday</h3>
-          <p class="summary__desc">60 minutes race craft lapping Europa Link, Tinsley</p>
+          <p class="summary__desc">60 minutes race craft in a traffic free environment <br> <em>Members Only</em></p>
         </div>
       </a>
     </article>
@@ -26,7 +26,7 @@
         </picture>
         <div>
           <h3 class="summary__title">Wing it Wednesday™</h3>
-          <p class="summary__desc">Around 90 minutes <br> Road (14-15mph) <br> MTB (9-10mph)</p>
+          <p class="summary__desc">Around 90 minutes <br> Road (~15mph) <br> MTB (~10mph)</p>
         </div>
       </a>
     </article>
@@ -37,7 +37,7 @@
         </picture>
         <div>
           <h3 class="summary__title">Saturday Saunter</h3>
-          <p class="summary__desc">Around 2.5 hours plus café stop at 11-12mph</p>
+          <p class="summary__desc">Around 2.5 hours plus café stop at ~13mph</p>
         </div>
       </a>
     </article>
@@ -48,7 +48,7 @@
         </picture>
         <div>
           <h3 class="summary__title">Sunday Café Run</h3>
-          <p class="summary__desc">Around 4 hours plus café stop <br> Group A (14-15mph) <br> Group B (17-18mph)</p>
+          <p class="summary__desc">Around 4 hours plus café stop at ~15mph</p>
         </div>
       </a>
     </article>
@@ -148,23 +148,6 @@
       <li><a href="/club-rides/sunday-cafe-run">Sunday Café Run</a></li>
     </ul>
   </nav>
-
-  <section class="widget widget--facebook">
-    <h3 class="widget__title">Our next club ride is</h3>
-    <a href="/club-rides">
-      <time>
-        <span class="day"><%= facebook[0].date.day %></span>
-        <span class="date"><%= facebook[0].date.date %></span>
-        <span class="month"><%= facebook[0].date.month %></span>
-      </time>
-      <h4><%= facebook[0].title %></h4>
-      <p>Leaving from
-        <% if (facebook[0].date.day === 'Tuesday') { %>Forge Valley Circuit, Sheffield
-          <% } else { %>the corner of Turner Lane and High Street, Whiston
-            <% } %> at
-              <%= facebook[0].time %>.</p>
-    </a>
-  </section>
 
   <section class="widget widget--sponsors">
     <h3 class="widget__title"><a href="/about/sponsors">Please visit our sponsors</a></h3>

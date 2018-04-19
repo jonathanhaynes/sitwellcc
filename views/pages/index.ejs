@@ -20,18 +20,10 @@
         </a>
       </section>
       <section class="intro intro--rides">
-        <a href="/club-rides">
-          <p><em>Our next club ride is</em></p>
-          <time>
-            <span class="day"><%= facebook[0].date.day %></span>
-            <span class="date"><%= facebook[0].date.date %></span>
-            <span class="month"><%= facebook[0].date.month %></span>
-          </time>
-          <h3>
-            <%= facebook[0].title %>
-          </h3>
-          <p>Leaving from <% if (facebook[0].date.day === 'Tuesday') { %>Forge Valley Circuit, Sheffield <% } else { %>the corner of Turner Lane and High Street, Whiston <% } %> at <%= facebook[0].time %>.</p>
-          <p>More information on our club rides can be found here.</p>
+        <a href="/membership">
+          <h3 class="post__title">Join us!</h3>
+          <p>We're a friendly, social bunch. Come and see what you're missing out on.</p>
+          <p>More information on club membership can be found here.</p>
         </a>
       </section>
     </section>
@@ -45,11 +37,11 @@
       <article class="summary__item">
         <a href="/club-rides/chaingang-tuesday">
           <picture>
-            <img src="<%= asset_path('template/wednesday.jpg') %>" alt="">
+            <img src="<%= asset_path('template/tuesday.jpg') %>" alt="">
           </picture>
           <div>
             <h3 class="summary__title">Chaingang Tuesday</h3>
-            <p class="summary__desc">60 minutes race craft lapping Europa Link, Tinsley</p>
+            <p class="summary__desc">60 minutes race craft in a traffic free environment <br> <em>Members Only</em></p>
           </div>
         </a>
       </article>
@@ -60,7 +52,7 @@
           </picture>
           <div>
             <h3 class="summary__title">Wing it Wednesday™</h3>
-            <p class="summary__desc">Around 90 minutes <br> Road (14-15mph) <br> MTB (9-10mph)</p>
+            <p class="summary__desc">Around 90 minutes <br> Road (~15mph) <br> MTB (~10mph)</p>
           </div>
         </a>
       </article>
@@ -71,7 +63,7 @@
           </picture>
           <div>
             <h3 class="summary__title">Saturday Saunter</h3>
-            <p class="summary__desc">Around 2.5 hours plus café stop at 11-12mph</p>
+            <p class="summary__desc">Around 2.5 hours plus café stop at ~13mph</p>
           </div>
         </a>
       </article>
@@ -82,7 +74,7 @@
           </picture>
           <div>
             <h3 class="summary__title">Sunday Café Run</h3>
-            <p class="summary__desc">Around 4 hours plus café stop at 14-15mph</p>
+            <p class="summary__desc">Around 4 hours plus café stop at ~15mph</p>
           </div>
         </a>
       </article>
