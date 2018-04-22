@@ -146,7 +146,7 @@
             }
           }
         }
-      }      
+      }
     }
 
     @include mq(mq768) {
@@ -190,7 +190,7 @@
               &,
               &:nth-of-type(2n),
               &:nth-of-type(4n) {
-                width: calc((100% - 280px) / 8);  
+                width: calc((100% - 280px) / 8);
                 margin: {
                   right: 40px;
                 }
@@ -202,7 +202,7 @@
                   right: 0;
                 }
               }
-              
+
             }
           }
         }
@@ -281,7 +281,7 @@
 
     &--about {
       img {
-        max-height: 50px;
+        max-height: 100px;
         margin: {
           top: 20px;
           bottom: 0;

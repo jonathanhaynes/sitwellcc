@@ -9,14 +9,15 @@
     "ejs": "*",
     "express": "~4.13.3",
     "express-ejs-layouts": "^2.1.0",
-    "fb": "^1.0.2",
+    "fb": "2.0.0",
     "instagram-node": "^0.5.8",
     "moment": "^2.13.0",
-    "node-sass": "^3.4.2",
+    "node-sass": "^4.8.3",
     "path": "^0.12.7",
     "powerhouse-js": "^1.0.1",
     "readme": "^0.6.0",
     "sitemap": "^1.8.2",
-    "twitter-fetcher": "^16.0.2"
+    "twitter-fetcher": "^16.0.2",
+    "wrench": "^1.5.9"
   }
 }

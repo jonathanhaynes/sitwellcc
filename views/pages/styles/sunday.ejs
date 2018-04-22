@@ -1,61 +1,17 @@
-<% if (facebook.length > 0) { %>
-  <script type="application/ld+json">
-    <% if (facebook.length > 1) { %>
-      [
-    <% } %>
-    <% for(var i = 0; i < facebook.length; i++) { %>
-        {
-          "@context": "http://schema.org/",
-          "@type": "SportsEvent",
-          "name": "<%= facebook[i].title %>",
-          "Description": "<%- facebook[i].description.split('<br>')[0] %>",
-          "startDate": "<%= facebook[i].full_date %>",
-          "location": {
-            "@type": "Place",
-            "name": "Whiston",
-            "address": "Corner of Turner Lane and High Street",
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "53.405298",
-              "longitude": "-1.327339"
-            }
-          }
-        }
-      <% if ((facebook.length > 1) && (i < facebook.length - 1)) { %>
-        ,
-      <% } %>  
-    <% } %>
-    <% if (facebook.length > 1) { %>
-        ]
-    <% } %>
-
-  </script>
-<% } %>
-
 <section class="primary-content">
-  <p>Sunday Café Runs almost always depart from the corner of Turner Lane and High Street, <a href="https://goo.gl/maps/ArXDRXnkWEr">Whiston</a> at <%= time %>am prompt unless we're doing something a bit special. Check the upcoming events below for the meet time.</p>
-  <p>If you come along on a Sunday Café Run, we will be on the road, riding for about 4 hours covering around 50 miles at about 13-14mph with a café stop.</p>
-  <p>Including the café stop we're usually back in the village for around 1pm.</p>
-  <p>We always have a planned route for a Sunday ride and they can be found below.</p>
+  <p>Sunday Café Runs depart from the corner of Turner Lane and High Street, <a href="https://goo.gl/maps/ArXDRXnkWEr">Whiston</a>.</p>
+  <p>If you come along on a Sunday Café Run, we will be on the road, riding for about 4 hours covering around 50 miles with a café stop.</p>
+  <p>Rides are at ~15mph and leave the village at <%= time.a %>am.</p>
+  <p>Including the café stop we're usually back in the village for around 1:30pm.</p>
+  <!-- <p>We always have a planned route for a Sunday ride and they can be found below.</p> -->
   <p>Please take time to read our <strong><a href="<%= asset_path('SitwellCyclingClubSitwellCCGenericRiskAssessment–RoadRides2016.pdf') %>">Risk Assessment</a> on Road Riding</strong>.</p>
-  <h2 id="upcoming-rides">Upcoming rides</h2>
-  <div id="rides">
-    <% for(var i = 0; i < facebook.length; i++) { %>
-      <% if (i <= 9) { %>
-        <article class="post post--event">
-          <h3 class="post__title"><%= facebook[i].title %></h3>
-          <time class="post__date"><strong><%= facebook[i].date.day %> <%= facebook[i].date.date %> <%= facebook[i].date.month %> at <%= facebook[i].time %></strong></time>
-          <p class="post__summary"><%- facebook[i].description %></p>
-        </article>
-      <% } %>
-    <% } %>
-  </div>
 </section>
 
 <aside class="secondary-content">
   <nav>
     <ul>
       <li><a href="/club-rides">Club Rides</a></li>
+      <li><a href="/club-rides/chaingang-tuesday">Chaingang Tuesday</a></li>
       <li><a href="/club-rides/wing-it-wednesday">Wing it Wednesday™</a></li>
       <li><a href="/club-rides/saturday-saunter">Saturday Saunter</a></li>
       <li><a href="/club-rides/sunday-cafe-run">Sunday Café Run</a></li>

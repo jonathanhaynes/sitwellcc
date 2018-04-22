@@ -34,35 +34,34 @@
   <p>Should I be accepted as a member of Sitwell Cycling Club, <strong>I agree to abide by the rules as detailed in the <a href="/about/constitution">rules and constitution</a> and understand that participation in club activities is entirely at my own risk</strong>.</p>
   <p>Sitwell Cycling Club strongly recommends that club members have third party liability insurance. British Cycling currently have some great discounts for your first year. Have a look <a href="https://www.britishcycling.org.uk/clubs/membership">here</a>.</p>
   <p>I understand that while riding for Sitwell Cycling Club that at all times I must wear a cycling helmet.</p>
-  <p><strong>Membership can be purchased from our <a href="https://www.britishcycling.org.uk/club/profile/7596/sitwell-cc#join">British Cycling</a> profile (Just look for the big red buy button) or by clicking the button below.</strong></p>
-  <a href="https://www.britishcycling.org.uk/club/subscriptions/buy?club_id=7596&amp;subscription_id=1558&amp;for=me" class="button btn btn-primary">Buy membership</a>
+  <p><strong>Membership can be purchased from our <a href="https://www.britishcycling.org.uk/club/profile/7596/sitwell-cc#join">British Cycling</a> profile (Just look for the big red buy button) or by clicking one of the buttons below.</strong></p>
+  <article class="committee cf">
+    <h3>Adult <small>For ages 16+</small></h3>
+    <a href="https://www.britishcycling.org.uk/club/subscriptions/buy?club_id=7596&amp;subscription_id=1558&amp;for=me" class="button btn btn-primary btn-buy">Buy Adult membership</a>
+  </article>
+  <article class="committee cf">
+    <h3>Junior <small>For ages 12-15</small></h3>
+    <a href="https://www.britishcycling.org.uk/club/subscriptions/buy?club_id=7596&subscription_id=2152&for=me" class="button btn btn-primary btn-buy">Buy Junior membership</a>
+  </article>
+  <article class="committee cf">
+      <h3>2nd Claim <small>For ages 16+</small></h3>
+      <a href="https://www.britishcycling.org.uk/club/subscriptions/buy?club_id=7596&subscription_id=2163&for=me" class="button btn btn-primary btn-buy">Buy 2nd Claim membership</a>
+    </article>
 </section>
 
 <aside class="secondary-content">
-  <nav>
-    <ul>
-      <li><a href="/membership">Membership</a></li>
-      <li><a href="/membership/discounts">Discounts</a></li>
-    </ul>
-  </nav>
-
-  <section class="widget widget--facebook">
-    <h3 class="widget__title">Our next club ride is</h3>
-    <a href="<%= facebook[0].link %>">
-      <time>
-        <span class="day"><%= facebook[0].date.day %></span>
-        <span class="date"><%= facebook[0].date.date %></span>
-        <span class="month"><%= facebook[0].date.month %></span>
-      </time>
-      <h4><%= facebook[0].title %></h4>
-      <p>Leaving from the corner of Turner Lane and High Street at <%= facebook[0].time %>.</p>
-    </a>
-  </section>
+    <nav>
+        <ul>
+          <li><a href="/membership">Membership</a></li>
+          <li><a href="/membership/juniors">Juniors</a></li>
+          <li><a href="/membership/discounts">Discounts</a></li>
+        </ul>
+      </nav>
 
   <section class="widget widget--sponsors">
     <h3 class="widget__title"><a href="/about/sponsors">Please visit our sponsors</a></h3>
     <% include ../../shared/sponsors %>
-  </section>  
+  </section>
 
   <section class="widget widget--instagram">
     <h3 class="widget__title"><a href="https://instagram.com/sitwellcc">Follow us on Instagram</a></h3>

@@ -5,12 +5,12 @@
 
   <p>We're a not-for-profit, volunteer run organisation registered to <a href="https://www.britishcycling.org.uk/club/profile/7596/sitwell-cc">British Cycling</a> - affiliation number: 537309.</p>
 
-  <p>Primarily a social cycling club, our core activity is the <a href="/club-rides/">Sunday Cafe Ride</a>. We also meet on a Saturday mornings and a Wednesday evening too.</p>
+  <p>Primarily a social cycling club, our core activity is the <a href="/club-rides/">Sunday Cafe Ride</a>. We also meet on Saturday mornings, and on a Tuesday and Wednesday evening too.</p>
 
-  <p>At now <%= members.number %> members strong (as of <%= members.date %>), we're growing steadily, so come and give us a try - no obligation to join unless you enjoy your ride with us enough to make you want to repeat the experience.</p>
+  <p>Come and give us a try - no obligation to join unless you enjoy your ride with us enough to make you want to repeat the experience.</p>
 
   <p>Whether you are a beginner, returning competitive cyclist or triathlete looking to improve your cycling performance Sitwell Cycling Club will provide you a warm and friendly welcome, whatever your age (If you're under the age of 16 you'll need to be accompanied by a responsible adult).</p>
-  
+
   <p><a href="/membership">Membership applications</a> are available on the site as well as a guide to <a href="/club-rides">upcoming rides</a>, we look forward to meeting you at the next Sitwell CC event.</p>
 
   <h2>Our aims</h2>
@@ -20,18 +20,6 @@
     <li>To provide a focus for recreational cyclists and promote the sport at grassroots level</li>
     <li>To be open to all, and to encourage cycling for everyone</li>
   </ul>
-
-  <h2>We support Bike Pure ethics</h2>
-
-  <a href="http://www.bikepure.org/"><img src="<%= asset_path('template/bike-pure-black.png') %>" class="img img--bikepure"></a>
-
-  <p><strong>Bike Pure Mission Statement</strong></p>
-
-  <blockquote>
-    <p>Bike Pure aims to protect the integrity of cycling and promote honesty in cycle sport. Cycling fans worldwide deserve heroes they can believe in. Bike Pure believe that education provides a solid foundation of sporting ethics and fair play to athletes, coaches and parents.</p>
-  </blockquote>
-
-  <p>Get your free Bike Pure wristband to show your support <a href="https://www.bikepurestore.org/bike-pure-wristbands/official-bike-pure-wristbands.html">here</a>.</p>
 </section>
 
 <aside class="secondary-content">
@@ -39,29 +27,17 @@
     <ul>
       <li><a href="/about">About</a></li>
       <li><a href="/about/committee">Committee</a></li>
+      <li><a href="/about/welfare">Welfare</a></li>
       <li><a href="/about/road-captains">Road Captains</a></li>
       <li><a href="/about/sponsors">Sponsors</a></li>
       <li><a href="/about/constitution">Constitution</a></li>
     </ul>
   </nav>
 
-  <section class="widget widget--facebook">
-    <h3 class="widget__title">Our next club ride is</h3>
-    <a href="<%= facebook[0].link %>">
-      <time>
-        <span class="day"><%= facebook[0].date.day %></span>
-        <span class="date"><%= facebook[0].date.date %></span>
-        <span class="month"><%= facebook[0].date.month %></span>
-      </time>
-      <h4><%= facebook[0].title %></h4>
-      <p>Leaving from the corner of Turner Lane and High Street at <%= facebook[0].time %>.</p>
-    </a>
-  </section>
-
   <section class="widget widget--sponsors">
     <h3 class="widget__title"><a href="/about/sponsors">Please visit our sponsors</a></h3>
     <% include ../../shared/sponsors %>
-  </section>  
+  </section>
 
   <section class="widget widget--instagram">
     <h3 class="widget__title"><a href="https://instagram.com/sitwellcc">Follow us on Instagram</a></h3>

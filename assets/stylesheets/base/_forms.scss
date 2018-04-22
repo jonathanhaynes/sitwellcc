@@ -47,12 +47,23 @@ textarea {
   color: $input-text-color;
   background-color: #eee;
   border: 0;
-  border-radius: 0;
-  -webkit-appearance: none; /* 1 */
-  -moz-appearance: none; /* 1 */
+  border-radius: 5px;
   margin: {
     bottom: 10px;
   }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="search"],
+input[type="number"],
+input[type="date"],
+input[type="url"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none; /* 1 */
+  -moz-appearance: none; /* 1 */
 }
 
 input[type="text"],
@@ -86,11 +97,8 @@ textarea {
  * `appearance: none;`
  */
 select {
-  background: {
-    image: file-url('arrow-down.svg');
-    repeat: no-repeat;
-    position: right $input-padding center;
-  }
+  height: 40px;
+  line-height: 40px;
 }
 
 /**
@@ -121,6 +129,7 @@ input[type="submit"],
 button {
   -webkit-appearance: none; /* 1 */
   -moz-appearance: none; /* 1 */
+  border-radius: 5px;
 
   &::-moz-focus-inner,
   &::-moz-focus-inner {
