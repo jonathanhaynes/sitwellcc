@@ -17,6 +17,7 @@
     "powerhouse-js": "^1.0.1",
     "readme": "^0.6.0",
     "sitemap": "^1.8.2",
-    "twitter-fetcher": "^16.0.2"
+    "twitter-fetcher": "^16.0.2",
+    "wrench": "^1.5.9"
   }
 }

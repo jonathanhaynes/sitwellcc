@@ -27,7 +27,7 @@
 
   <p>Best used in summer conditions with temperatures ranging between 20-30°C. All jerseys come with the option of a full zip for those glorious summer days where you can do your best <a href="<%= asset_path('template/voeckler.jpg') %>">Thomas Voeckler</a> impression.</p>
 
-  <h4>Adults</h4>
+  <h4>Options</h4>
   <dl>
     <dt>PRO Razor</dt>
     <dd>£82.80</dd>
@@ -37,19 +37,11 @@
     <dd>£40.80</dd>
   </dl>
 
-  <h4>Juniors</h4>
-  <dl>
-    <dt>ELITE Spin</dt>
-    <dd>£31.00</dd>
-    <dt>ACTIVE Devan</dt>
-    <dd>£28.00</dd>
-  </dl>
-
   <h3 id="lsjersey">L/S Jersey</h3>
 
   <p>For those cooler sping and autum days with temperatures ranging between 10-20°C.</p>
 
-  <h4>Adults</h4>
+  <h4>Options</h4>
   <dl>
     <dt>PRO Elastico Thermo</dt>
     <dd>£89.40</dd>
@@ -59,17 +51,11 @@
     <dd>£52.80</dd>
   </dl>
 
-  <h4>Juniors</h4>
-  <dl>
-    <dt>ACTIVE Flanders</dt>
-    <dd>£38.00</dd>
-  </dl>
-
   <h3 id="gilet">Gilet</h3>
 
   <p>Something every rider should have in their arsenal, perfect for days with temperatures ranging between 10-20°C.</p>
 
-  <h4>Adults</h4>
+  <h4>Options</h4>
   <dl>
     <dt>ELITE W&W Mission Light</dt>
     <dd>£66.60</dd>
@@ -77,19 +63,11 @@
     <dd>£42.60</dd>
   </dl>
 
-  <h4>Juniors</h4>
-  <dl>
-    <dt>ELITE W&W Mission Light</dt>
-    <dd>£56.50</dd>
-    <dt>ACTIVE MicroFiber</dt>
-    <dd>£25.00</dd>
-  </dl>
-
   <h3 id="bibshorts">Bib Shorts</h3>
 
   <img src="<%= asset_path('template/SCCShorts.png') %>" alt="" style="border: 1px solid #eee;">
 
-  <h4>Adults</h4>
+  <h4>Options</h4>
   <dl>
     <dt>PRO Goffrato (M) / PRO Arco (F)</dt>
     <dd>£102.00</dd>
@@ -99,30 +77,16 @@
     <dd>£52.20</dd>
   </dl>
 
-  <h4>Juniors</h4>
-  <dl>
-    <dt>ELITE Arco</dt>
-    <dd>£33.50</dd>
-    <dt>ACTIVE Arco</dt>
-    <dd>£27.50</dd>
-  </dl>
-
   <p><em>Bib shorts are also available without a pad.</em></p>
 
   <h3 id="bibtights">Bib Tights</h3>
 
   <p>Ideal for the colder days with temperatures ranging between 5-15°C.</p>
 
-  <h4>Adults</h4>
+  <h4>Options</h4>
   <dl>
     <dt>ELITE Roubaix</dt>
     <dd>£86.40</dd>
-  </dl>
-
-  <h4>Juniors</h4>
-  <dl>
-    <dt>ACTIVE Arco</dt>
-    <dd>£48.50</dd>
   </dl>
 
   <p><em>Bib tights are also available without a pad.</em></p>
@@ -131,7 +95,7 @@
 
   <p>The RainMem collection is for wet weather days with temperatures ranging between 0-10°C.</p>
 
-  <h4>Adults</h4>
+  <h4>Options</h4>
   <dl>
     <dt>RainMem S/S Jersey</dt>
     <dd>£113.40</dd>
@@ -145,7 +109,7 @@
 
   <h3 id="mtbxc">MTB X/C</h3>
 
-  <h4>Adults</h4>
+  <h4>Options</h4>
   <dl>
     <dt>CROSS Athena S/S Jersey</dt>
     <dd>£52.80</dd>
@@ -165,23 +129,6 @@
 </section>
 
 <aside class="secondary-content">
-
-  <section class="widget widget--facebook">
-    <h3 class="widget__title">Our next club ride is</h3>
-    <a href="/club-rides">
-      <time>
-        <span class="day"><%= facebook[0].date.day %></span>
-        <span class="date"><%= facebook[0].date.date %></span>
-        <span class="month"><%= facebook[0].date.month %></span>
-      </time>
-      <h4><%= facebook[0].title %></h4>
-      <p>Leaving from
-        <% if (facebook[0].date.day === 'Tuesday') { %>Forge Valley Circuit, Sheffield
-          <% } else { %>the corner of Turner Lane and High Street, Whiston
-            <% } %> at
-              <%= facebook[0].time %>.</p>
-    </a>
-  </section>
 
   <section class="widget widget--sponsors">
     <h3 class="widget__title"><a href="/about/sponsors">Please visit our sponsors</a></h3>

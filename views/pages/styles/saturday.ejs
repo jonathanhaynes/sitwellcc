@@ -1,58 +1,9 @@
-<% if (facebook.length > 0) { %>
-  <script type="application/ld+json">
-
-    <% if (facebook.length > 1) { %>
-      [
-    <% } %>
-    <% for(var i = 0; i < facebook.length; i++) { %>
-        {
-          "@context": "http://schema.org/",
-          "@type": "SportsEvent",
-          "name": "<%= facebook[i].title %>",
-          "Description": "<%- facebook[i].description.split('<br>')[0] %>",
-          "startDate": "<%= facebook[i].full_date %>",
-          "location": {
-            "@type": "Place",
-            "name": "Whiston",
-            "address": "Corner of Turner Lane and High Street",
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "53.405298",
-              "longitude": "-1.327339"
-            }
-          }
-        }
-      <% if ((facebook.length > 1) && (i < facebook.length - 1)) { %>
-        ,
-      <% } %>  
-    <% } %>
-    <% if (facebook.length > 1) { %>
-        ]
-    <% } %>
-
-  </script>
-<% } %>
-
 <section class="primary-content">
   <p>These rides are great as an introduction to club riding due to there short nature and relaxed pace.</p>
   <p>Saturday Saunter rides depart from the corner of Turner Lane and High Street, <a href="https://goo.gl/maps/ArXDRXnkWEr">Whiston</a> at 9:00am prompt.</p>
-  <p>Saturday club rides are much shorter than a Sunday ride, we will be on the road for around 2 and a half hours riding at about 11-12mph.</p>
+  <p>Saturday club rides are much shorter than a Sunday ride, we will be on the road for around 2 and a half hours riding at ~13mph.</p>
   <p>Including the café stop we're usually back in the village for around 12:30pm.</p>
   <p>Please take time to read our <strong><a href="<%= asset_path('SitwellCyclingClubSitwellCCGenericRiskAssessment–RoadRides2016.pdf') %>">Risk Assessment</a> on Road Riding</strong>.</p>
-  <h2 id="upcoming-rides">Upcoming rides</h2>
-  <div id="rides">
-    <% if (facebook.length > 0) { %>
-      <% for(var i = 0; i < facebook.length; i++) { %>
-        <article class="post post--event">
-          <h3 class="post__title"><%= facebook[i].title %></h3>
-          <time class="post__date"><strong><%= facebook[i].date.day %> <%= facebook[i].date.date %> <%= facebook[i].date.month %> at <%= facebook[i].time %></strong></time>
-          <p class="post__summary"><%- facebook[i].description %></p>
-        </article>
-      <% } %>
-    <% } else { %>
-      <p>Sorry, we have no planned rides at present. Please check out our <a href="/club-rides/wing-it-wednesday">Wing it Wednesday™</a> or <a href="/club-rides/sunday-cafe-run">Sunday Café Run</a> rides.</p>
-    <% } %>
-  </div>
 </section>
 
 <aside class="secondary-content">
@@ -63,6 +14,7 @@
       <li><a href="/club-rides/wing-it-wednesday">Wing it Wednesday™</a></li>
       <li><a href="/club-rides/saturday-saunter">Saturday Saunter</a></li>
       <li><a href="/club-rides/sunday-cafe-run">Sunday Café Run</a></li>
+      <li><a href="/club-rides/sportives-races">Sportives &amp; Races</a></li>
     </ul>
   </nav>
 

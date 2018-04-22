@@ -11,6 +11,18 @@
       <input type="email" name="_replyto" class="form-control" placeholder="Email" required="">
     </div>
     <div class="form-group">
+      <select name="query" class="form-control" required="">
+        <option value="">Query</option>
+        <option value="Membership">Membership</option>
+        <option value="Club Rides">Club Rides</option>
+        <option value="Racing">Racing</option>
+        <option value="Kit">Kit</option>
+        <option value="Welfare">Welfare</option>
+        <option value="Sponsorship">Sponsorship</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
       <textarea name="message" class="form-control" placeholder="Message" required="" rows="10"></textarea>
     </div>
     <div class="form-group">
@@ -23,23 +35,6 @@
 </section>
 
 <aside class="secondary-content">
-
-  <section class="widget widget--facebook">
-    <h3 class="widget__title">Our next club ride is</h3>
-    <a href="/club-rides">
-      <time>
-        <span class="day"><%= facebook[0].date.day %></span>
-        <span class="date"><%= facebook[0].date.date %></span>
-        <span class="month"><%= facebook[0].date.month %></span>
-      </time>
-      <h4><%= facebook[0].title %></h4>
-      <p>Leaving from
-        <% if (facebook[0].date.day === 'Tuesday') { %>Forge Valley Circuit, Sheffield
-          <% } else { %>the corner of Turner Lane and High Street, Whiston
-            <% } %> at
-              <%= facebook[0].time %>.</p>
-    </a>
-  </section>
 
   <section class="widget widget--sponsors">
     <h3 class="widget__title"><a href="/about/sponsors">Please visit our sponsors</a></h3>

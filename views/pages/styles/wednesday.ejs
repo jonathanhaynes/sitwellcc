@@ -1,65 +1,8 @@
-<% if (facebook.length > 0) { %>
-  <script type="application/ld+json">
-
-    <% if (facebook.length > 1) { %>
-      [
-    <% } %>
-    <% for(var i = 0; i < facebook.length; i++) { %>
-        {
-          "@context": "http://schema.org/",
-          "@type": "SportsEvent",
-          "name": "<%= facebook[i].title %>",
-          "Description": "<%- facebook[i].description.split('<br>')[0] %>",
-          "startDate": "<%= facebook[i].full_date %>",
-          "location": {
-            "@type": "Place",
-            "name": "Whiston",
-            "address": "Corner of Turner Lane and High Street",
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "53.405298",
-              "longitude": "-1.327339"
-            }
-          }
-        }
-      <% if ((facebook.length > 1) && (i < facebook.length - 1)) { %>
-        ,
-      <% } %>  
-    <% } %>
-    <% if (facebook.length > 1) { %>
-        ]
-    <% } %>
-
-  </script>
-<% } %>
-
 <section class="primary-content">
   <p>Wing it Wednesday™ rides depart from the corner of Turner Lane and High Street, <a href="https://goo.gl/maps/ArXDRXnkWEr">Whiston</a> at 7:30pm prompt.</p>
-  <p>Wednesday club rides are much shorter than a Sunday ride, both our road and MTB rides last around 90 minutes. Road rides are run at our standard club pace of about 14-15mph and MTB rides are run at aout 9-10mph.</p>
+  <p>Wednesday club rides are much shorter than a Sunday ride, both our road and MTB rides last around 90 minutes. Road rides are run at our standard club pace of ~15mph and MTB rides are run at ~10mph.</p>
   <p>When the weather is better in the Summer months we may nip to the pub afterwards for cheeky pop or two.</p>
   <p>Please take time to read our <strong><a href="<%= asset_path('SitwellCyclingClubSitwellCCGenericRiskAssessment–RoadRides2016.pdf') %>">Risk Assessment</a> on Road Riding</strong>.</p>
-  <h2 id="upcoming-rides">Upcoming ride</h2>
-  <div id="rides">
-    <% if (facebook.length > 0) { %>
-      <article class="post post--event">
-        <h3 class="post__title">Wing it Wednesday™</h3>
-        <time class="post__date"><strong><%= facebook[0].date.day %> <%= facebook[0].date.date %> <%= facebook[0].date.month %> at <%= facebook[0].time %></strong></time>
-        <p class="post__summary">
-          Leaving from the corner of Turner Lane & High Street at 7:30pm.<br><br>
-          Our standard Wednesday night ride consists of a local short route lasting no longer than 1 hour 30 minutes.<br><br>
-          We go at a pace to suit all. Newcomers welcome. <br><br>
-          Ride discription:<br>
-          A few lumps and bumps, but nothing too strenuous.<br><br>
-          If the weather's nice we'll pop to the Sitwell Arms for a pint afterwards.<br><br>
-          Depending on whether you opt for the road or an MTB ride the pace will be about:<br>
-          Road - 14-15mph<br>
-          MTB - 9-10mph<br>
-        </p>
-      </article>
-    <% } else { %>
-      <p>Sorry, we have no planned rides at present. Please check out our <a href="/club-rides/saturday-saunter">Saturday Saunter</a> or <a href="/club-rides/sunday-cafe-run">Sunday Café Run</a> rides.</p>
-    <% } %>
-  </div>
 </section>
 
 <aside class="secondary-content">
@@ -70,6 +13,7 @@
       <li><a href="/club-rides/wing-it-wednesday">Wing it Wednesday™</a></li>
       <li><a href="/club-rides/saturday-saunter">Saturday Saunter</a></li>
       <li><a href="/club-rides/sunday-cafe-run">Sunday Café Run</a></li>
+      <li><a href="/club-rides/sportives-races">Sportives &amp; Races</a></li>
     </ul>
   </nav>
 
