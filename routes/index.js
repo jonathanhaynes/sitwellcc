@@ -32,73 +32,24 @@ const igAPI = (req, res, next) => {
   });
 };
 
-const fbAPI = (req, res, next) => {
+const ebAPI = (req, res, next) => {
 
-<<<<<<< HEAD
-  const fb = require('fb');
+  const request = require('request');
 
-  fb.options({
-    appId: process.env.FB_APP_ID,
-    version: 'v2.10'
-  });
-=======
-  const FB = require('fb'),
-        fb = new FB.Facebook({
-          client_id: process.env.FB_APP_ID,
-          client_secret: process.env.FB_APP_SECRET,
-          grant_type: 'client_credentials',
-          version: 'v2.12'
-        });
->>>>>>> new-rides-and-layout
-
-  const dateNow = Math.round(new Date().getTime()/1000.0),
-      fbMedia = [];
-
-  fb.setAccessToken(process.env.FB_ACCESS_TOKEN);
-
-  fb.api(
-<<<<<<< HEAD
-    '/1076165799068349/events',
-    'GET',
-    {
-      "access_token" : process.env.FB_ACCESS_TOKEN,
-      "since" : dateNow,
-      "limit": "500"
-    },
-    function(response) {
-
-      var filteredFbMedia = response.data.sort(dynamicSort('start_time'));
-=======
-    '/1076165799068349/events/',
-    function(response) {
-
-      // console.log('RESPONSE', response);
->>>>>>> new-rides-and-layout
-
-      if (response && !response.error) {
-
-        // var filteredFbMedia = response.events.data.sort(dynamicSort('start_time'));
-
-        // filteredFbMedia.forEach((item, i) => {
-
-        //   const filteredDisclaimer = removeDisclaimer(item.description);
-
-        //   fbMedia.push({
-        //     'title': item.name != null ? item.name : '',
-        //     'description': filteredDisclaimer != null ? linkify(filteredDisclaimer).replace(/\n/gi, '<br>') : '',
-        //     'link': item.id != null ? 'https://www.facebook.com/events/' + item.id + '/' : '',
-        //     'location': item.place != null ? item.place.name : '',
-        //     'full_date': item.start_time != null ? item.start_time : '',
-        //     'date': item.start_time != null ? {day: moment(item.start_time).format("dddd"), date: moment(item.start_time).format("Do"), month: moment(item.start_time).format("MMMM"), year: moment(item.start_time).format("YYYY")} : '',
-        //     'time': item.start_time != null ? moment(item.start_time).format("h:mma") : ''
-        //   });
-        // });
-      }
-
-      req.fbMedia = fbMedia;
-      next();
+  const options = {
+    url: `https://www.eventbriteapi.com/v3/events/search/?organizer.id=${process.env.EB_ORGANIZER_ID}`,
+    headers: {
+      'Authorization': `Bearer ${process.env.EB_ACCESS_TOKEN}`,
     }
-  );
+  };
+
+  request(options, (error, response, data) => {
+    if (!error && response.statusCode == 200) {
+      console.log(data);
+
+      // next();
+    }
+  });
 
   var removeDisclaimer = (theDescription) => {
     const filtered = theDescription.indexOf('----');
@@ -149,25 +100,6 @@ const fbAPI = (req, res, next) => {
 
     return text;
   };
-};
-
-const fbAPISort = (req) => {
-  for (var i = req.fbMedia.length -1; i >= 0; i--) {
-    if (!req.fbMedia[i].date.day.startsWith(req.weekDay)) {
-      req.fbMedia.splice(i, 1);
-    }
-  }
-
-  return req.fbMedia;
-};
-
-const fbDateChange = (req) => {
-  for (var i = 0; i < req.fbMedia.length; i++) {
-    req.fbMedia[i].date.date = moment(req.fbMedia[i].full_date).format("D");
-    req.fbMedia[i].date.month = moment(req.fbMedia[i].full_date).format("MMM");
-  }
-
-  return req.fbMedia;
 };
 
 const whatDay = (req) => {
@@ -331,7 +263,7 @@ const members = {
   date : '01/02/2018'
 };
 
-// router.get('/', fbAPI);
+router.get('/', ebAPI);
 router.get('/', igAPI);
 router.get('/', ghostAPI);
 router.get('/', (req, res, next) => {
