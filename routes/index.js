@@ -571,7 +571,7 @@ router.get('/kit', igAPI);
 router.get('/kit', (req, res, next) => {
   res.locals.meta = {
     title: 'Kit - Sitwell Cycling Club, Whiston, Rotherham',
-    description: 'Akuma Cycling is our manufacturer of choice. They have a great range of items including casual wear and are very competitive on price. Kit is only available to club members - join us today!',
+    description: 'Kalas Sportswear is our manufacturer of choice. They have a great range of items including casual wear and are very competitive on price. Kit is only available to club members - join us today!',
     name: 'Kit',
     content: 'kit'
   };
