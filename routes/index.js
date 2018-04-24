@@ -34,14 +34,6 @@ const igAPI = (req, res, next) => {
 
 const fbAPI = (req, res, next) => {
 
-<<<<<<< HEAD
-  const fb = require('fb');
-
-  fb.options({
-    appId: process.env.FB_APP_ID,
-    version: 'v2.10'
-  });
-=======
   const FB = require('fb'),
         fb = new FB.Facebook({
           client_id: process.env.FB_APP_ID,
@@ -49,7 +41,6 @@ const fbAPI = (req, res, next) => {
           grant_type: 'client_credentials',
           version: 'v2.12'
         });
->>>>>>> new-rides-and-layout
 
   const dateNow = Math.round(new Date().getTime()/1000.0),
       fbMedia = [];
@@ -57,23 +48,10 @@ const fbAPI = (req, res, next) => {
   fb.setAccessToken(process.env.FB_ACCESS_TOKEN);
 
   fb.api(
-<<<<<<< HEAD
-    '/1076165799068349/events',
-    'GET',
-    {
-      "access_token" : process.env.FB_ACCESS_TOKEN,
-      "since" : dateNow,
-      "limit": "500"
-    },
-    function(response) {
-
-      var filteredFbMedia = response.data.sort(dynamicSort('start_time'));
-=======
     '/1076165799068349/events/',
     function(response) {
 
       // console.log('RESPONSE', response);
->>>>>>> new-rides-and-layout
 
       if (response && !response.error) {
 
