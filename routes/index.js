@@ -35,9 +35,10 @@ const igAPI = (req, res, next) => {
 const ebAPI = (req, res, next) => {
 
   const request = require('request');
+  const ebMedia = [];
 
   const options = {
-    url: `https://www.eventbriteapi.com/v3/events/search/?organizer.id=${process.env.EB_ORGANIZER_ID}`,
+    url: `https://www.eventbriteapi.com/v3/organizers/${process.env.EB_ORGANIZER_ID}/events/?status=live`,
     headers: {
       'Authorization': `Bearer ${process.env.EB_ACCESS_TOKEN}`,
     }
@@ -45,9 +46,23 @@ const ebAPI = (req, res, next) => {
 
   request(options, (error, response, data) => {
     if (!error && response.statusCode == 200) {
-      console.log(data);
+      console.log(JSON.parse(data).events[0]);
 
-      // next();
+      JSON.parse(data).events.forEach((item, i) => {
+        const filteredDrescription = removeDisclaimer(item.description.html);
+
+        ebMedia.push({
+          'id': item.id,
+          'title': item.name.html != null ? item.name.html : '',
+          'description': filteredDrescription != null ? filteredDrescription : '',
+          'full_date': item.start.local != null ? item.start.local : '',
+          'date': item.start.local != null ? {day: moment(item.start.local).format("dddd"), date: moment(item.start.local).format("Do"), month: moment(item.start.local).format("MMMM"), year: moment(item.start.local).format("YYYY")} : '',
+          'time': item.start.local != null ? moment(item.start.local).format("h:mma") : ''
+        });
+      });
+
+      req.ebMedia = ebMedia;
+      next();
     }
   });
 
@@ -80,25 +95,6 @@ const ebAPI = (req, res, next) => {
       case 3:  return "rd";
       default: return "th";
     }
-  };
-
-  var linkify = (text) => {
-    if( !text ) return text;
-
-    text = text.replace(/((https?\:\/\/|ftp\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi, (url) => {
-      nice = url;
-      if( url.match('^https?:\/\/') )
-      {
-        nice = nice.replace(/^https?:\/\//i,'');
-      }
-      else
-        url = 'http://'+url;
-
-
-      return '<a target="_blank" href="'+ url +'">'+ nice.replace(/^www./i,'') +'</a>';
-    });
-
-    return text;
   };
 };
 
@@ -275,7 +271,7 @@ router.get('/', (req, res, next) => {
 
   res.render('pages/index', {
     active: 'home',
-    // facebook: req.fbMedia,
+    eventbrite: req.ebMedia,
     instagram: req.igMedia,
     ghost: req.ghostMedia,
     members: members
@@ -297,7 +293,7 @@ router.get('/about', (req, res, next) => {
 
   res.render('pages/show', {
     active: 'about',
-    // facebook: req.fbMedia,
+    // eventbrite: req.ebMedia,
     instagram: req.igMedia
   });
 
@@ -343,7 +339,7 @@ router.get('/about', (req, res, next) => {
 
     res.render('pages/show', {
       active: 'about',
-      // facebook: req.fbMedia,
+      // eventbrite: req.ebMedia,
       instagram: req.igMedia,
     });
   });
@@ -389,7 +385,7 @@ router.get('/club-rides', (req, res, next) => {
 
   res.render('pages/show', {
     active: 'club-rides',
-    // facebook: req.fbMedia,
+    // eventbrite: req.ebMedia,
     instagram: req.igMedia
   });
 });
@@ -409,7 +405,7 @@ router.get('/club-rides/chaingang-tuesday', (req, res, next) => {
 
   res.render('pages/show', {
     active: 'club-rides',
-    // facebook: req.fbMedia,
+    // eventbrite: req.ebMedia,
     instagram: req.igMedia
   });
 });
@@ -429,7 +425,7 @@ router.get('/club-rides/chaingang-tuesday', (req, res, next) => {
 
     res.render('pages/show', {
       active: 'club-rides',
-      // facebook: req.fbMedia,
+      // eventbrite: req.ebMedia,
       instagram: req.igMedia
     });
   });
@@ -449,7 +445,7 @@ router.get('/club-rides/chaingang-tuesday', (req, res, next) => {
 
     res.render('pages/show', {
       active: 'club-rides',
-      // facebook: req.fbMedia,
+      // eventbrite: req.ebMedia,
       instagram: req.igMedia
     });
   });
@@ -470,7 +466,7 @@ router.get('/club-rides/chaingang-tuesday', (req, res, next) => {
 
     res.render('pages/show', {
       active: 'club-rides',
-      // facebook: req.fbMedia,
+      // eventbrite: req.ebMedia,
       instagram: req.igMedia,
       time: whatSundayTime(req)
     });
@@ -492,7 +488,7 @@ router.get('/club-rides/chaingang-tuesday', (req, res, next) => {
 
     res.render('pages/show', {
       active: 'club-rides',
-      // facebook: req.fbMedia,
+      // eventbrite: req.ebMedia,
       instagram: req.igMedia,
     });
 
@@ -512,7 +508,7 @@ router.get('/kit', (req, res, next) => {
 
   res.render('pages/show', {
     active: 'kit',
-    // facebook: req.fbMedia,
+    // eventbrite: req.ebMedia,
     instagram: req.igMedia
   });
 });
@@ -531,7 +527,7 @@ router.get('/membership', (req, res, next) => {
 
   res.render('pages/show', {
     active: 'membership',
-    // facebook: req.fbMedia,
+    // eventbrite: req.ebMedia,
     instagram: req.igMedia
   });
 });
@@ -550,7 +546,7 @@ router.get('/membership/juniors', (req, res, next) => {
 
   res.render('pages/show', {
     active: 'membership',
-    // facebook: req.fbMedia,
+    // eventbrite: req.ebMedia,
     instagram: req.igMedia
   });
 });
@@ -569,7 +565,7 @@ router.get('/membership/juniors', (req, res, next) => {
 
     res.render('pages/show', {
       active: 'membership',
-      // facebook: req.fbMedia,
+      // eventbrite: req.ebMedia,
       instagram: req.igMedia
     });
   });
@@ -588,7 +584,7 @@ router.get('/news', (req, res, next) => {
 
   res.render('pages/show', {
     active: 'news',
-    // facebook: req.fbMedia,
+    // eventbrite: req.ebMedia,
     ghostMedia: req.ghostMedia,
     ghostMeta: req.ghostMeta
   });
@@ -616,7 +612,7 @@ router.get('/news', (req, res, next) => {
 
     res.render('pages/show', {
       active: 'news',
-      // facebook: req.fbMedia,
+      // eventbrite: req.ebMedia,
       instagram: req.igMedia,
       ghostMediaPost: req.ghostMediaPost,
       ghostMedia: req.ghostMedia

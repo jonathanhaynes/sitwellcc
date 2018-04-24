@@ -20,10 +20,18 @@
         </a>
       </section>
       <section class="intro intro--rides">
-        <a href="/membership">
-          <p>Join us!</p>
-          <p>We're a friendly, social bunch. Come and see what you're missing out on.</p>
-          <p>More information on club membership can be found here.</p>
+        <a href="/club-rides">
+          <p><em>Our next club ride is</em></p>
+          <time>
+            <span class="day"><%= eventbrite[0].date.day %></span>
+            <span class="date"><%= eventbrite[0].date.date %></span>
+            <span class="month"><%= eventbrite[0].date.month %></span>
+          </time>
+          <h3>
+            <%= eventbrite[0].title %>
+          </h3>
+          <p>Leaving from <% if (eventbrite[0].date.day === 'Tuesday') { %>Forge Valley Circuit, Sheffield <% } else { %>the corner of Turner Lane and High Street, Whiston <% } %> at <%= eventbrite[0].time %>.</p>
+          <p>More information on our club rides can be found here.</p>
         </a>
       </section>
     </section>
