@@ -49,7 +49,7 @@ const ebAPI = (req, res, next) => {
       console.log(JSON.parse(data).events[0]);
 
       JSON.parse(data).events.forEach((item, i) => {
-        const filteredDrescription = removeDisclaimer(item.description.html);
+        const filteredDrescription = removeDisclaimer(item.description.text);
 
         ebMedia.push({
           'id': item.id,
@@ -96,6 +96,25 @@ const ebAPI = (req, res, next) => {
       default: return "th";
     }
   };
+};
+
+const ebAPISort = (req) => {
+  for (var i = req.ebMedia.length -1; i >= 0; i--) {
+    if (!req.ebMedia[i].date.day.startsWith(req.weekDay)) {
+      req.ebMedia.splice(i, 1);
+    }
+  }
+
+  return req.fbMedia;
+};
+
+const ebDateChange = (req) => {
+  for (var i = 0; i < req.ebMedia.length; i++) {
+    req.ebMedia[i].date.date = moment(req.ebMedia[i].full_date).format("D");
+    req.ebMedia[i].date.month = moment(req.ebMedia[i].full_date).format("MMM");
+  }
+
+  return req.ebMedia;
 };
 
 const whatDay = (req) => {
@@ -278,7 +297,7 @@ router.get('/', (req, res, next) => {
   });
 });
 
-// router.get('/about', fbAPI);
+router.get('/about', ebAPI);
 router.get('/about', igAPI);
 router.get('/about', (req, res, next) => {
 
@@ -289,11 +308,11 @@ router.get('/about', (req, res, next) => {
     content: 'about'
   };
 
-  // fbDateChange(req);
+  ebDateChange(req);
 
   res.render('pages/show', {
     active: 'about',
-    // eventbrite: req.ebMedia,
+    eventbrite: req.ebMedia,
     instagram: req.igMedia
   });
 
@@ -325,7 +344,7 @@ router.get('/about', (req, res, next) => {
     });
   });
 
-  // router.get('/about/road-captains', fbAPI);
+  router.get('/about/road-captains', ebAPI);
   router.get('/about/road-captains', igAPI);
   router.get('/about/road-captains', function(req, res, next) {
     res.locals.meta = {
@@ -335,11 +354,11 @@ router.get('/about', (req, res, next) => {
       content: 'captains'
     };
 
-    // fbDateChange(req);
+    ebDateChange(req);
 
     res.render('pages/show', {
       active: 'about',
-      // eventbrite: req.ebMedia,
+      eventbrite: req.ebMedia,
       instagram: req.igMedia,
     });
   });
@@ -371,7 +390,7 @@ router.get('/about', (req, res, next) => {
     });
   });
 
-// router.get('/club-rides', fbAPI);
+router.get('/club-rides', ebAPI);
 router.get('/club-rides', igAPI);
 router.get('/club-rides', (req, res, next) => {
   res.locals.meta = {
@@ -381,16 +400,16 @@ router.get('/club-rides', (req, res, next) => {
     content: 'rides'
   };
 
-  // fbDateChange(req);
+  ebDateChange(req);
 
   res.render('pages/show', {
     active: 'club-rides',
-    // eventbrite: req.ebMedia,
+    eventbrite: req.ebMedia,
     instagram: req.igMedia
   });
 });
 
-// router.get('/club-rides/chaingang-tuesday', fbAPI);
+router.get('/club-rides/chaingang-tuesday', ebAPI);
 router.get('/club-rides/chaingang-tuesday', igAPI);
 router.get('/club-rides/chaingang-tuesday', (req, res, next) => {
   res.locals.meta = {
@@ -401,16 +420,16 @@ router.get('/club-rides/chaingang-tuesday', (req, res, next) => {
   };
 
   req.weekDay = 'Tuesday';
-  // fbAPISort(req);
+  ebAPISort(req);
 
   res.render('pages/show', {
     active: 'club-rides',
-    // eventbrite: req.ebMedia,
+    eventbrite: req.ebMedia,
     instagram: req.igMedia
   });
 });
 
-  // router.get('/club-rides/wing-it-wednesday', fbAPI);
+  router.get('/club-rides/wing-it-wednesday', ebAPI);
   router.get('/club-rides/wing-it-wednesday', igAPI);
   router.get('/club-rides/wing-it-wednesday', (req, res, next) => {
     res.locals.meta = {
@@ -421,16 +440,16 @@ router.get('/club-rides/chaingang-tuesday', (req, res, next) => {
     };
 
     req.weekDay = 'Wednesday';
-    // fbAPISort(req);
+    ebAPISort(req);
 
     res.render('pages/show', {
       active: 'club-rides',
-      // eventbrite: req.ebMedia,
+      eventbrite: req.ebMedia,
       instagram: req.igMedia
     });
   });
 
-  // router.get('/club-rides/saturday-saunter', fbAPI);
+  router.get('/club-rides/saturday-saunter', ebAPI);
   router.get('/club-rides/saturday-saunter', igAPI);
   router.get('/club-rides/saturday-saunter', (req, res, next) => {
     res.locals.meta = {
@@ -441,16 +460,16 @@ router.get('/club-rides/chaingang-tuesday', (req, res, next) => {
     };
 
     req.weekDay = 'Saturday';
-    // fbAPISort(req);
+    ebAPISort(req);
 
     res.render('pages/show', {
       active: 'club-rides',
-      // eventbrite: req.ebMedia,
+      eventbrite: req.ebMedia,
       instagram: req.igMedia
     });
   });
 
-  // router.get('/club-rides/sunday-cafe-run', fbAPI);
+  router.get('/club-rides/sunday-cafe-run', ebAPI);
   router.get('/club-rides/sunday-cafe-run', igAPI);
   router.get('/club-rides/sunday-cafe-run', (req, res, next) => {
 
@@ -462,18 +481,18 @@ router.get('/club-rides/chaingang-tuesday', (req, res, next) => {
     };
 
     req.weekDay = 'Sunday';
-    // fbAPISort(req);
+    ebAPISort(req);
 
     res.render('pages/show', {
       active: 'club-rides',
-      // eventbrite: req.ebMedia,
+      eventbrite: req.ebMedia,
       instagram: req.igMedia,
       time: whatSundayTime(req)
     });
 
   });
 
-  // router.get('/club-rides/sportives-races', fbAPI);
+  router.get('/club-rides/sportives-races', ebAPI);
   router.get('/club-rides/sportives-races', igAPI);
   router.get('/club-rides/sportives-races', (req, res, next) => {
 
@@ -484,17 +503,17 @@ router.get('/club-rides/chaingang-tuesday', (req, res, next) => {
       content: 'sportives-races'
     };
 
-    // fbDateChange(req);
+    ebDateChange(req);
 
     res.render('pages/show', {
       active: 'club-rides',
-      // eventbrite: req.ebMedia,
+      eventbrite: req.ebMedia,
       instagram: req.igMedia,
     });
 
   });
 
-// router.get('/kit', fbAPI);
+router.get('/kit', ebAPI);
 router.get('/kit', igAPI);
 router.get('/kit', (req, res, next) => {
   res.locals.meta = {
@@ -504,16 +523,16 @@ router.get('/kit', (req, res, next) => {
     content: 'kit'
   };
 
-  // fbDateChange(req);
+  ebDateChange(req);
 
   res.render('pages/show', {
     active: 'kit',
-    // eventbrite: req.ebMedia,
+    eventbrite: req.ebMedia,
     instagram: req.igMedia
   });
 });
 
-// router.get('/membership', fbAPI);
+router.get('/membership', ebAPI);
 router.get('/membership', igAPI);
 router.get('/membership', (req, res, next) => {
   res.locals.meta = {
@@ -523,16 +542,16 @@ router.get('/membership', (req, res, next) => {
     content: 'membership'
   };
 
-  // fbDateChange(req);
+  ebDateChange(req);
 
   res.render('pages/show', {
     active: 'membership',
-    // eventbrite: req.ebMedia,
+    eventbrite: req.ebMedia,
     instagram: req.igMedia
   });
 });
 
-// router.get('/membership/juniors', fbAPI);
+router.get('/membership/juniors', ebAPI);
 router.get('/membership/juniors', igAPI);
 router.get('/membership/juniors', (req, res, next) => {
   res.locals.meta = {
@@ -542,16 +561,16 @@ router.get('/membership/juniors', (req, res, next) => {
     content: 'juniors'
   };
 
-  // fbDateChange(req);
+  ebDateChange(req);
 
   res.render('pages/show', {
     active: 'membership',
-    // eventbrite: req.ebMedia,
+    eventbrite: req.ebMedia,
     instagram: req.igMedia
   });
 });
 
-  // router.get('/membership/discounts', fbAPI);
+  router.get('/membership/discounts', ebAPI);
   router.get('/membership/discounts', igAPI);
   router.get('/membership/discounts', (req, res, next) => {
     res.locals.meta = {
@@ -561,16 +580,16 @@ router.get('/membership/juniors', (req, res, next) => {
       content: 'discounts'
     };
 
-    // fbDateChange(req);
+    ebDateChange(req);
 
     res.render('pages/show', {
       active: 'membership',
-      // eventbrite: req.ebMedia,
+      eventbrite: req.ebMedia,
       instagram: req.igMedia
     });
   });
 
-// router.get('/news', fbAPI);
+router.get('/news', ebAPI);
 router.get('/news', ghostAPI);
 router.get('/news', (req, res, next) => {
   res.locals.meta = {
@@ -580,17 +599,17 @@ router.get('/news', (req, res, next) => {
     content: 'news'
   };
 
-  // fbDateChange(req);
+  ebDateChange(req);
 
   res.render('pages/show', {
     active: 'news',
-    // eventbrite: req.ebMedia,
+    eventbrite: req.ebMedia,
     ghostMedia: req.ghostMedia,
     ghostMeta: req.ghostMeta
   });
 });
 
-  // router.get('/news/:slug', fbAPI);
+  router.get('/news/:slug', ebAPI);
   router.get('/news/:slug', igAPI);
   router.get('/news/:slug', (req, res, next) => {
     res.ghostLimit = 'all';
@@ -601,7 +620,7 @@ router.get('/news', (req, res, next) => {
     req.ghostSlug = req.params.slug;
     ghostAPISearch(req);
 
-    // fbDateChange(req);
+    ebDateChange(req);
 
     res.locals.meta = {
       title: `${req.ghostMediaPost[0].title} - Club News - Sitwell Cycling Club, Whiston, Rotherham`,
@@ -612,14 +631,14 @@ router.get('/news', (req, res, next) => {
 
     res.render('pages/show', {
       active: 'news',
-      // eventbrite: req.ebMedia,
+      eventbrite: req.ebMedia,
       instagram: req.igMedia,
       ghostMediaPost: req.ghostMediaPost,
       ghostMedia: req.ghostMedia
     });
   });
 
-// router.get('/contact', fbAPI);
+router.get('/contact', ebAPI);
 router.get('/contact', (req, res, next) => {
   res.locals.meta = {
     title: 'Contact - Sitwell Cycling Club, Whiston, Rotherham',
@@ -628,11 +647,11 @@ router.get('/contact', (req, res, next) => {
     content: 'contact'
   };
 
-  // fbDateChange(req);
+  ebDateChange(req);
 
   res.render('pages/show', {
     active: 'contact',
-    facebook: req.fbMedia
+    eventbrite: req.ebMedia
   });
 });
 
