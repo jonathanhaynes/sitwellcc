@@ -46,10 +46,9 @@ const ebAPI = (req, res, next) => {
 
   request(options, (error, response, data) => {
     if (!error && response.statusCode == 200) {
-      console.log(JSON.parse(data).events[0]);
 
       JSON.parse(data).events.forEach((item, i) => {
-        const filteredDrescription = removeDisclaimer(item.description.text);
+        const filteredDrescription = removeDisclaimer(item.description.html);
 
         ebMedia.push({
           'id': item.id,
@@ -95,6 +94,25 @@ const ebAPI = (req, res, next) => {
       case 3:  return "rd";
       default: return "th";
     }
+  };
+
+  var linkify = (text) => {
+    if( !text ) return text;
+
+    text = text.replace(/((https?\:\/\/|ftp\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi, (url) => {
+      nice = url;
+      if( url.match('^https?:\/\/') )
+      {
+        nice = nice.replace(/^https?:\/\//i,'');
+      }
+      else
+        url = 'http://'+url;
+
+
+      return '<a target="_blank" href="'+ url +'">'+ nice.replace(/^www./i,'') +'</a>';
+    });
+
+    return text;
   };
 };
 
