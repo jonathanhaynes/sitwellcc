@@ -1,7 +1,56 @@
+<% if (eventbrite.length > 0) { %>
+  <script type="application/ld+json">
+    <% if (eventbrite.length > 1) { %>
+      [
+    <% } %>
+    <% for(var i = 0; i < eventbrite.length; i++) { %>
+        {
+          "@context": "http://schema.org/",
+          "@type": "SportsEvent",
+          "name": "<%= eventbrite[i].title %>",
+          "Description": "<%- eventbrite[i].description.split('\n')[0] %>",
+          "startDate": "<%= eventbrite[i].full_date %>",
+          "location": {
+            "@type": "Place",
+            "name": "Sheffield",
+            "address": "Wood Lane",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "53.397769",
+              "longitude": "-1.520094"
+            }
+          }
+        }
+      <% if ((eventbrite.length > 1) && (i < eventbrite.length - 1)) { %>
+        ,
+      <% } %>
+    <% } %>
+    <% if (eventbrite.length > 1) { %>
+        ]
+    <% } %>
+  </script>
+<% } %>
+
 <section class="primary-content">
   <p>We hold a member's only Chaingang session at <a href="https://goo.gl/maps/kUBu1DkFPxC2">Forge Valley School</a> on Tuesday evenings.</p>
   <p>Tuesday chaingang rides are there to perfect race craft and practice through and off at high speed. We use the Forge Valley circuit as it's a smooth tarmac, traffic environment but has points where riders can drop off the group and rejoin if the pace is too high.</p>
+  <p>Chaingang costs £3 a week and is payable into the club's account. Speak to our <a href="mailto:racing@sitwell.cc">Racing Officer</a> about this.</p>
+  <p>There is no Sitwell Cycling Club Road Captain on this ride.</p>
   <p>Please take time to read our <strong><a href="<%= asset_path('SitwellCyclingClubSitwellCCGenericRiskAssessment–RoadRides2016.pdf') %>">Risk Assessment</a> on Road Riding</strong>.</p>
+  <h2 id="upcoming-rides">Upcoming rides</h2>
+  <div id="rides">
+    <% if (eventbrite.length > 0) { %>
+      <ul>
+        <% for(var i = 0; i < eventbrite.length; i++) { %>
+          <li>
+            <time class="post__date"><strong><%= eventbrite[i].date.day %> <%= eventbrite[i].date.date %> <%= eventbrite[i].date.month %> at <%= eventbrite[i].time %></strong></time>
+          </li>
+        <% } %>
+      </ul>
+    <% } else { %>
+      <p>Sorry, we have no planned rides at present. Please check out our <a href="/club-rides/saturday-saunter">Saturday Saunter</a> or <a href="/club-rides/sunday-cafe-run">Sunday Café Run</a> rides.</p>
+    <% } %>
+  </div>
 </section>
 
 <aside class="secondary-content">

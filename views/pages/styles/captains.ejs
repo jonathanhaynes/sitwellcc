@@ -98,6 +98,23 @@
       </ul>
   </nav>
 
+  <section class="widget widget--facebook">
+    <h3 class="widget__title">Our next club ride is</h3>
+    <a href="/club-rides">
+      <time>
+        <span class="day"><%= eventbrite[0].date.day %></span>
+        <span class="date"><%= eventbrite[0].date.date %></span>
+        <span class="month"><%= eventbrite[0].date.month %></span>
+      </time>
+      <h4><%= eventbrite[0].title %></h4>
+      <p>Leaving from
+        <% if (eventbrite[0].date.day === 'Tuesday') { %>Forge Valley Circuit, Sheffield
+          <% } else { %>the corner of Turner Lane and High Street, Whiston
+            <% } %> at
+              <%= eventbrite[0].time %>.</p>
+    </a>
+  </section>
+
   <section class="widget widget--sponsors">
     <h3 class="widget__title"><a href="/about/sponsors">Please visit our sponsors</a></h3>
     <% include ../../shared/sponsors %>

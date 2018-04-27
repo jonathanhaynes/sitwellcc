@@ -1,9 +1,56 @@
+<% if (eventbrite.length > 0) { %>
+  <script type="application/ld+json">
+    <% if (eventbrite.length > 1) { %>
+      [
+    <% } %>
+    <% for(var i = 0; i < eventbrite.length; i++) { %>
+        {
+          "@context": "http://schema.org/",
+          "@type": "SportsEvent",
+          "name": "<%= eventbrite[i].title %>",
+          "Description": "<%- eventbrite[i].description.split('\n')[0] %>",
+          "startDate": "<%= eventbrite[i].full_date %>",
+          "location": {
+            "@type": "Place",
+            "name": "Whiston",
+            "address": "Corner of Turner Lane and High Street",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "53.405298",
+              "longitude": "-1.327339"
+            }
+          }
+        }
+      <% if ((eventbrite.length > 1) && (i < eventbrite.length - 1)) { %>
+        ,
+      <% } %>
+    <% } %>
+    <% if (eventbrite.length > 1) { %>
+        ]
+    <% } %>
+  </script>
+<% } %>
+
 <section class="primary-content">
   <p>These rides are great as an introduction to club riding due to there short nature and relaxed pace.</p>
   <p>Saturday Saunter rides depart from the corner of Turner Lane and High Street, <a href="https://goo.gl/maps/ArXDRXnkWEr">Whiston</a> at 9:00am prompt.</p>
   <p>Saturday club rides are much shorter than a Sunday ride, we will be on the road for around 2 and a half hours riding at ~13mph.</p>
   <p>Including the café stop we're usually back in the village for around 12:30pm.</p>
   <p>Please take time to read our <strong><a href="<%= asset_path('SitwellCyclingClubSitwellCCGenericRiskAssessment–RoadRides2016.pdf') %>">Risk Assessment</a> on Road Riding</strong>.</p>
+  <h2 id="upcoming-rides">Upcoming rides</h2>
+  <div id="rides">
+    <% if (eventbrite.length > 0) { %>
+      <% for(var i = 0; i < eventbrite.length; i++) { %>
+        <article class="post post--event">
+          <h3 class="post__title"><%= eventbrite[i].title %></h3>
+          <time class="post__date"><strong><%= eventbrite[i].date.day %> <%= eventbrite[i].date.date %> <%= eventbrite[i].date.month %> at <%= eventbrite[i].time %></strong></time>
+          <p class="post__summary"><%- eventbrite[i].description %></p>
+        </article>
+      <% } %>
+    <% } else { %>
+      <p>Sorry, we have no planned rides at present. Please check out our <a href="/club-rides/wing-it-wednesday">Wing it Wednesday™</a> or <a href="/club-rides/sunday-cafe-run">Sunday Café Run</a> rides.</p>
+    <% } %>
+  </div>
 </section>
 
 <aside class="secondary-content">
@@ -21,7 +68,7 @@
   <section class="widget widget--sponsors">
     <h3 class="widget__title"><a href="/about/sponsors">Please visit our sponsors</a></h3>
     <% include ../../shared/sponsors %>
-  </section>  
+  </section>
 
   <section class="widget widget--instagram">
     <h3 class="widget__title"><a href="https://instagram.com/sitwellcc">Follow us on Instagram</a></h3>
