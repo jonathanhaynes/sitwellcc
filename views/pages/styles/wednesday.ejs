@@ -1,8 +1,55 @@
+<% if (eventbrite.length > 0) { %>
+  <script type="application/ld+json">
+    <% if (eventbrite.length > 1) { %>
+      [
+    <% } %>
+    <% for(var i = 0; i < eventbrite.length; i++) { %>
+        {
+          "@context": "http://schema.org/",
+          "@type": "SportsEvent",
+          "name": "<%= eventbrite[i].title %>",
+          "Description": "<%- eventbrite[i].description.split('\n')[0] %>",
+          "startDate": "<%= eventbrite[i].full_date %>",
+          "location": {
+            "@type": "Place",
+            "name": "Whiston",
+            "address": "Corner of Turner Lane and High Street",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "53.405298",
+              "longitude": "-1.327339"
+            }
+          }
+        }
+      <% if ((eventbrite.length > 1) && (i < eventbrite.length - 1)) { %>
+        ,
+      <% } %>
+    <% } %>
+    <% if (eventbrite.length > 1) { %>
+        ]
+    <% } %>
+  </script>
+<% } %>
+
 <section class="primary-content">
   <p>Wing it Wednesday™ rides depart from the corner of Turner Lane and High Street, <a href="https://goo.gl/maps/ArXDRXnkWEr">Whiston</a> at 7:30pm prompt.</p>
   <p>Wednesday club rides are much shorter than a Sunday ride, both our road and MTB rides last around 90 minutes. Road rides are run at our standard club pace of ~15mph and MTB rides are run at ~10mph.</p>
   <p>When the weather is better in the Summer months we may nip to the pub afterwards for cheeky pop or two.</p>
   <p>Please take time to read our <strong><a href="<%= asset_path('SitwellCyclingClubSitwellCCGenericRiskAssessment–RoadRides2016.pdf') %>">Risk Assessment</a> on Road Riding</strong>.</p>
+  <h2 id="upcoming-rides">Upcoming rides</h2>
+  <div id="rides">
+    <% if (eventbrite.length > 0) { %>
+        <ul>
+          <% for(var i = 0; i < eventbrite.length; i++) { %>
+            <li>
+              <time class="post__date"><strong><%= eventbrite[i].date.day %> <%= eventbrite[i].date.date %> <%= eventbrite[i].date.month %> at <%= eventbrite[i].time %></strong></time>
+            </li>
+          <% } %>
+        </ul>
+    <% } else { %>
+      <p>Sorry, we have no planned rides at present. Please check out our <a href="/club-rides/saturday-saunter">Saturday Saunter</a> or <a href="/club-rides/sunday-cafe-run">Sunday Café Run</a> rides.</p>
+    <% } %>
+  </div>
 </section>
 
 <aside class="secondary-content">
